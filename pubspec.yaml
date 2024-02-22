@@ -1,7 +1,7 @@
 name: echarts
-description: "A new Flutter project."
+description: "A data visualization charts library, based on Apache ECharts, able to build advanced charts like WebGL 3D, GIS map, etc."
 version: 0.0.1
-homepage:
+homepage: "https://github.com/warioddly/echarts"
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
@@ -13,6 +13,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
+  webview_flutter: ^4.5.0
 
 dev_dependencies:
   flutter_test:

@@ -1,8 +1,10 @@
 
-import 'echarts_platform_interface.dart';
+library echarts;
 
-class Echarts {
-  Future<String?> getPlatformVersion() {
-    return EchartsPlatform.instance.getPlatformVersion();
-  }
-}
+export 'src/view/implements/facade.dart'
+  if (dart.library.io) 'src/view/implements/mobile.dart'
+  if (dart.library.html) 'src/view/implements/web.dart';
+
+export 'src/controller/implements/facade.dart'
+  if (dart.library.io) 'src/controller/implements/mobile.dart'
+  if (dart.library.html) 'src/controller/implements/web.dart';
