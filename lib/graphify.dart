@@ -1,5 +1,5 @@
 
-library edarts;
+library graphify;
 
 export 'src/view/implements/facade.dart'
   if (dart.library.io) 'src/view/implements/mobile.dart'
@@ -10,4 +10,4 @@ export 'src/controller/implements/facade.dart'
   if (dart.library.html) 'src/controller/implements/web.dart';
 
 
-export 'src/utils/edarts_aware.dart';
+export 'src/utils/graphify_aware.dart';

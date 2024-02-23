@@ -1,6 +1,6 @@
-# edarts_example
+# graphify_example
 
-Demonstrates how to use the edarts plugin.
+Demonstrates how to use the graphify plugin.
 
 ## Getting Started
 

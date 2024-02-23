@@ -1,7 +1,7 @@
-name: edarts
-description: "A data visualization charts library, based on Apache EDarts, able to build advanced charts like WebGL 3D, GIS map, etc."
+name: graphify
+description: "A data visualization charts library, based on Apache Echarts, able to build advanced charts like WebGL 3D, GIS map, etc."
 version: 0.0.1
-homepage: "https://github.com/warioddly/edarts"
+homepage: "https://github.com/warioddly/graphify"
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
@@ -15,6 +15,7 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   webview_flutter: ^4.5.0
   pointer_interceptor: ^0.10.1
+  rename_app: ^1.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -38,19 +39,19 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.warioddly.edarts
-        pluginClass: EdartsPlugin
+        package: com.warioddly.graphify
+        pluginClass: GraphifyPlugin
       ios:
-        pluginClass: EdartsPlugin
+        pluginClass: GraphifyPlugin
       linux:
-        pluginClass: EdartsPlugin
+        pluginClass: GraphifyPlugin
       macos:
-        pluginClass: EdartsPlugin
+        pluginClass: GraphifyPlugin
       windows:
-        pluginClass: EdartsPluginCApi
+        pluginClass: GraphifyPluginCApi
       web:
-        pluginClass: EdartsWeb
-        fileName: edarts_web.dart
+        pluginClass: GraphifyWeb
+        fileName: graphify_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

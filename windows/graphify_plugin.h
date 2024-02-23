@@ -1,24 +1,24 @@
-#ifndef FLUTTER_PLUGIN_EDARTS_PLUGIN_H_
-#define FLUTTER_PLUGIN_EDARTS_PLUGIN_H_
+#ifndef FLUTTER_PLUGIN_GRAPHIFY_PLUGIN_H_
+#define FLUTTER_PLUGIN_GRAPHIFY_PLUGIN_H_
 
 #include <flutter/method_channel.h>
 #include <flutter/plugin_registrar_windows.h>
 
 #include <memory>
 
-namespace edarts {
+namespace graphify {
 
-class EdartsPlugin : public flutter::Plugin {
+class GraphifyPlugin : public flutter::Plugin {
  public:
   static void RegisterWithRegistrar(flutter::PluginRegistrarWindows *registrar);
 
-  EdartsPlugin();
+  GraphifyPlugin();
 
-  virtual ~EdartsPlugin();
+  virtual ~GraphifyPlugin();
 
   // Disallow copy and assign.
-  EdartsPlugin(const EdartsPlugin&) = delete;
-  EdartsPlugin& operator=(const EdartsPlugin&) = delete;
+  GraphifyPlugin(const GraphifyPlugin&) = delete;
+  GraphifyPlugin& operator=(const GraphifyPlugin&) = delete;
 
   // Called when a method is called on this plugin's channel from Dart.
   void HandleMethodCall(
@@ -26,6 +26,6 @@ class EdartsPlugin : public flutter::Plugin {
       std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
 };
 
-}  // namespace edarts
+}  // namespace graphify
 
-#endif  // FLUTTER_PLUGIN_EDARTS_PLUGIN_H_
+#endif  // FLUTTER_PLUGIN_GRAPHIFY_PLUGIN_H_

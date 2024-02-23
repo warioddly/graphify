@@ -1,4 +1,4 @@
-package com.warioddly.edarts_example
+package com.warioddly.graphify_example
 
 import io.flutter.embedding.android.FlutterActivity
 

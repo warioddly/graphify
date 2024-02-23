@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:edarts/edarts.dart';
+import 'package:graphify/graphify.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,25 +15,25 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  final EdartController controller = EdartController();
+  final GraphifyController controller = GraphifyController();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Edarts Example'),
+          title: const Text('Graphify Example'),
         ),
         body: Column(
           children: [
             Expanded(
-              child: EdartView(
+              child: GraphifyView(
                 controller: controller,
               ),
             ),
           ],
         ),
-        floatingActionButton: EdartAware(
+        floatingActionButton: GraphifyAware(
           child: FloatingActionButton(
             onPressed: () {
               controller.update("""

@@ -1,8 +1,8 @@
 
-import 'package:edarts/src/controller/interface.dart' as controller_interface;
+import 'package:graphify/src/controller/interface.dart' as controller_interface;
 
 
-class EdartController implements controller_interface.EdartController {
+class GraphifyController implements controller_interface.GraphifyController {
 
   @override
   Future<void> update(String options) {

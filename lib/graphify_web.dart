@@ -6,15 +6,15 @@ import 'dart:html' as html show window;
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-import 'package:edarts/edarts_platform_interface.dart';
+import 'package:graphify/graphify_platform_interface.dart';
 
-/// A web implementation of the EdartsPlatform of the Edarts plugin.
-class EdartsWeb extends EdartsPlatform {
-  /// Constructs a EdartsWeb
-  EdartsWeb();
+/// A web implementation of the GraphifyPlatform of the Graphify plugin.
+class GraphifyWeb extends GraphifyPlatform {
+  /// Constructs a GraphifyWeb
+  GraphifyWeb();
 
   static void registerWith(Registrar registrar) {
-    EdartsPlatform.instance = EdartsWeb();
+    GraphifyPlatform.instance = GraphifyWeb();
   }
 
   /// Returns a [String] containing the version of the platform.

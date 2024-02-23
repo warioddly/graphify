@@ -8,9 +8,9 @@
 #include <string>
 #include <variant>
 
-#include "edarts_plugin.h"
+#include "graphify_plugin.h"
 
-namespace edarts {
+namespace graphify {
 namespace test {
 
 namespace {
@@ -22,8 +22,8 @@ using flutter::MethodResultFunctions;
 
 }  // namespace
 
-TEST(EdartsPlugin, GetPlatformVersion) {
-  EdartsPlugin plugin;
+TEST(GraphifyPlugin, GetPlatformVersion) {
+  GraphifyPlugin plugin;
   // Save the reply value from the success callback.
   std::string result_string;
   plugin.HandleMethodCall(
@@ -40,4 +40,4 @@ TEST(EdartsPlugin, GetPlatformVersion) {
 }
 
 }  // namespace test
-}  // namespace edarts
+}  // namespace graphify

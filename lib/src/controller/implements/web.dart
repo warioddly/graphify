@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:js' as js;
 import 'package:flutter/foundation.dart' show debugPrint;
 
-import 'package:edarts/src/controller/interface.dart' as controller_interface;
+import 'package:graphify/src/controller/interface.dart' as controller_interface;
 
-class EdartController implements controller_interface.EdartController {
+class GraphifyController implements controller_interface.GraphifyController {
 
 
   js.JsObject? connector;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
 
-class EdartAware extends StatelessWidget {
+class GraphifyAware extends StatelessWidget {
 
   /// Constructor
-  const EdartAware({
+  const GraphifyAware({
     required this.child, Key? key,
     this.debug = false,
   }) : super(key: key);

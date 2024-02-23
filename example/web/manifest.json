@@ -1,11 +1,11 @@
 {
-    "name": "edarts_example",
-    "short_name": "edarts_example",
+    "name": "graphify_example",
+    "short_name": "graphify_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Demonstrates how to use the edarts plugin.",
+    "description": "Demonstrates how to use the graphify plugin.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

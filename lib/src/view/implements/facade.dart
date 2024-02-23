@@ -1,19 +1,19 @@
 
 
-import 'package:edarts/src/controller/interface.dart';
-import 'package:edarts/src/view/interface.dart' as view;
+import 'package:graphify/src/controller/interface.dart';
+import 'package:graphify/src/view/interface.dart' as view;
 import 'package:flutter/cupertino.dart';
 
-class EdartView extends StatelessWidget implements view.EdartView {
+class GraphifyView extends StatelessWidget implements view.GraphifyView {
 
-  const EdartView({
+  const GraphifyView({
     super.key,
     this.controller,
     this.options,
   });
 
   @override
-  final EdartController? controller;
+  final GraphifyController? controller;
 
   @override
   final String? options;

@@ -1,32 +1,32 @@
-import 'package:edarts/src/mixins/state_mixin.dart';
-import 'package:edarts/src/resources/index.html.dart';
-import 'package:edarts/src/view/interface.dart' as view_interface;
-import 'package:edarts/src/controller/interface.dart' as controller_interface;
+import 'package:graphify/src/mixins/state_mixin.dart';
+import 'package:graphify/src/resources/index.html.dart';
+import 'package:graphify/src/view/interface.dart' as view_interface;
+import 'package:graphify/src/controller/interface.dart' as controller_interface;
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class EdartView extends StatefulWidget implements view_interface.EdartView {
+class GraphifyView extends StatefulWidget implements view_interface.GraphifyView {
 
-  const EdartView({
+  const GraphifyView({
     super.key,
     this.controller,
     this.options,
   });
 
   @override
-  final controller_interface.EdartController? controller;
+  final controller_interface.GraphifyController? controller;
 
   @override
   final String? options;
 
 
   @override
-  State<StatefulWidget> createState() => _EdartViewMobile();
+  State<StatefulWidget> createState() => _GraphifyViewMobile();
 
 
 }
 
-class _EdartViewMobile extends view_interface.EdartViewState<EdartView> with StateMixin {
+class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView> with StateMixin {
 
 
   late WebViewController controller;

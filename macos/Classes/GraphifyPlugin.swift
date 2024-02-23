@@ -1,10 +1,10 @@
 import Cocoa
 import FlutterMacOS
 
-public class EdartsPlugin: NSObject, FlutterPlugin {
+public class GraphifyPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "edarts", binaryMessenger: registrar.messenger)
-    let instance = EdartsPlugin()
+    let channel = FlutterMethodChannel(name: "graphify", binaryMessenger: registrar.messenger)
+    let instance = GraphifyPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 

@@ -1,4 +1,4 @@
-#include "edarts_plugin.h"
+#include "graphify_plugin.h"
 
 // This must be included before many other Windows headers.
 #include <windows.h>
@@ -13,17 +13,17 @@
 #include <memory>
 #include <sstream>
 
-namespace edarts {
+namespace graphify {
 
 // static
-void EdartsPlugin::RegisterWithRegistrar(
+void GraphifyPlugin::RegisterWithRegistrar(
     flutter::PluginRegistrarWindows *registrar) {
   auto channel =
       std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
-          registrar->messenger(), "edarts",
+          registrar->messenger(), "graphify",
           &flutter::StandardMethodCodec::GetInstance());
 
-  auto plugin = std::make_unique<EdartsPlugin>();
+  auto plugin = std::make_unique<GraphifyPlugin>();
 
   channel->SetMethodCallHandler(
       [plugin_pointer = plugin.get()](const auto &call, auto result) {
@@ -33,11 +33,11 @@ void EdartsPlugin::RegisterWithRegistrar(
   registrar->AddPlugin(std::move(plugin));
 }
 
-EdartsPlugin::EdartsPlugin() {}
+GraphifyPlugin::GraphifyPlugin() {}
 
-EdartsPlugin::~EdartsPlugin() {}
+GraphifyPlugin::~GraphifyPlugin() {}
 
-void EdartsPlugin::HandleMethodCall(
+void GraphifyPlugin::HandleMethodCall(
     const flutter::MethodCall<flutter::EncodableValue> &method_call,
     std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) {
   if (method_call.method_name().compare("getPlatformVersion") == 0) {
@@ -56,4 +56,4 @@ void EdartsPlugin::HandleMethodCall(
   }
 }
 
-}  // namespace edarts
+}  // namespace graphify

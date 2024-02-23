@@ -1,12 +1,12 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:edarts/edarts_method_channel.dart';
+import 'package:graphify/graphify_method_channel.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  var platform = MethodChannelEdarts();
-  const channel = MethodChannel('edarts');
+  var platform = MethodChannelGraphify();
+  const channel = MethodChannel('graphify');
 
   setUp(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(

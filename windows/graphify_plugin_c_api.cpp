@@ -1,12 +1,12 @@
-#include "include/edarts/edarts_plugin_c_api.h"
+#include "include/graphify/graphify_plugin_c_api.h"
 
 #include <flutter/plugin_registrar_windows.h>
 
-#include "edarts_plugin.h"
+#include "graphify_plugin.h"
 
-void EdartsPluginCApiRegisterWithRegistrar(
+void GraphifyPluginCApiRegisterWithRegistrar(
     FlutterDesktopPluginRegistrarRef registrar) {
-  edarts::EdartsPlugin::RegisterWithRegistrar(
+  graphify::GraphifyPlugin::RegisterWithRegistrar(
       flutter::PluginRegistrarManager::GetInstance()
           ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
 }

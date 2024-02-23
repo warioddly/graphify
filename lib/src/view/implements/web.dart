@@ -1,36 +1,36 @@
 import 'dart:html';
 import 'dart:ui_web';
-import 'package:edarts/src/mixins/state_mixin.dart';
-import 'package:edarts/src/resources/dependencies.js.dart';
-import 'package:edarts/src/resources/index.html.dart';
-import 'package:edarts/src/utils/utils.dart';
-import 'package:edarts/src/view/interface.dart' as view_interface;
+import 'package:graphify/src/mixins/state_mixin.dart';
+import 'package:graphify/src/resources/dependencies.js.dart';
+import 'package:graphify/src/resources/index.html.dart';
+import 'package:graphify/src/utils/utils.dart';
+import 'package:graphify/src/view/interface.dart' as view_interface;
 import 'package:flutter/cupertino.dart';
-import 'package:edarts/src/controller/implements/web.dart';
+import 'package:graphify/src/controller/implements/web.dart';
 
 
 
-class EdartView extends StatefulWidget implements view_interface.EdartView {
+class GraphifyView extends StatefulWidget implements view_interface.GraphifyView {
 
-  const EdartView({
+  const GraphifyView({
     super.key,
     this.controller,
     this.options,
   });
 
   @override
-  final EdartController? controller;
+  final GraphifyController? controller;
 
   @override
   final String? options;
 
 
   @override
-  State<StatefulWidget> createState() => _EdartViewWeb();
+  State<StatefulWidget> createState() => _GraphifyViewWeb();
 
 }
 
-class _EdartViewWeb extends view_interface.EdartViewState<EdartView> with StateMixin {
+class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> with StateMixin {
 
   static const eChartDependencyId = 'e-chart-dependency';
 
@@ -60,7 +60,7 @@ class _EdartViewWeb extends view_interface.EdartViewState<EdartView> with StateM
     iframe = IFrameElement()
       ..id = 'id_$viewType'
       ..name = 'name_$viewType'
-      ..classes = ["edarts"]
+      ..classes = ["graphify"]
       ..style.border = 'none';
     return iframe;
   }

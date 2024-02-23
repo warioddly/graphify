@@ -5,8 +5,8 @@
 import FlutterMacOS
 import Foundation
 
-import edarts
+import graphify
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  EdartsPlugin.register(with: registry.registrar(forPlugin: "EdartsPlugin"))
+  GraphifyPlugin.register(with: registry.registrar(forPlugin: "GraphifyPlugin"))
 }
