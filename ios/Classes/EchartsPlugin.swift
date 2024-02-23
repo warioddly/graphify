@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class EchartsPlugin: NSObject, FlutterPlugin {
+public class EdartsPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "echarts", binaryMessenger: registrar.messenger())
-    let instance = EchartsPlugin()
+    let channel = FlutterMethodChannel(name: "edarts", binaryMessenger: registrar.messenger())
+    let instance = EdartsPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 

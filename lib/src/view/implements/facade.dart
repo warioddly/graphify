@@ -1,19 +1,19 @@
 
 
-import 'package:echarts/src/controller/interface.dart';
-import 'package:echarts/src/view/interface.dart' as view;
+import 'package:edarts/src/controller/interface.dart';
+import 'package:edarts/src/view/interface.dart' as view;
 import 'package:flutter/cupertino.dart';
 
-class EchartView extends StatelessWidget implements view.EchartView {
+class EdartView extends StatelessWidget implements view.EdartView {
 
-  const EchartView({
+  const EdartView({
     super.key,
     this.controller,
     this.options,
   });
 
   @override
-  final EchartController? controller;
+  final EdartController? controller;
 
   @override
   final String? options;

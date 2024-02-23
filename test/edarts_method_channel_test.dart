@@ -1,12 +1,12 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:echarts/echarts_method_channel.dart';
+import 'package:edarts/edarts_method_channel.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  var platform = MethodChannelEcharts();
-  const channel = MethodChannel('echarts');
+  var platform = MethodChannelEdarts();
+  const channel = MethodChannel('edarts');
 
   setUp(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(

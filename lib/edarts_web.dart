@@ -6,15 +6,15 @@ import 'dart:html' as html show window;
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-import 'package:echarts/echarts_platform_interface.dart';
+import 'package:edarts/edarts_platform_interface.dart';
 
-/// A web implementation of the EchartsPlatform of the Echarts plugin.
-class EchartsWeb extends EchartsPlatform {
-  /// Constructs a EchartsWeb
-  EchartsWeb();
+/// A web implementation of the EdartsPlatform of the Edarts plugin.
+class EdartsWeb extends EdartsPlatform {
+  /// Constructs a EdartsWeb
+  EdartsWeb();
 
   static void registerWith(Registrar registrar) {
-    EchartsPlatform.instance = EchartsWeb();
+    EdartsPlatform.instance = EdartsWeb();
   }
 
   /// Returns a [String] containing the version of the platform.

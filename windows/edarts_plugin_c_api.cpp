@@ -1,12 +1,12 @@
-#include "include/echarts/echarts_plugin_c_api.h"
+#include "include/edarts/edarts_plugin_c_api.h"
 
 #include <flutter/plugin_registrar_windows.h>
 
-#include "echarts_plugin.h"
+#include "edarts_plugin.h"
 
-void EchartsPluginCApiRegisterWithRegistrar(
+void EdartsPluginCApiRegisterWithRegistrar(
     FlutterDesktopPluginRegistrarRef registrar) {
-  echarts::EchartsPlugin::RegisterWithRegistrar(
+  edarts::EdartsPlugin::RegisterWithRegistrar(
       flutter::PluginRegistrarManager::GetInstance()
           ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
 }

@@ -4,10 +4,10 @@ project(runner LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "echarts_example")
+set(BINARY_NAME "edarts_example")
 # The unique GTK application identifier for this application. See:
 # https://wiki.gnome.org/HowDoI/ChooseApplicationID
-set(APPLICATION_ID "com.warioddly.echarts")
+set(APPLICATION_ID "com.warioddly.edarts")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.
@@ -87,7 +87,7 @@ set_target_properties(${BINARY_NAME}
 )
 
 # Enable the test target.
-set(include_echarts_tests TRUE)
+set(include_edarts_tests TRUE)
 
 # Generated plugin build rules, which manage building the plugins and adding
 # them to the application.

@@ -1,4 +1,4 @@
-#include "echarts_plugin.h"
+#include "edarts_plugin.h"
 
 // This must be included before many other Windows headers.
 #include <windows.h>
@@ -13,17 +13,17 @@
 #include <memory>
 #include <sstream>
 
-namespace echarts {
+namespace edarts {
 
 // static
-void EchartsPlugin::RegisterWithRegistrar(
+void EdartsPlugin::RegisterWithRegistrar(
     flutter::PluginRegistrarWindows *registrar) {
   auto channel =
       std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
-          registrar->messenger(), "echarts",
+          registrar->messenger(), "edarts",
           &flutter::StandardMethodCodec::GetInstance());
 
-  auto plugin = std::make_unique<EchartsPlugin>();
+  auto plugin = std::make_unique<EdartsPlugin>();
 
   channel->SetMethodCallHandler(
       [plugin_pointer = plugin.get()](const auto &call, auto result) {
@@ -33,11 +33,11 @@ void EchartsPlugin::RegisterWithRegistrar(
   registrar->AddPlugin(std::move(plugin));
 }
 
-EchartsPlugin::EchartsPlugin() {}
+EdartsPlugin::EdartsPlugin() {}
 
-EchartsPlugin::~EchartsPlugin() {}
+EdartsPlugin::~EdartsPlugin() {}
 
-void EchartsPlugin::HandleMethodCall(
+void EdartsPlugin::HandleMethodCall(
     const flutter::MethodCall<flutter::EncodableValue> &method_call,
     std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) {
   if (method_call.method_name().compare("getPlatformVersion") == 0) {
@@ -56,4 +56,4 @@ void EchartsPlugin::HandleMethodCall(
   }
 }
 
-}  // namespace echarts
+}  // namespace edarts

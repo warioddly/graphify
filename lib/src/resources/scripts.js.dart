@@ -4,8 +4,8 @@ String scriptsJs = """
 
 var dom = document.getElementById('chart'),
   \$ = \$ || (window.parent && window.parent.\$),
-  echarts = echarts || (window.parent && window.parent.echarts),
-  chart = echarts.init(dom, 'dark', { renderer: 'canvas', useDirtyRect: false });
+  edarts = edarts || (window.parent && window.parent.edarts),
+  chart = edarts.init(dom, 'dark', { renderer: 'canvas', useDirtyRect: false });
 
 var option;
 

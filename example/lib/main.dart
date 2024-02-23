@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:echarts/echarts.dart';
+import 'package:edarts/edarts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,25 +15,25 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  final EchartController controller = EchartController();
+  final EdartController controller = EdartController();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Echarts Example'),
+          title: const Text('Edarts Example'),
         ),
         body: Column(
           children: [
             Expanded(
-              child: EchartView(
+              child: EdartView(
                 controller: controller,
               ),
             ),
           ],
         ),
-        floatingActionButton: EchartAware(
+        floatingActionButton: EdartAware(
           child: FloatingActionButton(
             onPressed: () {
               controller.update("""

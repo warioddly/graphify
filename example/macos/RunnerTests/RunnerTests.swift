@@ -2,7 +2,7 @@ import FlutterMacOS
 import Cocoa
 import XCTest
 
-@testable import echarts
+@testable import edarts
 
 // This demonstrates a simple unit test of the Swift portion of this plugin's implementation.
 //
@@ -11,7 +11,7 @@ import XCTest
 class RunnerTests: XCTestCase {
 
   func testGetPlatformVersion() {
-    let plugin = EchartsPlugin()
+    let plugin = EdartsPlugin()
 
     let call = FlutterMethodCall(methodName: "getPlatformVersion", arguments: [])
 

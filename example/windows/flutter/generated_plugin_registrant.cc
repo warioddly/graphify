@@ -6,9 +6,9 @@
 
 #include "generated_plugin_registrant.h"
 
-#include <echarts/echarts_plugin_c_api.h>
+#include <edarts/edarts_plugin_c_api.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
-  EchartsPluginCApiRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("EchartsPluginCApi"));
+  EdartsPluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("EdartsPluginCApi"));
 }

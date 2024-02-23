@@ -1,7 +1,7 @@
 // ignore_for_file: leading_newlines_in_multiline_strings
 
-import 'package:echarts/src/resources/dependencies.js.dart';
-import 'package:echarts/src/resources/scripts.js.dart';
+import 'package:edarts/src/resources/dependencies.js.dart';
+import 'package:edarts/src/resources/scripts.js.dart';
 
 String indexHtml({ bool enableDependency = true }) {
   return '''<!DOCTYPE html>
@@ -10,7 +10,7 @@ String indexHtml({ bool enableDependency = true }) {
       <meta charset="UTF-8">
       <meta content="IE=Edge" http-equiv="X-UA-Compatible">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-      <title>Echarts</title>
+      <title>Edarts</title>
       <style>
         html, body {
           background-color: #100c2a;

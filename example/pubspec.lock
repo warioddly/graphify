@@ -49,7 +49,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.6"
-  echarts:
+  edarts:
     dependency: "direct main"
     description:
       path: ".."

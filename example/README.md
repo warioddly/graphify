@@ -1,6 +1,6 @@
-# echarts_example
+# edarts_example
 
-Demonstrates how to use the echarts plugin.
+Demonstrates how to use the edarts plugin.
 
 ## Getting Started
 

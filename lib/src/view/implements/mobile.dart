@@ -1,32 +1,32 @@
-import 'package:echarts/src/mixins/state_mixin.dart';
-import 'package:echarts/src/resources/index.html.dart';
-import 'package:echarts/src/view/interface.dart' as view_interface;
-import 'package:echarts/src/controller/interface.dart' as controller_interface;
+import 'package:edarts/src/mixins/state_mixin.dart';
+import 'package:edarts/src/resources/index.html.dart';
+import 'package:edarts/src/view/interface.dart' as view_interface;
+import 'package:edarts/src/controller/interface.dart' as controller_interface;
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class EchartView extends StatefulWidget implements view_interface.EchartView {
+class EdartView extends StatefulWidget implements view_interface.EdartView {
 
-  const EchartView({
+  const EdartView({
     super.key,
     this.controller,
     this.options,
   });
 
   @override
-  final controller_interface.EchartController? controller;
+  final controller_interface.EdartController? controller;
 
   @override
   final String? options;
 
 
   @override
-  State<StatefulWidget> createState() => _EchartViewMobile();
+  State<StatefulWidget> createState() => _EdartViewMobile();
 
 
 }
 
-class _EchartViewMobile extends view_interface.EchartViewState<EchartView> with StateMixin {
+class _EdartViewMobile extends view_interface.EdartViewState<EdartView> with StateMixin {
 
 
   late WebViewController controller;

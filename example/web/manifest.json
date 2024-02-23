@@ -1,11 +1,11 @@
 {
-    "name": "echarts_example",
-    "short_name": "echarts_example",
+    "name": "edarts_example",
+    "short_name": "edarts_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Demonstrates how to use the echarts plugin.",
+    "description": "Demonstrates how to use the edarts plugin.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

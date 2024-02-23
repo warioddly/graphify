@@ -5,8 +5,8 @@
 import FlutterMacOS
 import Foundation
 
-import echarts
+import edarts
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  EchartsPlugin.register(with: registry.registrar(forPlugin: "EchartsPlugin"))
+  EdartsPlugin.register(with: registry.registrar(forPlugin: "EdartsPlugin"))
 }

@@ -1,9 +1,9 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint echarts.podspec` to validate before publishing.
+# Run `pod lib lint edarts.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'echarts'
+  s.name             = 'edarts'
   s.version          = '0.0.1'
   s.summary          = 'A new Flutter project.'
   s.description      = <<-DESC

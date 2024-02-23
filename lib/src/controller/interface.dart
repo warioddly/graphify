@@ -1,7 +1,7 @@
 
 
 
-abstract class EchartController {
+abstract class EdartController {
 
   Future<void> update(String options);
 

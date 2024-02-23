@@ -1,7 +1,7 @@
-name: echarts
-description: "A data visualization charts library, based on Apache ECharts, able to build advanced charts like WebGL 3D, GIS map, etc."
+name: edarts
+description: "A data visualization charts library, based on Apache EDarts, able to build advanced charts like WebGL 3D, GIS map, etc."
 version: 0.0.1
-homepage: "https://github.com/warioddly/echarts"
+homepage: "https://github.com/warioddly/edarts"
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
@@ -38,19 +38,19 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.warioddly.echarts
-        pluginClass: EchartsPlugin
+        package: com.warioddly.edarts
+        pluginClass: EdartsPlugin
       ios:
-        pluginClass: EchartsPlugin
+        pluginClass: EdartsPlugin
       linux:
-        pluginClass: EchartsPlugin
+        pluginClass: EdartsPlugin
       macos:
-        pluginClass: EchartsPlugin
+        pluginClass: EdartsPlugin
       windows:
-        pluginClass: EchartsPluginCApi
+        pluginClass: EdartsPluginCApi
       web:
-        pluginClass: EchartsWeb
-        fileName: echarts_web.dart
+        pluginClass: EdartsWeb
+        fileName: edarts_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

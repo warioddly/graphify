@@ -1,36 +1,36 @@
 import 'dart:html';
 import 'dart:ui_web';
-import 'package:echarts/src/mixins/state_mixin.dart';
-import 'package:echarts/src/resources/dependencies.js.dart';
-import 'package:echarts/src/resources/index.html.dart';
-import 'package:echarts/src/utils/utils.dart';
-import 'package:echarts/src/view/interface.dart' as view_interface;
+import 'package:edarts/src/mixins/state_mixin.dart';
+import 'package:edarts/src/resources/dependencies.js.dart';
+import 'package:edarts/src/resources/index.html.dart';
+import 'package:edarts/src/utils/utils.dart';
+import 'package:edarts/src/view/interface.dart' as view_interface;
 import 'package:flutter/cupertino.dart';
-import 'package:echarts/src/controller/implements/web.dart';
+import 'package:edarts/src/controller/implements/web.dart';
 
 
 
-class EchartView extends StatefulWidget implements view_interface.EchartView {
+class EdartView extends StatefulWidget implements view_interface.EdartView {
 
-  const EchartView({
+  const EdartView({
     super.key,
     this.controller,
     this.options,
   });
 
   @override
-  final EchartController? controller;
+  final EdartController? controller;
 
   @override
   final String? options;
 
 
   @override
-  State<StatefulWidget> createState() => _EchartViewWeb();
+  State<StatefulWidget> createState() => _EdartViewWeb();
 
 }
 
-class _EchartViewWeb extends view_interface.EchartViewState<EchartView> with StateMixin {
+class _EdartViewWeb extends view_interface.EdartViewState<EdartView> with StateMixin {
 
   static const eChartDependencyId = 'e-chart-dependency';
 
@@ -60,7 +60,7 @@ class _EchartViewWeb extends view_interface.EchartViewState<EchartView> with Sta
     iframe = IFrameElement()
       ..id = 'id_$viewType'
       ..name = 'name_$viewType'
-      ..classes = ["echarts"]
+      ..classes = ["edarts"]
       ..style.border = 'none';
     return iframe;
   }
