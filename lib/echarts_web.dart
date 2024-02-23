@@ -6,7 +6,7 @@ import 'dart:html' as html show window;
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-import 'echarts_platform_interface.dart';
+import 'package:echarts/echarts_platform_interface.dart';
 
 /// A web implementation of the EchartsPlatform of the Echarts plugin.
 class EchartsWeb extends EchartsPlatform {

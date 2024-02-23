@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-
-import 'echarts_platform_interface.dart';
+import 'package:echarts/echarts_platform_interface.dart';
 
 /// An implementation of [EchartsPlatform] that uses method channels.
 class MethodChannelEcharts extends EchartsPlatform {

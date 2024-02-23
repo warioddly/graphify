@@ -6,7 +6,7 @@ import 'package:echarts/src/resources/index.html.dart';
 import 'package:echarts/src/utils/utils.dart';
 import 'package:echarts/src/view/interface.dart' as view_interface;
 import 'package:flutter/cupertino.dart';
-import '../../controller/implements/web.dart';
+import 'package:echarts/src/controller/implements/web.dart';
 
 
 

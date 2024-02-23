@@ -1,6 +1,6 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import 'echarts_method_channel.dart';
+import 'package:echarts/echarts_method_channel.dart';
 
 abstract class EchartsPlatform extends PlatformInterface {
   /// Constructs a EchartsPlatform.

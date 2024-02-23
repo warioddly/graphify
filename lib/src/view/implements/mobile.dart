@@ -39,7 +39,7 @@ class _EchartViewMobile extends view_interface.EchartViewState<EchartView> with 
       ..setBackgroundColor(const Color(0x00000000))
       ..loadHtmlString(indexHtml())
       ..setOnConsoleMessage((message) {
-        print("[+] onConsoleMessage ${message.message}");
+        debugPrint("[+] onConsoleMessage ${message.message}");
       });
   }
 

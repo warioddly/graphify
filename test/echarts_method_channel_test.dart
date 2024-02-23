@@ -5,8 +5,8 @@ import 'package:echarts/echarts_method_channel.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  MethodChannelEcharts platform = MethodChannelEcharts();
-  const MethodChannel channel = MethodChannel('echarts');
+  var platform = MethodChannelEcharts();
+  const channel = MethodChannel('echarts');
 
   setUp(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(

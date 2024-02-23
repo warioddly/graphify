@@ -7,12 +7,12 @@ class Utils {
 
   static String uid() {
 
-    Random random = Random();
+    var random = Random();
 
-    String chars = 'abcdefghijklmnopqrstuvwxyz';
-    String uid = '';
+    var chars = 'abcdefghijklmnopqrstuvwxyz';
+    var uid = '';
 
-    for (int i = 0; i < 10; i++) {
+    for (var i = 0; i < 10; i++) {
       uid += chars[random.nextInt(chars.length)];
     }
 

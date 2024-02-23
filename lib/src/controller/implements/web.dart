@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:js' as js;
 import 'package:flutter/foundation.dart' show debugPrint;
 
-import '../interface.dart' as controller_interface;
+import 'package:echarts/src/controller/interface.dart' as controller_interface;
 
 class EchartController implements controller_interface.EchartController {
 

@@ -1,8 +1,10 @@
-import 'dependencies.js.dart';
-import 'scripts.js.dart';
+// ignore_for_file: leading_newlines_in_multiline_strings
+
+import 'package:echarts/src/resources/dependencies.js.dart';
+import 'package:echarts/src/resources/scripts.js.dart';
 
 String indexHtml({ bool enableDependency = true }) {
-  return """<!DOCTYPE html>
+  return '''<!DOCTYPE html>
     <html>
     <head>
       <meta charset="UTF-8">
@@ -27,5 +29,5 @@ String indexHtml({ bool enableDependency = true }) {
       <script>$scriptsJs</script>
     </body>
     </html>
-""";
+''';
 }
