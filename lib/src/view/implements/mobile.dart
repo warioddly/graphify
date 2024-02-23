@@ -1,7 +1,7 @@
-import 'package:echarts/src/controller/interface.dart';
 import 'package:echarts/src/mixins/state_mixin.dart';
 import 'package:echarts/src/resources/index.html.dart';
 import 'package:echarts/src/view/interface.dart' as view_interface;
+import 'package:echarts/src/controller/interface.dart' as controller_interface;
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -14,7 +14,7 @@ class EchartView extends StatefulWidget implements view_interface.EchartView {
   });
 
   @override
-  final EchartController? controller;
+  final controller_interface.EchartController? controller;
 
   @override
   final String? options;

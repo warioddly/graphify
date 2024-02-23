@@ -6,7 +6,6 @@ import 'package:echarts/src/resources/index.html.dart';
 import 'package:echarts/src/utils/utils.dart';
 import 'package:echarts/src/view/interface.dart' as view_interface;
 import 'package:echarts/src/controller/interface.dart' as controller_interface;
-import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:flutter/cupertino.dart';
 
 
@@ -50,28 +49,9 @@ class _EchartViewWeb extends view_interface.EchartViewState<EchartView> with Sta
   @override
   Widget buildView() {
     viewInitialized = true;
-    return view = Stack(
-      alignment: AlignmentDirectional.center,
-      children: [
-
-        SizedBox.square(
-          child: HtmlElementView(
-              key: UniqueKey(),
-              viewType: viewType,
-          ),
-        ),
-
-        PointerInterceptor(
-          debug: true, // optional
-          child: const SizedBox(
-            width: 250,
-            height: 500,
-            // A sized box is enough, but this Widget normally is a "button" or
-            // something that needs to be clickable in Flutter.
-          ),
-        ),
-
-      ],
+    return view = HtmlElementView(
+      key: UniqueKey(),
+      viewType: viewType,
     );
   }
 
