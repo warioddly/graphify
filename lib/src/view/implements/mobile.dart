@@ -9,11 +9,15 @@ class EchartView extends StatefulWidget implements view_interface.EchartView {
 
   const EchartView({
     super.key,
-    this.controller
+    this.controller,
+    this.options,
   });
 
   @override
   final EchartController? controller;
+
+  @override
+  final String? options;
 
 
   @override
@@ -22,30 +26,10 @@ class EchartView extends StatefulWidget implements view_interface.EchartView {
 
 }
 
-class _EchartViewMobile extends State<EchartView> with StateMixin implements view_interface.EchartViewBuilder {
+class _EchartViewMobile extends view_interface.EchartViewState<EchartView> with StateMixin {
 
 
   late WebViewController controller;
-
-
-  @override
-  late Widget view;
-
-
-  @override
-  bool viewInitialized = false;
-
-
-  @override
-  void initState() {
-    super.initState();
-    initView();
-    buildView();
-  }
-
-
-  @override
-  Widget build(BuildContext context) => view;
 
 
   @override
@@ -53,7 +37,7 @@ class _EchartViewMobile extends State<EchartView> with StateMixin implements vie
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
-      ..loadHtmlString(indexHtml)
+      ..loadHtmlString(indexHtml())
       ..setOnConsoleMessage((message) {
         print("[+] onConsoleMessage ${message.message}");
       });

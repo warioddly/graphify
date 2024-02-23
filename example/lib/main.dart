@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:echarts/echarts.dart';
 
@@ -14,6 +15,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
+  final EchartController controller = EchartController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,16 +24,25 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Echarts Example'),
         ),
-        body: const Column(
+        body: Column(
           children: [
             Expanded(
-              child: EchartView(),
-            ),
-            Expanded(
-              child: EchartView(),
+              child: EchartView(
+                controller: controller,
+              ),
             ),
           ],
         ),
+        floatingActionButton: EchartAware(
+          debug: true,
+          child: FloatingActionButton(
+            onPressed: () {
+              print(1111);
+              controller.chartUpdate({});
+            },
+            child: const Icon(CupertinoIcons.circle_grid_hex),
+          ),
+        )
       ),
     );
   }

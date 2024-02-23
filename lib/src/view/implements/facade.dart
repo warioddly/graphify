@@ -8,12 +8,15 @@ class EchartView extends StatelessWidget implements view.EchartView {
 
   const EchartView({
     super.key,
-    this.controller
+    this.controller,
+    this.options,
   });
-
 
   @override
   final EchartController? controller;
+
+  @override
+  final String? options;
 
 
   @override

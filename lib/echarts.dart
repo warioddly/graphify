@@ -8,3 +8,6 @@ export 'src/view/implements/facade.dart'
 export 'src/controller/implements/facade.dart'
   if (dart.library.io) 'src/controller/implements/mobile.dart'
   if (dart.library.html) 'src/controller/implements/web.dart';
+
+
+export 'src/utils/echart_aware.dart';

@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
   webview_flutter: ^4.5.0
-
+  pointer_interceptor: ^0.10.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
