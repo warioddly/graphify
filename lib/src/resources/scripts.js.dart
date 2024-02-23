@@ -1,12 +1,9 @@
 
+String scriptsJs(String id) => """
 
-String scriptsJs = """
-
-var dom = document.getElementById('chart'),
-  \$ = \$ || (window.parent && window.parent.\$),
-  echarts = echarts || (window.parent && window.parent.echarts),
-  chart = echarts.init(dom, 'dark', { renderer: 'canvas', useDirtyRect: false });
-
+const dom = document.getElementById('chart');
+const context = (window.parent && window.parent.window) || window || {};
+const chart = context.echarts.init(dom, 'dark', { renderer: 'canvas', useDirtyRect: false });
 var option;
 
 var data = [];
@@ -65,25 +62,10 @@ option = {
   ]
 };
 
-setOptions(option);
+context.initChart('$id', chart, option);
+context.updateChart('$id', option);
 
-
-
-
-function setOptions(options) {
-  console.log('hello');
-  if (!chart) {
-    console.log('[+] Chart is null');
-  }
-  options && chart.setOption(options);
-  setTimeout(( ) => chart.resize());
-}
-
-
-function addResizeListener() {
-  window.addEventListener('resize', chart.resize);
-}
-
+window.addEventListener('resize', chart.resize);
 
 """;
 

@@ -35,12 +35,13 @@ class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> wi
   static const eChartDependencyId = 'e-chart-dependency';
 
   late var controller = widget.controller;
-  var iframe = IFrameElement();
-  var viewType = '';
+  IFrameElement iframe = IFrameElement();
+  var identifier = '';
 
   @override
   void initView() {
-    registerView(viewType = Utils.uid());
+    registerView(identifier = Utils.uid());
+    controller?.identifier = identifier;
     checkDependencyInDom();
     Future.delayed(Duration.zero, initViewContent);
   }
@@ -51,28 +52,29 @@ class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> wi
     viewInitialized = true;
     return view = HtmlElementView(
       key: UniqueKey(),
-      viewType: viewType,
+      viewType: identifier,
     );
   }
 
 
   IFrameElement createIFrameElement() {
     iframe = IFrameElement()
-      ..id = 'id_$viewType'
-      ..name = 'name_$viewType'
+      ..id = 'id_$identifier'
+      ..name = 'name_$identifier'
       ..classes = ["graphify"]
       ..style.border = 'none';
+
     return iframe;
   }
 
 
-  void registerView(String viewType) {
+  void registerView(String identifier) {
 
-    if (viewType.isEmpty) {
-      throw FlutterError("Unique viewType id is empty");
+    if (identifier.isEmpty) {
+      throw FlutterError("identifier is empty");
     }
 
-    platformViewRegistry.registerViewFactory(viewType, (int viewId) => createIFrameElement());
+    platformViewRegistry.registerViewFactory(identifier, (int viewId) => createIFrameElement());
   }
 
 
@@ -80,21 +82,12 @@ class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> wi
 
     if (viewInitialized) {
 
-      iframe.srcdoc = indexHtml(enableDependency: false);
-
-      initConnector();
+      iframe.srcdoc = indexHtml(id: identifier, enableDependency: false);
 
     }
     else {
       throw FlutterError('View is not initialized');
     }
-
-  }
-
-
-  void initConnector() {
-
-    controller?.connector?.callMethod('setOptions', []);
 
   }
 

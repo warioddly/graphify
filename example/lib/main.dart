@@ -31,6 +31,10 @@ class _MyAppState extends State<MyApp> {
                 controller: controller,
               ),
             ),
+
+            const Expanded(
+              child: GraphifyView(),
+            ),
           ],
         ),
         floatingActionButton: GraphifyAware(
@@ -38,45 +42,52 @@ class _MyAppState extends State<MyApp> {
             onPressed: () {
               controller.update("""
                 {
-                  tooltip: {},
-                  backgroundColor: '#fff',
-                  visualMap: {
-                    show: false,
-                    dimension: 2,
-                    min: 0,
-                    max: 30,
-                    inRange: {
-                      color: [
-                        '#313695',
-                        '#4575b4',
-                        '#a50026'
-                      ]
-                    }
-                  },
-                  xAxis3D: {
-                    type: 'value'
-                  },
-                  yAxis3D: {
-                    type: 'value'
-                  },
-                  zAxis3D: {
-                    type: 'value'
-                  },
-                  grid3D: {
-                    viewControl: {
-                      projection: 'orthographic'
-                    }
-                  },
-                  series: [
-                    {
-                      type: 'line3D',
-                      data: data,
-                      lineStyle: {
-                        width: 4
+                    "title": {
+                      "text": "3D Line Chart",
+                      "subtext": "Line Chart in 3D"
+                    },
+                    "tooltip": {},
+                    "backgroundColor": "#fff",
+                    "visualMap": {
+                      "show": false,
+                      "dimension": 2,
+                      "min": 0,
+                      "max": 30,
+                      "inRange": {
+                        "color": [
+                          "#313695",
+                          "#4575b4",
+                          "#d73027",
+                          "#4575b4",
+                          "#d73027",
+                          "#a50026"
+                        ]
                       }
-                    }
-                  ]
-                }
+                    },
+                    "xAxis3D": {
+                      "type": "value"
+                    },
+                    "yAxis3D": {
+                      "type": "value"
+                    },
+                    "zAxis3D": {
+                      "type": "value"
+                    },
+                    "grid3D": {
+                      "viewControl": {
+                        "projection": "orthographic"
+                      }
+                    },
+                    "series": [
+                      {
+                        "type": "line3D",
+                        "lineStyle": {
+                          "width": 4
+                        }
+                      }
+                    ]
+                  }
+
               """);
             },
             child: const Icon(CupertinoIcons.circle_grid_hex),

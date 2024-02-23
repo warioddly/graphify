@@ -3,7 +3,8 @@
 
 abstract class GraphifyController {
 
-  Future<void> update(String options);
+  String identifier = '';
 
+  Future<void> update(String options);
 
 }
