@@ -2,23 +2,20 @@
 
 String scriptsJs = """
 
-var \$ = \$ || (window.parent && window.parent.\$); 
-var dom = document.getElementById('chart');
-var echarts = echarts || (window.parent && window.parent.echarts); 
-const myChart = echarts.init(dom, 'dark', { renderer: 'canvas', useDirtyRect: false });
+var dom = document.getElementById('chart'),
+  \$ = \$ || (window.parent && window.parent.\$),
+  echarts = echarts || (window.parent && window.parent.echarts),
+  chart = echarts.init(dom, 'dark', { renderer: 'canvas', useDirtyRect: false });
 
-var app = {}, option;
-
+var option;
 
 var data = [];
-// Parametric curve
 for (var t = 0; t < 25; t += 0.001) {
   var x = (1 + 0.25 * Math.cos(75 * t)) * Math.cos(t);
   var y = (1 + 0.25 * Math.cos(75 * t)) * Math.sin(t);
   var z = t + 2.0 * Math.sin(75 * t);
   data.push([x, y, z]);
 }
-console.log(data.length);
 option = {
   tooltip: {},
   backgroundColor: '#fff',
@@ -68,12 +65,25 @@ option = {
   ]
 };
 
-option && myChart.setOption(option);
+setOptions(option);
 
-setTimeout(( ) => myChart.resize());
 
-console.log('Hello World!');
 
-window.addEventListener('resize', myChart.resize);
+
+function setOptions(options) {
+  console.log('hello');
+  if (!chart) {
+    console.log('[+] Chart is null');
+  }
+  options && chart.setOption(options);
+  setTimeout(( ) => chart.resize());
+}
+
+
+function addResizeListener() {
+  window.addEventListener('resize', chart.resize);
+}
+
+
 """;
 

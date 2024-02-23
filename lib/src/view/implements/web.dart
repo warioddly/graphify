@@ -5,8 +5,8 @@ import 'package:echarts/src/resources/dependencies.js.dart';
 import 'package:echarts/src/resources/index.html.dart';
 import 'package:echarts/src/utils/utils.dart';
 import 'package:echarts/src/view/interface.dart' as view_interface;
-import 'package:echarts/src/controller/interface.dart' as controller_interface;
 import 'package:flutter/cupertino.dart';
+import '../../controller/implements/web.dart';
 
 
 
@@ -19,7 +19,7 @@ class EchartView extends StatefulWidget implements view_interface.EchartView {
   });
 
   @override
-  final controller_interface.EchartController? controller;
+  final EchartController? controller;
 
   @override
   final String? options;
@@ -32,11 +32,11 @@ class EchartView extends StatefulWidget implements view_interface.EchartView {
 
 class _EchartViewWeb extends view_interface.EchartViewState<EchartView> with StateMixin {
 
-
-  late final controller = widget.controller;
-  IFrameElement iframe = IFrameElement();
-  String viewType = '';
   static const eChartDependencyId = 'e-chart-dependency';
+
+  late var controller = widget.controller;
+  var iframe = IFrameElement();
+  var viewType = '';
 
   @override
   void initView() {
@@ -82,12 +82,22 @@ class _EchartViewWeb extends view_interface.EchartViewState<EchartView> with Sta
 
       iframe.srcdoc = indexHtml(enableDependency: false);
 
+      initConnector();
+
     }
     else {
       throw FlutterError('View is not initialized');
     }
 
   }
+
+
+  void initConnector() {
+
+    controller?.connector?.callMethod('setOptions', []);
+
+  }
+
 
 
   void checkDependencyInDom() {

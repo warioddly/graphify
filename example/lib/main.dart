@@ -34,11 +34,50 @@ class _MyAppState extends State<MyApp> {
           ],
         ),
         floatingActionButton: EchartAware(
-          debug: true,
           child: FloatingActionButton(
             onPressed: () {
-              print(1111);
-              controller.chartUpdate({});
+              controller.update("""
+                {
+                  tooltip: {},
+                  backgroundColor: '#fff',
+                  visualMap: {
+                    show: false,
+                    dimension: 2,
+                    min: 0,
+                    max: 30,
+                    inRange: {
+                      color: [
+                        '#313695',
+                        '#4575b4',
+                        '#a50026'
+                      ]
+                    }
+                  },
+                  xAxis3D: {
+                    type: 'value'
+                  },
+                  yAxis3D: {
+                    type: 'value'
+                  },
+                  zAxis3D: {
+                    type: 'value'
+                  },
+                  grid3D: {
+                    viewControl: {
+                      projection: 'orthographic'
+                    }
+                  },
+                  series: [
+                    {
+                      type: 'line3D',
+                      data: data,
+                      lineStyle: {
+                        width: 4
+                      }
+                    }
+                  ]
+                }
+              """);
             },
             child: const Icon(CupertinoIcons.circle_grid_hex),
           ),

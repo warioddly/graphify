@@ -12,7 +12,7 @@ class EchartAware extends StatelessWidget {
   const EchartAware({
     Key? key,
     required this.child,
-    this.debug = true,
+    this.debug = false,
   }) : super(key: key);
 
   @override

@@ -21,7 +21,6 @@ class EchartView extends StatelessWidget implements view.EchartView {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     throw UnimplementedError();
   }
 

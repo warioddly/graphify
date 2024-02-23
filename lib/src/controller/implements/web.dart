@@ -1,25 +1,38 @@
-
-import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'dart:js' as js;
+import 'package:flutter/foundation.dart' show debugPrint;
 
 import '../interface.dart' as controller_interface;
-
 
 class EchartController implements controller_interface.EchartController {
 
 
-  final ValueNotifier<bool> _ignoreAllGesturesNotifier = ValueNotifier(true);
+  js.JsObject? connector;
 
 
   @override
-  Future<void> chartUpdate(Map<String, dynamic> options) {
-    // TODO: implement chartUpdate
-    throw UnimplementedError();
+  Future<void> update(String options) async {
+    debugPrint(connector.toString());
+    _debugPrint(connector?.callMethod('setOptions', [options]));
   }
 
 
-  void addIgnoreGesturesListener(void Function() cb) {
-    _ignoreAllGesturesNotifier.addListener(cb);
-  }
 
+  void _debugPrint(js.JsObject? object) {
+    if (object == null) {
+      debugPrint("[+] object is null");
+      return;
+    }
+
+    final stringify = js.context['JSON'].callMethod('stringify', [object]);
+
+    if (stringify == null) {
+      debugPrint("[+] stringify is null");
+      return;
+    }
+
+    final data = jsonDecode(stringify);
+    debugPrint(data);
+  }
 
 }
