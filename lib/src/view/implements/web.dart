@@ -82,7 +82,7 @@ class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> wi
 
     if (viewInitialized) {
 
-      iframe.srcdoc = indexHtml(id: identifier, enableDependency: false);
+      iframe.srcdoc = indexHtml(id: identifier, enableDependency: false, options: widget.options);
 
     }
     else {

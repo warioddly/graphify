@@ -13,11 +13,12 @@ const dependencies =
 const htmlDependencies = "<script>$dependencies</script>";
 
 
-const chartScripts = """
+const chartScripts = r"""
     
     const graphify_charts = {};
     
     function initChart(chart_id, chart, option) {
+      option = normalizeOption(option);
       chart.setOption(option);
       graphify_charts[chart_id] = { chart, option };
     }
@@ -37,10 +38,12 @@ const chartScripts = """
       delete graphify_charts[chart_id];
     }
     
+
     function normalizeOption(option) {
       if (typeof option === 'object') return option;
-      return JSON.parse(option);
+      if (option instanceof String && option.length === 0) return {};
+      return JSON.parse(option.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2": ').replace(/'([^']+?)'/g, '"$1"'));
     }
-    
+  
     
 """;

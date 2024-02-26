@@ -43,7 +43,7 @@ class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView>
     webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
-      ..loadHtmlString(indexHtml(id: identifier))
+      ..loadHtmlString(indexHtml(id: identifier, options: widget.options))
       ..setOnConsoleMessage((message) {
         debugPrint("[+] onConsoleMessage ${message.message}");
       });
