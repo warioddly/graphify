@@ -10,4 +10,4 @@ export 'src/controller/implements/facade.dart'
   if (dart.library.html) 'src/controller/implements/web.dart';
 
 
-export 'src/utils/graphify_aware.dart';
+export 'src/core/helpers/graphify_aware.dart';

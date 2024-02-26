@@ -1,9 +1,10 @@
 import 'dart:html';
 import 'dart:ui_web';
-import 'package:graphify/src/mixins/state_mixin.dart';
+import 'package:graphify/src/core/mixins/state_mixin.dart';
 import 'package:graphify/src/resources/dependencies.js.dart';
 import 'package:graphify/src/resources/index.html.dart';
-import 'package:graphify/src/utils/utils.dart';
+import 'package:graphify/src/core/constants/constants.dart';
+import 'package:graphify/src/core/utils/utils.dart';
 import 'package:graphify/src/view/interface.dart' as view_interface;
 import 'package:flutter/cupertino.dart';
 import 'package:graphify/src/controller/implements/web.dart';
@@ -32,18 +33,21 @@ class GraphifyView extends StatefulWidget implements view_interface.GraphifyView
 
 class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> with StateMixin {
 
-  static const eChartDependencyId = 'e-chart-dependency';
 
   late var controller = widget.controller;
-  IFrameElement iframe = IFrameElement();
+  late IFrameElement iframe;
   var identifier = '';
+
 
   @override
   void initView() {
     registerView(identifier = Utils.uid());
     controller?.identifier = identifier;
-    checkDependencyInDom();
+
+    initChartDependencies();
+
     Future.delayed(Duration.zero, initViewContent);
+
   }
 
 
@@ -82,7 +86,11 @@ class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> wi
 
     if (viewInitialized) {
 
-      iframe.srcdoc = indexHtml(id: identifier, enableDependency: false, options: widget.options);
+      iframe.srcdoc = indexHtml(
+          id: identifier,
+          enableDependency: false,
+          options: widget.options
+      );
 
     }
     else {
@@ -92,41 +100,20 @@ class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> wi
   }
 
 
-
-  void checkDependencyInDom() {
-
-    final dom = window.document;
-    final body = dom.documentElement?.children.last;
-    final bodyChildren = body?.children.whereType<ScriptElement>().toList();
-
-    if (bodyChildren == null || bodyChildren.isEmpty) {
-      initChartDependencies();
-    }
-    else {
-
-      for (var element in bodyChildren) {
-        if (element.id == eChartDependencyId) {
-          return;
-        }
-      }
-
-      initChartDependencies();
-
-    }
-
-  }
-
-
   void initChartDependencies() {
 
-    final scriptElement = ScriptElement()
+    final dependencyScript = window.document.querySelector("#$eChartDependencyId");
+
+    if (dependencyScript == null) {
+      final scriptElement = ScriptElement()
         ..id = eChartDependencyId
         ..innerHtml = dependencies;
 
-    final dom = window.document;
-    final body = dom.documentElement?.children.last;
+      final dom = window.document;
+      final body = dom.documentElement?.children.last;
 
-    body?.append(scriptElement);
+      body?.append(scriptElement);
+    }
 
   }
 

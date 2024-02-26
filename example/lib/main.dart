@@ -19,6 +19,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
 
   final GraphifyController controller = GraphifyController();
+  final GraphifyController controller2 = GraphifyController();
 
 
 
@@ -45,6 +46,25 @@ class _MyAppState extends State<MyApp> {
             ]
           }
       """);
+      // controller2.update("""
+      //   {
+      //     series: [
+      //     {
+      //       name: 'Precipitation',
+      //       type: 'bar',
+      //       yAxisIndex: 0,
+      //       data: ${randomData(12, 180)}
+      //     },
+      //     {
+      //       name: 'Temperature',
+      //       type: 'line',
+      //       smooth: true,
+      //       yAxisIndex: 1,
+      //       data: ${randomData(12, 25)}
+      //     }
+      //   ]
+      //   }
+      // """);
     });
   }
 
@@ -58,10 +78,14 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
+
             Expanded(
-              child: GraphifyView(
-                controller: controller,
-                options: ''' {
+              child: Row(
+                children: [
+                  Expanded(
+                    child: GraphifyView(
+                      controller: controller,
+                      options: ''' {
                   xAxis: {
                     type: 'category',
                     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -72,13 +96,106 @@ class _MyAppState extends State<MyApp> {
                   series: [
                     {
                       data: ${randomData(7)},
-                      type: 'line',
-                      smooth: true
-                    }
-                  ]
-                }''',
+                          type: 'line',
+                          smooth: true
+                        }
+                      ]
+                    }''',
+                    ),
+                  ),
+                  // Expanded(
+                  //   child: GraphifyView(
+                  //     controller: controller2,
+                  //     options: '''
+                  //     {
+                  //             tooltip: {
+                  //               trigger: 'axis',
+                  //               axisPointer: { type: 'cross' }
+                  //             },
+                  //             legend: {},
+                  //             xAxis: [
+                  //               {
+                  //                 type: 'category',
+                  //                 axisTick: {
+                  //                   alignWithLabel: true
+                  //                 },
+                  //                 axisLabel: {
+                  //                   rotate: 30
+                  //                 },
+                  //                 data: [
+                  //                   'January',
+                  //                   'February',
+                  //                   'March',
+                  //                   'April',
+                  //                   'May',
+                  //                   'June',
+                  //                   'July',
+                  //                   'August',
+                  //                   'September',
+                  //                   'October',
+                  //                   'November',
+                  //                   'December'
+                  //                 ]
+                  //               }
+                  //             ],
+                  //             yAxis: [
+                  //               {
+                  //                 type: 'value',
+                  //                 name: 'Precipitation',
+                  //                 min: 0,
+                  //                 max: 250,
+                  //                 position: 'right',
+                  //                 axisLabel: {
+                  //                   formatter: '{value} ml'
+                  //                 }
+                  //               },
+                  //               {
+                  //                 type: 'value',
+                  //                 name: 'Temperature',
+                  //                 min: 0,
+                  //                 max: 25,
+                  //                 position: 'left',
+                  //                 axisLabel: {
+                  //                   formatter: '{value} °C'
+                  //                 }
+                  //               }
+                  //             ],
+                  //             series: [
+                  //               {
+                  //                 name: 'Precipitation',
+                  //                 type: 'bar',
+                  //                 yAxisIndex: 0,
+                  //                 data: [6, 32, 70, 86, 68.7, 100.7, 125.6, 112.2, 78.7, 48.8, 36.0, 19.3]
+                  //               },
+                  //               {
+                  //                 name: 'Temperature',
+                  //                 type: 'line',
+                  //                 smooth: true,
+                  //                 yAxisIndex: 1,
+                  //                 data: [
+                  //                   6.0,
+                  //                   10.2,
+                  //                   10.3,
+                  //                   11.5,
+                  //                   10.3,
+                  //                   13.2,
+                  //                   14.3,
+                  //                   16.4,
+                  //                   18.0,
+                  //                   16.5,
+                  //                   12.0,
+                  //                   5.2
+                  //                 ]
+                  //               }
+                  //             ]
+                  //           }
+                  //   ''',
+                  //   ),
+                  // )
+                ],
               ),
             ),
+
             const Expanded(
               child: GraphifyView(
                 options: """
@@ -232,8 +349,8 @@ class _MyAppState extends State<MyApp> {
   }
 
 
-  List<int> randomData(int length) {
-    return List.generate(length, (index) => Random().nextInt(1000));
+  List<int> randomData(int length,[ int? maxValue]) {
+    return List.generate(length, (index) => Random().nextInt(maxValue ?? 1000));
   }
 
 }

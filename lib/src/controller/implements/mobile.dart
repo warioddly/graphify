@@ -1,9 +1,7 @@
 
-
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
+import 'package:graphify/src/core/enums/enums.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 
@@ -25,14 +23,21 @@ class GraphifyController implements controller_interface.GraphifyController {
       return;
     }
 
-    await _connector.runJavaScript('window.updateChart("$identifier", ${jsonEncode(jsonDecode(options))})');
+    await _eval('window.${GraphifyMethods.updateChart.name}("$identifier", $options)');
 
   }
 
 
-  
   set connector(WebViewController connector) {
     _connector = connector;
+  }
+
+
+  Future<void> _eval(String js) async {
+    if (js.isEmpty) {
+      return;
+    }
+    await _connector.runJavaScript(js);
   }
 
 

@@ -1,12 +1,13 @@
 import 'dart:js';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
+import 'package:graphify/src/core/enums/enums.dart';
 
 class GraphifyController implements controller_interface.GraphifyController {
 
 
   @override
-  String identifier = '';
+  String identifier = "";
 
 
   @override
@@ -17,9 +18,10 @@ class GraphifyController implements controller_interface.GraphifyController {
       return;
     }
 
-    context.callMethod('updateChart', [identifier, options]);
+    context.callMethod(GraphifyMethods.updateChart.name, [identifier, options]);
 
   }
+
 
 
 

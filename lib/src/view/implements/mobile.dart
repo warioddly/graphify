@@ -1,6 +1,6 @@
-import 'package:graphify/src/mixins/state_mixin.dart';
+import 'package:graphify/src/core/mixins/state_mixin.dart';
 import 'package:graphify/src/resources/index.html.dart';
-import 'package:graphify/src/utils/utils.dart';
+import 'package:graphify/src/core/utils/utils.dart';
 import 'package:graphify/src/view/interface.dart' as view_interface;
 import 'package:graphify/src/controller/implements/mobile.dart';
 import 'package:flutter/material.dart';
