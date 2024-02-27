@@ -5,12 +5,12 @@ abstract class GraphifyView {
 
   GraphifyView({
     this.controller,
-    this.options,
-  }) : assert(controller == null && options == null, 'You must init one of controller or option');
+    this.initialOptions,
+  });
 
   final GraphifyController? controller;
 
-  final String? options;
+  final String? initialOptions;
 
 }
 

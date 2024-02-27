@@ -16,14 +16,14 @@ class GraphifyView extends StatefulWidget implements view_interface.GraphifyView
   const GraphifyView({
     super.key,
     this.controller,
-    this.options,
+    this.initialOptions,
   });
 
   @override
   final GraphifyController? controller;
 
   @override
-  final String? options;
+  final String? initialOptions;
 
 
   @override
@@ -89,7 +89,7 @@ class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> wi
       iframe.srcdoc = indexHtml(
           id: identifier,
           enableDependency: false,
-          options: widget.options
+          options: widget.initialOptions
       );
 
     }

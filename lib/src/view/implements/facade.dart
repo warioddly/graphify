@@ -9,14 +9,14 @@ class GraphifyView extends StatelessWidget implements view.GraphifyView {
   const GraphifyView({
     super.key,
     this.controller,
-    this.options,
+    this.initialOptions,
   });
 
   @override
   final GraphifyController? controller;
 
   @override
-  final String? options;
+  final String? initialOptions;
 
 
   @override
