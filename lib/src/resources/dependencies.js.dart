@@ -33,7 +33,8 @@ final String chartScripts = """
     }
     
     function ${GraphifyMethods.disposeChart.name} (chart_id) {
-      const chart = graphify_charts[chart_id].chart;
+      const chart = graphify_charts[chart_id]?.chart;
+      console.log(chart);
       if (!chart) return;
       chart.dispose();
       delete graphify_charts[chart_id];

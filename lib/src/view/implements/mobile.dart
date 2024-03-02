@@ -31,7 +31,7 @@ class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView>
 
 
   late WebViewController webViewController;
-  late var controller = widget.controller;
+  late var controller = widget.controller ?? GraphifyController();
   var identifier = '';
 
 
@@ -43,13 +43,13 @@ class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView>
     webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
-      ..loadHtmlString(indexHtml(id: identifier, options: widget.initialOptions))
+      ..loadHtmlString(indexHtml(id: identifier))
       ..setOnConsoleMessage((message) {
         debugPrint("[+] onConsoleMessage ${message.message}");
       });
 
     controller
-      ?..connector = webViewController
+      ..connector = webViewController
       ..identifier = identifier;
 
   }
@@ -61,5 +61,11 @@ class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView>
     return view = WebViewWidget(controller: webViewController);
   }
 
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
 }

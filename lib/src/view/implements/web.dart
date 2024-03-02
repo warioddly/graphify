@@ -34,15 +34,14 @@ class GraphifyView extends StatefulWidget implements view_interface.GraphifyView
 class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> with StateMixin {
 
 
-  late var controller = widget.controller;
+  late final _controller = widget.controller ?? GraphifyController();
   late IFrameElement iframe;
   var identifier = '';
-
 
   @override
   void initView() {
     registerView(identifier = Utils.uid());
-    controller?.identifier = identifier;
+    _controller.identifier = identifier;
 
     initChartDependencies();
 
@@ -89,8 +88,11 @@ class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> wi
       iframe.srcdoc = indexHtml(
           id: identifier,
           enableDependency: false,
-          options: widget.initialOptions
       );
+
+      iframe.onLoad.listen((event) {
+        _controller.update(widget.initialOptions ?? const {});
+      });
 
     }
     else {
@@ -115,6 +117,13 @@ class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> wi
       body?.append(scriptElement);
     }
 
+  }
+
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
 

@@ -1,9 +1,9 @@
 
 import 'package:graphify/src/core/models/interface.dart';
 
-abstract class ChartModel extends GraphifyModel {
+abstract class GChartModel extends GraphifyModel {
 
-  const ChartModel();
+  const GChartModel();
 
   String get type;
 

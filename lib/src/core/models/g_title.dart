@@ -1,5 +1,6 @@
 import 'package:graphify/src/core/enums/text_align.dart';
 import 'package:graphify/src/core/models/interface.dart';
+import 'package:graphify/src/core/models/other/g_z_level.dart';
 import 'package:graphify/src/core/models/styles/g_border_style.dart';
 import 'package:graphify/src/core/models/styles/g_shadow_style.dart';
 import 'package:graphify/src/core/models/styles/g_text_style.dart';
@@ -8,7 +9,7 @@ class GTitle extends GraphifyModel {
 
   const GTitle({
     this.title,
-    this.show = true,
+    super.show = true,
     this.text,
     this.link,
     this.target = 'blank',
@@ -20,8 +21,6 @@ class GTitle extends GraphifyModel {
     this.triggerEvent = false,
     this.padding = 5,
     this.itemGap = 10,
-    this.zLevel = 0,
-    this.z = 2,
     this.left = 'auto',
     this.bottom = 'auto',
     this.right = 'auto',
@@ -31,10 +30,10 @@ class GTitle extends GraphifyModel {
     this.subTextStyle = const GTextStyle(),
     this.shadowStyle = const GShadowStyle(),
     this.borderStyle = const GBorderStyle(),
+    this.zLevel = const GZLevel(z: 2),
   });
 
   final String? title;
-  final bool show;
   final String? text;
   final String? link;
   final String? target;
@@ -46,8 +45,6 @@ class GTitle extends GraphifyModel {
   final bool triggerEvent;
   final dynamic padding;
   final int itemGap;
-  final int zLevel;
-  final int z;
   final dynamic left;
   final dynamic top;
   final dynamic right;
@@ -57,6 +54,7 @@ class GTitle extends GraphifyModel {
   final GTextStyle subTextStyle;
   final GShadowStyle shadowStyle;
   final GBorderStyle borderStyle;
+  final GZLevel zLevel;
 
 
   GTitle copyWith({
@@ -73,8 +71,7 @@ class GTitle extends GraphifyModel {
     bool? triggerEvent,
     dynamic padding,
     int? itemGap,
-    int? zLevel,
-    int? z,
+    GZLevel? zLevel,
     dynamic left,
     dynamic top,
     dynamic right,
@@ -103,7 +100,6 @@ class GTitle extends GraphifyModel {
       padding: padding ?? this.padding,
       itemGap: itemGap ?? this.itemGap,
       zLevel: zLevel ?? this.zLevel,
-      z: z ?? this.z,
       left: left ?? this.left,
       top: top ?? this.top,
       right: right ?? this.right,
@@ -132,8 +128,6 @@ class GTitle extends GraphifyModel {
       'triggerEvent': triggerEvent,
       'padding': padding,
       'itemGap': itemGap,
-      'zLevel': zLevel,
-      'z': z,
       'left': left,
       'top': top,
       'right': right,
@@ -145,6 +139,7 @@ class GTitle extends GraphifyModel {
       'borderRadius': borderStyle.radius,
       'textStyle': textStyle.toJson(),
       'subTextStyle': subTextStyle.toJson(),
+      ...zLevel.toJson(),
       ...shadowStyle.toJson(),
     };
   }

@@ -9,6 +9,7 @@ abstract class GraphifyController {
 
   Future<void> update(String options);
 
+  Future<void> dispose();
 
   // Future<void> updateData(String options);
 

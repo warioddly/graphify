@@ -13,5 +13,10 @@ class GraphifyController implements controller_interface.GraphifyController {
   }
 
 
+  @override
+  Future<void> dispose() {
+    throw UnimplementedError();
+  }
+
 
 }

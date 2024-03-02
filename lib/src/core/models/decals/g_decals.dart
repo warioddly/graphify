@@ -1,25 +1,6 @@
 import 'dart:ui';
+
 import 'package:graphify/src/core/models/interface.dart';
-
-class GDecal extends GraphifyModel {
-
-  const GDecal({
-    this.show = true,
-    this.decals = const GDecals(),
-  });
-
-  final bool show;
-  final GDecals decals;
-
-  @override
-  Map<String, dynamic> toJson() {
-    return {
-      'show': show,
-      'decals': decals.toJson(),
-    };
-  }
-
-}
 
 class GDecals extends GraphifyModel {
 
@@ -44,6 +25,32 @@ class GDecals extends GraphifyModel {
   final int dashArrayY;
   final int rotation;
   final Size maxTileSize;
+
+
+  GDecals copyWith({
+    String? symbol,
+    int? symbolSize,
+    bool? symbolKeepAspect,
+    String? color,
+    String? backgroundColor,
+    int? dashArrayX,
+    int? dashArrayY,
+    int? rotation,
+    Size? maxTileSize,
+  }) {
+    return GDecals(
+      symbol: symbol ?? this.symbol,
+      symbolSize: symbolSize ?? this.symbolSize,
+      symbolKeepAspect: symbolKeepAspect ?? this.symbolKeepAspect,
+      color: color ?? this.color,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      dashArrayX: dashArrayX ?? this.dashArrayX,
+      dashArrayY: dashArrayY ?? this.dashArrayY,
+      rotation: rotation ?? this.rotation,
+      maxTileSize: maxTileSize ?? this.maxTileSize,
+    );
+  }
+
 
   @override
   Map<String, dynamic> toJson() {

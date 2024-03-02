@@ -41,4 +41,14 @@ class GraphifyController implements controller_interface.GraphifyController {
   }
 
 
+  @override
+  Future<void> dispose() {
+    if (identifier.isEmpty) {
+      debugPrint("[+] identifier is empty");
+      return Future.value();
+    }
+    return _eval('window.${GraphifyMethods.disposeChart.name}("$identifier")');
+  }
+
+
 }

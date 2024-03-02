@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graphify/graphify.dart';
-import 'package:graphify_example/core/helpers.dart';
 import 'package:graphify_example/features/widgets/scaffold_wrapper.dart';
 
 
@@ -43,9 +42,9 @@ class _BasicLineChartState extends State<BasicLineChart> {
     
     super.initState();
     
-    Helper.periodic((p0) {
-      controller.update("""{ series: [ { data: ${Helper.randomData(12)} } ] } """);
-    });
+    // Helper.periodic((p0) {
+    //   controller.update("""{ series: [ { data: ${Helper.randomData(12)} } ] } """);
+    // });
   }
   
   
@@ -62,15 +61,23 @@ class _BasicLineChartState extends State<BasicLineChart> {
             ),
           ),
 
-          Expanded(
-            child: GraphifyView(
-              controller: controller,
-              initialOptions: options
-            ),
-          )
+          // Expanded(
+          //   child: GraphifyView(
+          //     controller: controller,
+          //     initialOptions: options
+          //   ),
+          // )
 
         ],
       ),
     );
   }
+
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
 }
