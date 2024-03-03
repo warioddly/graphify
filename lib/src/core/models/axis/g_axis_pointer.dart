@@ -1,8 +1,5 @@
-
-
 import 'package:graphify/src/core/models/axis/g_axis_handle.dart';
 import 'package:graphify/src/core/models/interface.dart';
-import 'package:graphify/src/core/models/other/g_z_level.dart';
 import 'package:graphify/src/core/models/styles/g_line_style.dart';
 import 'package:graphify/src/core/models/styles/g_shadow_style.dart';
 import 'package:graphify/src/core/models/styles/g_text_style.dart';
@@ -12,8 +9,8 @@ class GAxisPointer extends GraphifyModel {
   const GAxisPointer({
     super.show = false,
     this.type = 'line',
-    this.snap = 'false',
-    this.z = const GZLevel(),
+    this.snap = false,
+    this.z,
     this.triggerEmphasis = true,
     this.triggerTooltip = true,
     this.value = 0,
@@ -25,24 +22,50 @@ class GAxisPointer extends GraphifyModel {
   });
 
 
+  /// Indicator type.
+  /// Options:
+  /// '[line]' line indicator.
+  /// '[shadow]' shadow crosshair indicator.
+  /// '[none]' no indicator displayed.
   final String type;
-  final String snap;
-  final GZLevel z;
+
+  /// Whether [snap] to point automatically. The default value is auto determined.
+  /// This feature usually makes sense in value axis and time axis, where tiny points can be seeked automatically.
+  final bool snap;
+
+  /// z value, which controls order of drawing graphical components. Components with smaller z values may be overwritten by those with larger z values.
+  final int? z;
+
+  /// Whether to trigger emphasis of series.
   final bool triggerEmphasis;
+
+  /// Whether to trigger tooltip.
   final bool triggerTooltip;
+
+  /// current [value]. When using [handle], value can be set to define the initial position of axisPointer.
   final int value;
+
+  /// Current status, can be 'show' or 'hide'.
   final bool status;
-  final GTextStyle label;
+
+  /// It is valid when [type] is '[line]'.
   final GLineStyle lineStyle;
+
+  /// It is valid when [type] is '[shadow]'.
   final GShadowStyle shadowStyle;
+
+  /// A button used to drag axisPointer. This feature is applicable in touch device. See example. https://echarts.apache.org/examples/en/editor.html?c=line-tooltip-touch&edit=1&reset=1
   final GAxisHandle handle;
+
+
+  final GTextStyle label;
 
 
   GAxisPointer copyWith({
     bool? show,
     String? type,
-    String? snap,
-    GZLevel? z,
+    bool? snap,
+    int? z,
     bool? triggerTooltip,
     bool? triggerEmphasis,
     int? value,
@@ -75,7 +98,7 @@ class GAxisPointer extends GraphifyModel {
       'show': show,
       'type': type,
       'snap': snap,
-      'z': z.z,
+      'z': z,
       'triggerTooltip': triggerTooltip,
       'triggerEmphasis': triggerEmphasis,
       'value': value,

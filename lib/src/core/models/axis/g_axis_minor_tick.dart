@@ -12,8 +12,13 @@ class GAxisMinorTick extends GraphifyModel {
     this.lineStyle = const GLineStyle(),
   });
 
+  /// Number of interval splited by minor ticks.
   final int splitNumber;
+
+  /// Length of minor ticks lines。
   final int length;
+
+  /// The style of the axis line.
   final GLineStyle lineStyle;
 
 

@@ -6,35 +6,61 @@ class GAnimation extends GraphifyModel {
 
   const GAnimation({
     this.animation = true,
-    this.animationThreshold = 2000,
-    this.animationDuration = 1000,
-    this.animationEasing = 'cubicOut',
-    this.animationDelay = 0,
-    this.animationDurationUpdate = 300,
-    this.animationEasingUpdate = 'cubicOut',
-    this.animationDelayUpdate = 0,
+    this.threshold = 2000,
+    this.duration = 1000,
+    this.easing = 'cubicOut',
+    this.delay = 0,
+    this.durationUpdate = 300,
+    this.easingUpdate = 'cubicOut',
+    this.delayUpdate = 0,
   });
 
+  /// Whether to enable animation.
   final bool animation;
-  final int animationThreshold;
-  final int animationDuration;
-  final String animationEasing;
-  final int animationDelay;
-  final int animationDurationUpdate;
-  final String animationEasingUpdate;
-  final int animationDelayUpdate;
+
+  /// Threshold of data amount to enable animation.
+  final int threshold;
+  final int duration;
+  final String easing;
+  final int delay;
+  final int durationUpdate;
+  final String easingUpdate;
+  final int delayUpdate;
+
+
+  GAnimation copyWith({
+    bool? animation,
+    int? threshold,
+    int? duration,
+    String? easing,
+    int? delay,
+    int? durationUpdate,
+    String? easingUpdate,
+    int? delayUpdate,
+  }) {
+    return GAnimation(
+      animation: animation ?? this.animation,
+      threshold: threshold ?? this.threshold,
+      duration: duration ?? this.duration,
+      easing: easing ?? this.easing,
+      delay: delay ?? this.delay,
+      durationUpdate: durationUpdate ?? this.durationUpdate,
+      easingUpdate: easingUpdate ?? this.easingUpdate,
+      delayUpdate: delayUpdate ?? this.delayUpdate,
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       'animation': animation,
-      'animationThreshold': animationThreshold,
-      'animationDuration': animationDuration,
-      'animationEasing': animationEasing,
-      'animationDelay': animationDelay,
-      'animationDurationUpdate': animationDurationUpdate,
-      'animationEasingUpdate': animationEasingUpdate,
-      'animationDelayUpdate': animationDelayUpdate,
+      'animationThreshold': threshold,
+      'animationDuration': duration,
+      'animationEasing': easing,
+      'animationDelay': delay,
+      'animationDurationUpdate': durationUpdate,
+      'animationEasingUpdate': easingUpdate,
+      'animationDelayUpdate': delayUpdate,
     };
   }
 

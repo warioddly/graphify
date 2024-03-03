@@ -1,5 +1,6 @@
 import 'package:graphify/src/controller/interface.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:graphify/src/core/models/interface.dart';
 
 abstract class GraphifyView {
 
@@ -10,7 +11,7 @@ abstract class GraphifyView {
 
   final GraphifyController? controller;
 
-  final String? initialOptions;
+  final GraphifyModel? initialOptions;
 
 }
 

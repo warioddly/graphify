@@ -14,13 +14,25 @@ class GAxisTick<T> extends GraphifyModel {
     this.lineStyle = const GLineStyle(),
   });
 
-
+  /// Align axis tick with label, which is available only when boundaryGap is set to be true in category axis. See the following picture:
+  /// https://echarts.apache.org/en/documents/asset/img/axis-align-with-label.png
   final bool alignWithLabel;
-  final int interval;
-  final bool inside;
-  final int length;
-  final GLineStyle lineStyle;
 
+  /// Interval of axisTick, which is available in category axis. is set to be the same as axisLabel.interval by default.
+  /// It uses a strategy that labels do not overlap by default.
+  /// You may set it to be 0 to display all labels compulsively.
+  /// If it is set to be 1, it means that labels are shown once after one label. And if it is set to be 2, it means labels are shown once after two labels,
+  /// and so on.
+  final int interval;
+
+  /// Set this to true so the axis labels face the inside direction.
+  final bool inside;
+
+  /// The length of the axis tick.
+  final int length;
+
+  /// Line style of axis ticks.
+  final GLineStyle lineStyle;
 
 
   GAxisTick copyWith({

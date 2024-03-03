@@ -17,26 +17,7 @@ class BasicLineChart extends StatefulWidget {
 class _BasicLineChartState extends State<BasicLineChart> {
   
   final controller = GraphifyController();
-  static const String options = """
-        {
-          xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-          },
-          yAxis: {
-            type: 'value'
-          },
-          series: [
-            {
-              data: [150, 230, 224, 218, 135, 147, 260],
-              type: 'line',
-              smooth: true
-            }
-          ]
-        }
-      """;
-  
-  
+
   @override
   void initState() {
     
@@ -50,16 +31,16 @@ class _BasicLineChartState extends State<BasicLineChart> {
   
   @override
   Widget build(BuildContext context) {
-    return ScaffoldWrapper(
+    return const ScaffoldWrapper(
       title: BasicLineChart.title,
       child: Column(
         children: [
 
-          const Expanded(
-            child: GraphifyView(
-              initialOptions: options,
-            ),
-          ),
+          // const Expanded(
+          //   child: GraphifyView(
+          //     initialOptions: options,
+          //   ),
+          // ),
 
           // Expanded(
           //   child: GraphifyView(

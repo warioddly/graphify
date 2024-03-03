@@ -4,17 +4,19 @@ class GStateAnimation extends GraphifyModel {
 
   const GStateAnimation({
     this.duration = 300,
-    this.easing = 0,
+    this.easing = 'cubicOut',
   });
 
 
+  /// Duration of animation. Animation will be disabled when set to 0.
   final int duration;
-  final int easing;
 
+  /// Easing of animation.
+  final String easing;
 
   GStateAnimation copyWith({
     int? duration,
-    int? easing,
+    String? easing,
   }) {
     return GStateAnimation(
       duration: duration ?? this.duration,

@@ -1,6 +1,7 @@
 
 
 import 'package:graphify/src/controller/interface.dart';
+import 'package:graphify/src/core/models/interface.dart';
 import 'package:graphify/src/view/interface.dart' as view;
 import 'package:flutter/cupertino.dart';
 
@@ -16,7 +17,7 @@ class GraphifyView extends StatelessWidget implements view.GraphifyView {
   final GraphifyController? controller;
 
   @override
-  final String? initialOptions;
+  final GraphifyModel? initialOptions;
 
 
   @override

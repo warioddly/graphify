@@ -1,5 +1,6 @@
 
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
+import 'package:graphify/src/core/models/g_model.dart';
 
 
 class GraphifyController implements controller_interface.GraphifyController {
@@ -8,7 +9,7 @@ class GraphifyController implements controller_interface.GraphifyController {
   String identifier = "";
 
   @override
-  Future<void> update(String options) {
+  Future<void> update(GraphifyModel? options) {
     throw UnimplementedError();
   }
 

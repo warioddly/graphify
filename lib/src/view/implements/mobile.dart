@@ -1,4 +1,4 @@
-import 'package:graphify/src/core/mixins/state_mixin.dart';
+import 'package:graphify/src/core/models/interface.dart';
 import 'package:graphify/src/resources/index.html.dart';
 import 'package:graphify/src/core/utils/utils.dart';
 import 'package:graphify/src/view/interface.dart' as view_interface;
@@ -18,7 +18,7 @@ class GraphifyView extends StatefulWidget implements view_interface.GraphifyView
   final GraphifyController? controller;
 
   @override
-  final String? initialOptions;
+  final GraphifyModel? initialOptions;
 
 
   @override
@@ -27,7 +27,7 @@ class GraphifyView extends StatefulWidget implements view_interface.GraphifyView
 
 }
 
-class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView> with StateMixin {
+class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView> {
 
 
   late WebViewController webViewController;

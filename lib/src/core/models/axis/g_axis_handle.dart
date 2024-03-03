@@ -15,11 +15,25 @@ class GAxisHandle extends GraphifyModel {
   });
 
 
+  /// The icon of the handle.
+  /// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+  /// For example https://echarts.apache.org/en/option.html#xAxis.axisPointer.handle.icon
   final dynamic icon;
+
+  /// The size of the handle, which can be set an Size(width, height).
   final Size size;
+
+  /// Distance from handle center to axis.
   final int margin;
+
+  /// The shadow style of the handle.
   final GShadowStyle shadowStyle;
+
+  /// The color of the handle.
+  /// Default: '#333'
   final String color;
+
+  /// Throttle rate of trigger view update when dragging handle, in ms. Increase the value to improve performance, but decrease the experienc
   final int throttle;
 
 

@@ -10,5 +10,5 @@ enum GTextAlignVertical {
   auto,
   top,
   bottom,
-  center,
+  middle,
 }

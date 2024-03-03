@@ -9,8 +9,12 @@ class GAxisNameTruncate extends GraphifyModel {
     this.placeholder = '-',
   });
 
+  /// The maximum length for the truncated text. Any text exceeding this length will be truncated.
   final int maxWidth;
+
+  /// The content displayed at the end of the text after truncation.
   final String ellipsis;
+
   final String placeholder;
 
 

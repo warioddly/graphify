@@ -10,6 +10,8 @@ class GAxisMinorSplitLine extends GraphifyModel {
     this.lineStyle = const GLineStyle(),
   });
 
+  /// [show] If show minor split lines.
+  /// Whether to show the minor split line.
   final GLineStyle lineStyle;
 
 
