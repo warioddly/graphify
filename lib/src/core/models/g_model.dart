@@ -43,12 +43,13 @@ class GraphifyModel extends model_interface.GraphifyModel {
   final GTitle? title;
 
   /// Sets the type of compositing operation to apply when drawing a new shape.
-  /// See the different type: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation.
   ///
   /// The default is 'source-over'. Support settings for each series.
+  /// 'lighter' is also a common type of compositing operation.
   ///
-  /// 'lighter' is also a common type of compositing operation. In this mode, the area where the number of graphics is concentrated is superimposed into a
-  /// high-brightness color (white). It often used to highlight the effect of the area. See example Global airline
+  /// In this mode, the area where the number of graphics is concentrated is superimposed into a high-brightness color (white).
+  /// It often used to highlight the effect of the area.
+  /// See the different type: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation.
   final String blendMode;
 
   /// When the number of element of the whole chart is larger than hoverLayerThreshold, a separate hover layer is used to render hovered elements.
@@ -70,11 +71,14 @@ class GraphifyModel extends model_interface.GraphifyModel {
   final bool useUTC;
 
   /// Background color. Transparent by default.
-  /// Supports setting as solid color using rgb(255,255,255), rgba(255,255,255,1), #fff, etc. Also supports setting as gradient color and pattern fill, see
+  ///
+  /// Supports setting as solid color using rgb(255,255,255), rgba(255,255,255,1), #fff, etc.
+  /// Also supports setting as gradient color and pattern fill, see
   /// [color] for details
   final String backgroundColor;
 
   /// The [color] list of palette. If no color is set in series, the colors would be adopted sequentially and circularly from this list as the colors of series.
+  ///
   /// Defaults:
   /// ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
   /// Supported color formats.
@@ -87,24 +91,31 @@ class GraphifyModel extends model_interface.GraphifyModel {
   final GTextStyle textStyle;
 
   /// To specify whether it's dark mode.
+  ///
   /// ECharts will automatically detect it via backgroundColor by default and adjust the text color accordingly.
   /// This option is usually used in themes.
   final bool darkMode;
 
-  /// Animation configurations of state switchment. Can be configured in each series individually.
+  /// Animation configurations of state switchment.
+  /// Can be configured in each series individually.
   final GStateAnimation stateAnimation;
 
-  /// Animation configuration of chart. Can be configured in each series individually.
+  /// Animation configuration of chart.
+  /// Can be configured in each series individually.
   final GAnimation? animation;
 
   /// Accessibility configuration.
   final GAria aria;
 
-  /// The x axis in cartesian(rectangular) coordinate. Usually a single grid component can place at most 2 x axis, one on the bottom and
+  /// The x axis in cartesian(rectangular) coordinate.
+  ///
+  /// Usually a single grid component can place at most 2 x axis, one on the bottom and
   /// another on the top.offset can be used to avoid overlap when you need to put more than two x axis.
   final GAxis xAxis;
 
-  /// The y axis in cartesian(rectangular) coordinate. Usually a single grid component can place at most 2 y axis, one on the left and another on the right.
+  /// The y axis in cartesian(rectangular) coordinate.
+  ///
+  /// Usually a single grid component can place at most 2 y axis, one on the left and another on the right.
   /// offset can be used to avoid overlap when you need to put more than two y axis.
   final GAxis yAxis;
 

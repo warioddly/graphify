@@ -40,6 +40,7 @@ class GTitle extends GraphifyModel {
   final String link;
 
   /// Open the hyper link of main title in specified tab.
+  ///
   /// options:
   /// 'self' opening it in current tab
   /// 'blank' opening it in a new tab
@@ -52,12 +53,14 @@ class GTitle extends GraphifyModel {
   final String subLink;
 
   /// Open the hyper link of subtitle in specified tab, options:
+  ///
   /// options:
   /// 'self' opening it in current tab
   /// 'blank' opening it in a new tab
   final String subTarget;
 
   /// The horizontal align of the component (including "text" and "subtext").
+  ///
   /// Options are:
   /// '[GTextAlign.auto]'
   /// '[GTextAlign.left]'
@@ -66,6 +69,7 @@ class GTitle extends GraphifyModel {
   final GTextAlign textAlign;
 
   /// The vertical align of the component (including "text" and "subtext").
+  ///
   /// Options are:
   /// '[GTextAlignVertical.auto]'
   /// '[GTextAlignVertical.top]'
@@ -76,8 +80,9 @@ class GTitle extends GraphifyModel {
   /// Set this to true to enable triggering events
   final bool triggerEvent;
 
-  /// Title space around content. The unit is px. Default values for each position are 5. And they can be set to different values with left, right, top, and
-  /// bottom.
+  /// Title space around content.
+  ///
+  /// The unit is px. Default values for each position are 5. And they can be set to different values with left, right, top, and bottom.
   /// Examples:
   /// // Set padding to be 5
   /// padding: 5
@@ -96,26 +101,31 @@ class GTitle extends GraphifyModel {
   final int itemGap;
 
   /// Distance between title component and the left side of the container.
+  ///
   /// [left] can be a pixel value like 20; it can also be a percentage value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
   /// If the left value is set to be 'left', 'center', or 'right', then the component will be aligned automatically based on position.
   final dynamic left;
 
   /// Distance between title component and the top side of the container.
+  ///
   /// [top] can be a pixel value like 20; it can also be a percentage value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
   /// If the top value is set to be 'top', 'middle', or 'bottom', then the component will be aligned automatically based on position.
   final dynamic top;
 
   /// Distance between title component and the right side of the container.
+  ///
   /// [right] can be a pixel value like 20; it can also be a percentage value relative to container width like '20%'.
   /// Adaptive by default.
   final dynamic right;
 
   /// Distance between title component and the bottom side of the container.
+  ///
   /// [bottom] can be a pixel value like 20; it can also be a percentage value relative to container width like '20%'.
   /// Adaptive by default.
   final dynamic bottom;
 
   /// Background color of title, which is transparent by default.
+  ///
   /// Color can be represented in RGB, for example 'rgb(128, 128, 128)'. RGBA can be used when you need alpha channel, for example 'rgba(128, 128, 128, 0.5)'.
   /// You may also use hexadecimal format, for example '#ccc'.
   final String backgroundColor;
@@ -126,10 +136,12 @@ class GTitle extends GraphifyModel {
   /// Shadow style of title.
   final GShadowStyle shadowStyle;
 
-  /// The text style of title. It works as the style of main title and subtitle by default.
+  /// The text style of title.
+  /// It works as the style of main title and subtitle by default.
   final GTextStyle textStyle;
 
-  /// The text style of subtitle. It works as the style of main title and subtitle by default.
+  /// The text style of subtitle.
+  /// It works as the style of main title and subtitle by default.
   final GTextStyle subTextStyle;
 
   /// [zLevel] value of all graphical elements in .

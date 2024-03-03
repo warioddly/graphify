@@ -16,17 +16,22 @@ class GShadowStyle extends GraphifyModel {
   final String color;
 
   /// Shadow color. Support same format as color.
+  ///
   /// Attention: This property works only if show: true configured.
   final String? shadowColor;
 
-  /// Size of shadow blur. This attribute should be used along with shadowColor,shadowOffsetX, shadowOffsetY to set shadow to component.
+  /// Size of shadow blur.
+  ///
+  /// This attribute should be used along with shadowColor,shadowOffsetX, shadowOffsetY to set shadow to component.
   final int blur;
 
   /// Offset distance on the horizontal direction of shadow.
+  ///
   /// Attention: This property works only if [show]: true configured.
   final int offsetX;
 
   /// Offset distance on the vertical direction of shadow.
+  ///
   /// Attention: This property works only if show: true configured.
   final int offsetY;
 

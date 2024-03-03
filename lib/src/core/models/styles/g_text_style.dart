@@ -24,6 +24,7 @@ class GTextStyle extends GraphifyModel {
   final String color;
 
   /// Font style.
+  ///
   /// Options are:
   ///   'normal'
   ///   'italic'
@@ -31,6 +32,7 @@ class GTextStyle extends GraphifyModel {
   final String fontStyle;
 
   /// Font thick weight.
+  ///
   /// Options are:
   ///   'normal'
   ///   'bold'
@@ -55,7 +57,9 @@ class GTextStyle extends GraphifyModel {
   /// Height of text block.
   final int height;
 
-  /// Determine how to display the text when it's overflow. Available when [width] is set.
+  /// Determine how to display the text when it's overflow.
+  ///
+  /// Available when [width] is set.
   /// 'truncate' Truncate the text and trailing with ellipsis.
   /// 'break' Break by word
   /// 'breakAll' Break by character.

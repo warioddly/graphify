@@ -59,6 +59,7 @@ class GAxis extends GraphifyModel {
   final bool alignTicks;
 
   /// The position of x axis.
+  ///
   /// options:
   ///   'top'
   ///   'bottom'
@@ -71,6 +72,7 @@ class GAxis extends GraphifyModel {
   final int offset;
 
   /// Type of axis.
+  ///
   /// Option:
   /// '[value]' Numerical axis, suitable for continuous data.
   /// '[category]' Category axis, suitable for discrete category data. Category data can be auto retrieved from series.data or dataset.source, or can be
@@ -85,6 +87,7 @@ class GAxis extends GraphifyModel {
   final String name;
 
   /// Location of axis name.
+  ///
   /// Options:
   /// '[start]'
   /// '[middle]' or '[center]'
@@ -106,12 +109,15 @@ class GAxis extends GraphifyModel {
   /// Set this to true to invert the axis.
   final bool inverse;
 
-  /// The boundary gap on both sides of a coordinate axis. The setting and behavior of category axes and non-category axes are different.
+  /// The boundary gap on both sides of a coordinate axis.
+  ///
+  /// The setting and behavior of category axes and non-category axes are different.
   /// The [boundaryGap] of category axis can be set to either true or false. Default value is set to be true, in which case [axisTick] is served only as a
   /// separation line, and labels and data appear only in the center part of two axis ticks, which is called band.
   final bool boundaryGap;
 
   /// Category data, available in type: 'category' axis.
+  ///
   /// If [type] is not specified, but [data] is specified, the [type] is auto set as '[category]'.
   /// If [type] is specified as '[category]', but [data] is not specified, [data] will be auto collected from series.data. It brings convenience, but we
   /// should notice that axis.data provides then value range of the 'category' axis. If it is auto collected from series.data,
@@ -119,6 +125,7 @@ class GAxis extends GraphifyModel {
   final List<GAxisData> data;
 
   /// The minimum value of axis.
+  ///
   /// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
   /// It will be automatically computed to make sure axis tick is equally distributed when not set.
   /// In category axis, it can also be set as the ordinal number. For example, if a catergory axis has data: ['categoryA', 'categoryB', 'categoryC'], and the
@@ -126,6 +133,7 @@ class GAxis extends GraphifyModel {
   final String min;
 
   /// The maximum value of axis.
+  ///
   /// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
   /// It will be automatically computed to make sure axis tick is equally distributed when not set.
   /// In category axis, it can also be set as the ordinal number. For example, if a catergory axis has data: ['categoryA', 'categoryB', 'categoryC'], and the
@@ -133,16 +141,19 @@ class GAxis extends GraphifyModel {
   final String max;
 
   /// It is available only in numerical axis, i.e., type: 'value'.
-  /// It specifies whether not to contain zero position of axis compulsively. When it is set to be true, the axis may not contain zero position, which is
-  /// useful in the scatter chart for both value axes.
+  /// It specifies whether not to contain zero position of axis compulsively.
+  /// When it is set to be true, the axis may not contain zero position, which is useful in the scatter chart for both value axes.
   /// This configuration item is unavailable when the [min] and [max] are set.
   final bool scale;
 
-  /// Number of segments that the axis is split into. Note that this number serves only as a recommendation, and the true segments may be adjusted based on readability.
+  /// Number of segments that the axis is split into.
+  ///
+  /// Note that this number serves only as a recommendation, and the true segments may be adjusted based on readability.
   /// This is unavailable for category axis.
   final int splitNumber;
 
   /// Minimum gap between split lines.
+  ///
   /// For example, it can be set to be 1 to make sure axis label is show as integer.
   /// {
   ///     minInterval: 1
@@ -151,6 +162,7 @@ class GAxis extends GraphifyModel {
   final int minInterval;
 
   /// Maximum gap between split lines.
+  ///
   /// For example, in time axis (type is 'time'), it can be set to be 3600 * 24 * 1000 to make sure that the gap between axis labels is less than or equal to
   /// one day.
   /// {
@@ -160,6 +172,7 @@ class GAxis extends GraphifyModel {
   final int maxInterval;
 
   /// Compulsively set segmentation interval for axis.
+  ///
   /// As splitNumber is a recommendation value, the calculated tick may not be the same as expected. In this case, interval should be used along with min and
   /// max to compulsively set tickings. But in most cases, we do not suggest using this, our automatic calculation is enough for most situations.
   /// This is unavailable for category axis. Timestamp should be passed for type: 'time' axis. Logged value should be passed for type: 'log' axis.
@@ -197,6 +210,7 @@ class GAxis extends GraphifyModel {
   final GZLevel zLevel;
 
   /// [axisPointer] settings on the axis.
+  ///
   /// [axisPointer] will not be displayed by default. But if tooltip.trigger is set as 'axis' or tooltip.axisPointer.type is set as 'cross', axisPointer will
   /// be displayed automatically. Each coordinate system will automatically chose the axes whose will display its axisPointer. tooltip.axisPointer.axis
   /// can be used to change the choice.

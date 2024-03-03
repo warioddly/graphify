@@ -46,6 +46,7 @@ abstract class GChartModel extends GraphifyModel {
 
   String get type;
 
+  /// The name of the series.
   final String? name;
   final String colorBy;
   final String coordinateSystem;

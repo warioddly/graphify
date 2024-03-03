@@ -23,17 +23,21 @@ class GAxisPointer extends GraphifyModel {
 
 
   /// Indicator type.
+  ///
   /// Options:
   /// '[line]' line indicator.
   /// '[shadow]' shadow crosshair indicator.
   /// '[none]' no indicator displayed.
   final String type;
 
-  /// Whether [snap] to point automatically. The default value is auto determined.
+  /// Whether [snap] to point automatically.
+  ///
+  /// The default value is auto determined.
   /// This feature usually makes sense in value axis and time axis, where tiny points can be seeked automatically.
   final bool snap;
 
-  /// z value, which controls order of drawing graphical components. Components with smaller z values may be overwritten by those with larger z values.
+  /// z value, which controls order of drawing graphical components.
+  /// Components with smaller z values may be overwritten by those with larger z values.
   final int? z;
 
   /// Whether to trigger emphasis of series.
@@ -54,7 +58,8 @@ class GAxisPointer extends GraphifyModel {
   /// It is valid when [type] is '[shadow]'.
   final GShadowStyle shadowStyle;
 
-  /// A button used to drag axisPointer. This feature is applicable in touch device. See example. https://echarts.apache.org/examples/en/editor.html?c=line-tooltip-touch&edit=1&reset=1
+  /// A button used to drag axisPointer.
+  /// This feature is applicable in touch device. See example. https://echarts.apache.org/examples/en/editor.html?c=line-tooltip-touch&edit=1&reset=1
   final GAxisHandle handle;
 
 
