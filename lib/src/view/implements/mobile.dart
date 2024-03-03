@@ -1,4 +1,4 @@
-import 'package:graphify/src/core/mixins/state_mixin.dart';
+import 'package:graphify/src/core/models/interface.dart';
 import 'package:graphify/src/resources/index.html.dart';
 import 'package:graphify/src/core/utils/utils.dart';
 import 'package:graphify/src/view/interface.dart' as view_interface;
@@ -18,7 +18,7 @@ class GraphifyView extends StatefulWidget implements view_interface.GraphifyView
   final GraphifyController? controller;
 
   @override
-  final String? initialOptions;
+  final GraphifyModel? initialOptions;
 
 
   @override
@@ -27,11 +27,11 @@ class GraphifyView extends StatefulWidget implements view_interface.GraphifyView
 
 }
 
-class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView> with StateMixin {
+class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView> {
 
 
   late WebViewController webViewController;
-  late var controller = widget.controller;
+  late var controller = widget.controller ?? GraphifyController();
   var identifier = '';
 
 
@@ -43,13 +43,13 @@ class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView>
     webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
-      ..loadHtmlString(indexHtml(id: identifier, options: widget.initialOptions))
+      ..loadHtmlString(indexHtml(id: identifier))
       ..setOnConsoleMessage((message) {
         debugPrint("[+] onConsoleMessage ${message.message}");
       });
 
     controller
-      ?..connector = webViewController
+      ..connector = webViewController
       ..identifier = identifier;
 
   }
@@ -61,5 +61,11 @@ class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView>
     return view = WebViewWidget(controller: webViewController);
   }
 
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
 }

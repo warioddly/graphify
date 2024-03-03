@@ -33,7 +33,7 @@ final String chartScripts = """
     }
     
     function ${GraphifyMethods.disposeChart.name} (chart_id) {
-      const chart = graphify_charts[chart_id].chart;
+      const chart = graphify_charts[chart_id]?.chart;
       if (!chart) return;
       chart.dispose();
       delete graphify_charts[chart_id];
@@ -42,7 +42,8 @@ final String chartScripts = """
     function ${GraphifyMethods.normalizeJson.name}(option) {
       if (typeof option === 'object') return option;
       if (option instanceof String && option.length === 0 || option == null) return {};
-      return JSON.parse(option.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"\$2": ').replace(/'([^']+?)'/g, '"\$1"'));
+      return JSON.parse(option);
+      // return JSON.parse(option.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"\$2": ').replace(/'([^']+?)'/g, '"\$1"'));
     }
     
     

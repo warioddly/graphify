@@ -3,7 +3,7 @@
 import 'package:graphify/src/resources/dependencies.js.dart';
 import 'package:graphify/src/resources/scripts.js.dart';
 
-String indexHtml({ required String id, bool enableDependency = true, String? options }) {
+String indexHtml({ required String id, bool enableDependency = true}) {
   return '''<!DOCTYPE html>
     <html>
     <head>
@@ -26,7 +26,7 @@ String indexHtml({ required String id, bool enableDependency = true, String? opt
     <body>
       <div id="chart"></div>
       ${enableDependency ? htmlDependencies : ""}
-      <script>${scriptsJs(id, options: options)}</script>
+      <script>${scriptsJs(id)}</script>
     </body>
     </html>
 ''';

@@ -1,3 +1,4 @@
-## 0.0.1
+## 0.0.2
 
-* TODO: Describe initial release.
+* Add support update chart 
+* Adding example of how to use graphify
