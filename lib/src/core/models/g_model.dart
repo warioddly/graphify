@@ -9,6 +9,7 @@ import 'package:graphify/src/core/models/interface.dart' as model_interface;
 import 'package:graphify/src/core/models/g_title.dart';
 import 'package:graphify/src/core/models/other/g_polar.dart';
 import 'package:graphify/src/core/models/styles/g_text_style.dart';
+import 'package:graphify/src/core/models/g_grid.dart';
 
 
 class GraphifyModel extends model_interface.GraphifyModel {
@@ -34,6 +35,7 @@ class GraphifyModel extends model_interface.GraphifyModel {
     this.singleAxis = const GAxis(),
     this.radiusAxis = const GAxis(),
     this.angleAxis = const GAxis(),
+    this.grid = const GGrid(),
     this.series = const [],
     this.polar = const GPolar(),
   });
@@ -119,6 +121,7 @@ class GraphifyModel extends model_interface.GraphifyModel {
   /// offset can be used to avoid overlap when you need to put more than two y axis.
   final GAxis yAxis;
 
+  final GGrid grid;
   final GDecal? decal;
   final GAxisPointer axisPointer;
   final GAxis singleAxis;
@@ -152,6 +155,9 @@ class GraphifyModel extends model_interface.GraphifyModel {
       'angleAxis': angleAxis.toJson(),
       'series': series.map((e) => e.toJson()).toList(),
       'polar': polar.toJson(),
+      'grid': grid.toJson(),
+      'tooltip': {},
+      'legend': {},
       ...?animation?.toJson(),
     };
   }

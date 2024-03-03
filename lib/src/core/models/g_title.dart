@@ -26,10 +26,10 @@ class GTitle extends GraphifyModel {
     this.right = 'auto',
     this.top = 'auto',
     this.backgroundColor = 'transparent',
-    this.textStyle = const GTextStyle(),
-    this.subTextStyle = const GTextStyle(),
-    this.shadowStyle = const GShadowStyle(),
-    this.borderStyle = const GBorderStyle(),
+    this.textStyle,
+    this.subTextStyle,
+    this.shadowStyle,
+    this.borderStyle,
     this.zLevel = const GZLevel(z: 2),
   });
 
@@ -131,18 +131,18 @@ class GTitle extends GraphifyModel {
   final String backgroundColor;
 
   /// Border style of title.
-  final GBorderStyle borderStyle;
+  final GBorderStyle? borderStyle;
 
   /// Shadow style of title.
-  final GShadowStyle shadowStyle;
+  final GShadowStyle? shadowStyle;
 
   /// The text style of title.
   /// It works as the style of main title and subtitle by default.
-  final GTextStyle textStyle;
+  final GTextStyle? textStyle;
 
   /// The text style of subtitle.
   /// It works as the style of main title and subtitle by default.
-  final GTextStyle subTextStyle;
+  final GTextStyle? subTextStyle;
 
   /// [zLevel] value of all graphical elements in .
   final GZLevel zLevel;
@@ -224,14 +224,11 @@ class GTitle extends GraphifyModel {
       'right': right,
       'bottom': bottom,
       'backgroundColor': backgroundColor,
-      'borderDashOffset': borderStyle.dashOffset,
-      'borderColor': borderStyle.color,
-      'borderWidth': borderStyle.width,
-      'borderRadius': borderStyle.radius,
-      'textStyle': textStyle.toJson(),
-      'subTextStyle': subTextStyle.toJson(),
+      'textStyle': textStyle?.toJson(),
+      'subTextStyle': subTextStyle?.toJson(),
       ...zLevel.toJson(),
-      ...shadowStyle.toJson(),
+      ...?shadowStyle?.toJson(),
+      ...?borderStyle?.toJson(),
     };
   }
 

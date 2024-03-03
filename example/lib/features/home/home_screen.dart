@@ -14,38 +14,71 @@ class HomeScreen extends StatelessWidget {
       title: title,
       child: GraphifyView(
         initialOptions: GraphifyModel(
+          title: GTitle(
+            text: 'Graphify Line Chart Example',
+            textStyle: GTextStyle(
+              color: '#fff',
+              fontSize: 33,
+            ),
+            bottom: '10',
+            left: '10',
+          ),
+          grid: GGrid(
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          ),
           xAxis: GAxis(
-            data: [
-              GAxisData(value: 'Mon'),
-              GAxisData(value: 'Tue'),
-              GAxisData(value: 'Wed'),
-              GAxisData(value: 'Thu'),
-              GAxisData(value: 'Fri'),
-              GAxisData(value: 'Sat'),
-              GAxisData(value: 'Sun'),
-            ]
+            show: false,
+              data: [
+                GAxisData(value: 'Mon'),
+                GAxisData(value: 'Tue'),
+                GAxisData(value: 'Wed'),
+                GAxisData(value: 'Thu'),
+                GAxisData(value: 'Fri'),
+                GAxisData(value: 'Sat'),
+                GAxisData(value: 'Sun'),
+              ]
           ),
           yAxis: GAxis(
-            data: [
-              GAxisData(value: 'Mon'),
-              GAxisData(value: 'Tue'),
-              GAxisData(value: 'Wed'),
-              GAxisData(value: 'Thu'),
-              GAxisData(value: 'Fri'),
-              GAxisData(value: 'Sat'),
-              GAxisData(value: 'Sun'),
-            ]
+              data: [
+                GAxisData(value: 'Mon'),
+                GAxisData(value: 'Tue'),
+                GAxisData(value: 'Wed'),
+                GAxisData(value: 'Thu'),
+                GAxisData(value: 'Fri'),
+                GAxisData(value: 'Sat'),
+                GAxisData(value: 'Sun'),
+              ]
           ),
           series: [
 
             GLineChart(
-              smooth: true,
-              data: [1, 2, 5, 1, 3, 4, 1]
+                smooth: true,
+                data: [1, 2, 5, 1, 3, 4, 1],
+                name: 'Union Ads',
+                stack: 'total',
             ),
 
             GBarChart(
-                data: [1, 2, 5, 1, 3, 4, 1]
-            )
+                name: 'Union Ads 2',
+                stack: 'total',
+                data: [1, 2, 5, 1, 3, 4, 1],
+            ),
+
+            GGaugeChart(
+                name: 'Union Ads 3',
+                data: [55],
+                zLevel: GZLevel(z: 12),
+            ),
+
+            GGraphChart(
+                name: 'Union Ads 5',
+                data: [5, 3, 5, 6, 7, 8],
+                zLevel: GZLevel(z: 12),
+                symbolSize: Size.fromRadius(50),
+            ),
 
           ],
         ),
