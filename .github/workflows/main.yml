@@ -38,6 +38,7 @@ jobs:
         with:
           github_token: ${{ env.GITHUB_TOKEN }}
           publish_dir: ./example/build/web
+          publish_branch: 'deploy'
           force_orphan: true
           user_name: 'github-ci[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
