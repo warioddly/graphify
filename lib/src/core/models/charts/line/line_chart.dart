@@ -1,9 +1,8 @@
-
 import 'dart:ui';
-
 import 'package:graphify/src/core/enums/enums.dart';
 import 'package:graphify/src/core/models/animations/g_animation.dart';
 import 'package:graphify/src/core/models/charts/interface.dart';
+import 'package:graphify/src/core/models/other/g_emphasis.dart';
 import 'package:graphify/src/core/models/other/g_z_level.dart';
 
 class GLineChart extends GChartModel {
@@ -42,6 +41,8 @@ class GLineChart extends GChartModel {
     super.data = const [],
     super.zLevel = const GZLevel(),
     super.animation = const GAnimation(),
+    super.emphasis = const GEmphasis(),
+    super.lineStyle,
 });
 
   @override

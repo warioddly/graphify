@@ -18,7 +18,7 @@ final String chartScripts = """
     
     const graphify_charts = {};
     
-    function ${GraphifyMethods.initChart.name} (chart_id, chart, option) {
+    function ${GraphifyMethods.initChart.name}(chart_id, chart, option) {
       option = ${GraphifyMethods.normalizeJson.name}(option);
       chart.setOption(option);
       graphify_charts[chart_id] = { chart, option };

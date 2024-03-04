@@ -1,10 +1,11 @@
 
 import 'dart:ui';
-
 import 'package:graphify/src/core/enums/enums.dart';
 import 'package:graphify/src/core/models/animations/g_animation.dart';
+import 'package:graphify/src/core/models/other/g_emphasis.dart';
 import 'package:graphify/src/core/models/interface.dart';
 import 'package:graphify/src/core/models/other/g_z_level.dart';
+import 'package:graphify/src/core/models/styles/g_line_style.dart';
 
 abstract class GChartModel extends GraphifyModel {
 
@@ -41,6 +42,8 @@ abstract class GChartModel extends GraphifyModel {
     this.data = const [],
     this.zLevel = const GZLevel(),
     this.animation,
+    this.emphasis = const GEmphasis(),
+    this.lineStyle,
   });
 
 
@@ -76,9 +79,21 @@ abstract class GChartModel extends GraphifyModel {
   final String seriesLayoutBy;
   final int datasetIndex;
   final String? dataGroupId;
+
+  /// The data of the series.
   final List<dynamic> data;
+
+  /// [zLevel] value of all graphical elements in.
   final GZLevel zLevel;
+
+  /// Animation of the graphic.
   final GAnimation? animation;
+
+  /// Highlight style of the graphic.
+  final GEmphasis emphasis;
+
+  /// The style of the line.
+  final GLineStyle? lineStyle;
 
 
 
@@ -116,6 +131,7 @@ abstract class GChartModel extends GraphifyModel {
       'datasetIndex': datasetIndex,
       'dataGroupId': dataGroupId,
       'data': data,
+      'emphasis': emphasis.toJson(),
       ...zLevel.toJson(),
       ...?animation?.toJson(),
     };

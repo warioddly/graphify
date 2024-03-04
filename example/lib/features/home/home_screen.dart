@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
       child: GraphifyView(
         initialOptions: GraphifyModel(
           title: GTitle(
+            show: false,
             text: 'Graphify Line Chart Example',
             textStyle: GTextStyle(
               color: '#fff',
@@ -59,26 +60,30 @@ class HomeScreen extends StatelessWidget {
                 data: [1, 2, 5, 1, 3, 4, 1],
                 name: 'Union Ads',
                 stack: 'total',
+                emphasis: GEmphasis(
+                  focus: 'self',
+                  blurScope: 'coordinateSystem',
+                ),
             ),
 
-            GBarChart(
-                name: 'Union Ads 2',
-                stack: 'total',
-                data: [1, 2, 5, 1, 3, 4, 1],
-            ),
-
+            // GBarChart(
+            //     name: 'Union Ads 2',
+            //     stack: 'total',
+            //     data: [1, 2, 5, 1, 3, 4, 1],
+            // ),
+            //
             GGaugeChart(
                 name: 'Union Ads 3',
                 data: [55],
                 zLevel: GZLevel(z: 12),
             ),
-
-            GGraphChart(
-                name: 'Union Ads 5',
-                data: [5, 3, 5, 6, 7, 8],
-                zLevel: GZLevel(z: 12),
-                symbolSize: Size.fromRadius(50),
-            ),
+            //
+            // GGraphChart(
+            //     name: 'Union Ads 5',
+            //     data: [5, 3, 5, 6, 7, 8],
+            //     zLevel: GZLevel(z: 12),
+            //     symbolSize: Size.fromRadius(50),
+            // ),
 
           ],
         ),

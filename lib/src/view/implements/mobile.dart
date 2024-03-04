@@ -1,10 +1,10 @@
-import 'package:graphify/src/core/models/interface.dart';
 import 'package:graphify/src/resources/index.html.dart';
 import 'package:graphify/src/core/utils/utils.dart';
 import 'package:graphify/src/view/interface.dart' as view_interface;
 import 'package:graphify/src/controller/implements/mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:graphify/src/core/models/g_model.dart';
 
 class GraphifyView extends StatefulWidget implements view_interface.GraphifyView {
 
@@ -32,25 +32,24 @@ class _GraphifyViewMobile extends view_interface.GraphifyViewState<GraphifyView>
 
   late WebViewController webViewController;
   late var controller = widget.controller ?? GraphifyController();
-  var identifier = '';
 
 
   @override
   void initView() {
 
-    identifier = Utils.uid();
+    controller.identifier = Utils.uid();
 
     webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
-      ..loadHtmlString(indexHtml(id: identifier))
+      ..loadHtmlString(indexHtml(id: controller.identifier, enableDependency: true))
       ..setOnConsoleMessage((message) {
         debugPrint("[+] onConsoleMessage ${message.message}");
       });
 
-    controller
-      ..connector = webViewController
-      ..identifier = identifier;
+    controller.connector = webViewController;
+
+    Future.delayed(Duration.zero, () => controller.update(widget.initialOptions ?? const GraphifyModel()));
 
   }
 
