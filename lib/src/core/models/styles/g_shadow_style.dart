@@ -6,19 +6,16 @@ class GShadowStyle extends GraphifyModel {
   const GShadowStyle({
     super.show = false,
     this.color = 'transparent',
-    this.shadowColor = 'transparent',
     this.blur = 0,
     this.offsetX = 0,
     this.offsetY = 0,
   });
 
 
-  final String color;
-
   /// Shadow color. Support same format as color.
   ///
   /// Attention: This property works only if show: true configured.
-  final String? shadowColor;
+  final String? color;
 
   /// Size of shadow blur.
   ///
@@ -39,7 +36,6 @@ class GShadowStyle extends GraphifyModel {
   GShadowStyle copyWith({
     bool? show,
     String? color,
-    String? shadowColor,
     int? blur,
     int? offsetX,
     int? offsetY,
@@ -47,7 +43,6 @@ class GShadowStyle extends GraphifyModel {
     return GShadowStyle(
       show: show ?? this.show,
       color: color ?? this.color,
-      shadowColor: shadowColor ?? this.shadowColor,
       blur: blur ?? this.blur,
       offsetX: offsetX ?? this.offsetX,
       offsetY: offsetY ?? this.offsetY,
@@ -58,8 +53,7 @@ class GShadowStyle extends GraphifyModel {
   Map<String, dynamic> toJson() {
     return {
       'show': show,
-      'color': color,
-      'shadowColor': shadowColor,
+      'shadowColor': color,
       'shadowBlur': blur,
       'shadowOffsetX': offsetX,
       'shadowOffsetY': offsetY,

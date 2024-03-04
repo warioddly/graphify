@@ -14,6 +14,7 @@ export 'animations/g_state_animation.dart';
 export 'other/g_separator.dart';
 export 'other/g_z_level.dart';
 export 'other/g_polar.dart';
+export 'other/g_emphasis.dart';
 
 export 'decals/g_decal.dart';
 export 'decals/g_decals.dart';

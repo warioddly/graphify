@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
 import 'package:graphify/src/core/enums/enums.dart';
@@ -24,7 +26,7 @@ class GraphifyController implements controller_interface.GraphifyController {
       return;
     }
 
-    await _eval('window.${GraphifyMethods.updateChart.name}("$identifier", $options)');
+    await _eval('window.${GraphifyMethods.updateChart.name}("$identifier", ${jsonEncode(options?.toJson())})');
 
   }
 
