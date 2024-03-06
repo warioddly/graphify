@@ -1,19 +1,74 @@
 
 import 'package:flutter/material.dart';
 import 'package:graphify/graphify.dart';
+import 'package:graphify_example/core/helpers.dart';
 import 'package:graphify_example/features/widgets/scaffold_wrapper.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   static const title = 'Graphify Examples';
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  
+  final controller = GraphifyController();
+  
+  
+  
+  @override
+  void initState() {
+    super.initState();
+    
+    
+    Helper.periodic((p0) {
+      controller.updateSeries([
+
+        GLineChart(
+          smooth: true,
+          data: Helper.randomData(7, 7),
+          name: 'Union Ads',
+          stack: 'total',
+          emphasis: const GEmphasis(
+            focus: 'self',
+            blurScope: 'coordinateSystem',
+          ),
+        ),
+
+        // GBarChart(
+        //     name: 'Union Ads 2',
+        //     stack: 'total',
+        //     data: [1, 2, 5, 1, 3, 4, 1],
+        // ),
+        //
+        GGaugeChart(
+          name: 'Union Ads 3',
+          data: [Helper.randomData(1, 100)],
+        ),
+        //
+        // GGraphChart(
+        //     name: 'Union Ads 5',
+        //     data: [5, 3, 5, 6, 7, 8],
+        //     zLevel: GZLevel(z: 12),
+        //     symbolSize: Size.fromRadius(50),
+        // ),
+
+      ]);
+    });
+    
+  }
+  
+  
+  @override
   Widget build(BuildContext context) {
-    return const ScaffoldWrapper(
-      title: title,
+    return ScaffoldWrapper(
+      title: HomeScreen.title,
       child: GraphifyView(
-        initialOptions: GraphifyModel(
+        controller: controller,
+        initialOptions: const GraphifyModel(
           title: GTitle(
             show: false,
             text: 'Graphify Line Chart Example',
@@ -31,27 +86,33 @@ class HomeScreen extends StatelessWidget {
             containLabel: true
           ),
           xAxis: GAxis(
-            show: false,
-              data: [
-                GAxisData(value: 'Mon'),
-                GAxisData(value: 'Tue'),
-                GAxisData(value: 'Wed'),
-                GAxisData(value: 'Thu'),
-                GAxisData(value: 'Fri'),
-                GAxisData(value: 'Sat'),
-                GAxisData(value: 'Sun'),
-              ]
+            data: [
+              GAxisData(value: 'Mon'),
+              GAxisData(value: 'Tue'),
+              GAxisData(value: 'Wed'),
+              GAxisData(value: 'Thu'),
+              GAxisData(value: 'Fri'),
+              GAxisData(value: 'Sat'),
+              GAxisData(value: 'Sun'),
+            ],
+            splitLine: GAxisSplitLine(
+              lineStyle: GLineStyle(opacity: 0.1),
+            ),
           ),
           yAxis: GAxis(
-              data: [
-                GAxisData(value: 'Mon'),
-                GAxisData(value: 'Tue'),
-                GAxisData(value: 'Wed'),
-                GAxisData(value: 'Thu'),
-                GAxisData(value: 'Fri'),
-                GAxisData(value: 'Sat'),
-                GAxisData(value: 'Sun'),
-              ]
+            data: [
+              GAxisData(value: 'Mon'),
+              GAxisData(value: 'Tue'),
+              GAxisData(value: 'Wed'),
+              GAxisData(value: 'Thu'),
+              GAxisData(value: 'Fri'),
+              GAxisData(value: 'Sat'),
+              GAxisData(value: 'Sun'),
+              GAxisData(value: 'Sun'),
+            ],
+            splitLine: GAxisSplitLine(
+              lineStyle: GLineStyle(opacity: 0.1),
+            ),
           ),
           series: [
 
@@ -106,5 +167,4 @@ class HomeScreen extends StatelessWidget {
       // )
     );
   }
-
 }

@@ -10,6 +10,7 @@ import 'package:graphify/src/core/models/axis/g_axis_tick.dart';
 import 'package:graphify/src/core/models/interface.dart';
 import 'package:graphify/src/core/models/other/g_z_level.dart';
 import 'package:graphify/src/core/models/styles/g_text_style.dart';
+import 'package:graphify/src/core/models/styles/g_line_style.dart';
 
 
 class GAxis extends GraphifyModel {
@@ -17,32 +18,32 @@ class GAxis extends GraphifyModel {
   const GAxis({
     super.id,
     super.show = true,
-    this.gridIndex = 0,
-    this.alignTicks = true,
-    this.position = 'bottom',
-    this.offset = 0,
+    this.gridIndex,
+    this.alignTicks,
+    this.position,
+    this.offset,
     this.type = 'category',
-    this.name = '',
+    this.name,
     this.nameLocation = 'end',
     this.nameGap = '15',
     this.nameRotate = '0',
     this.inverse = false,
-    this.boundaryGap = true,
+    this.boundaryGap,
     this.data = const [],
-    this.min = '',
-    this.max = '',
+    this.min,
+    this.max,
     this.scale = false,
     this.splitNumber = 5,
-    this.minInterval = 0,
-    this.maxInterval = 0,
-    this.interval = 0,
+    this.minInterval,
+    this.maxInterval,
+    this.interval,
     this.logBase = 10,
     this.silent = false,
     this.triggerEvent = false,
     this.animation,
-    this.nameTextStyle = const GTextStyle(),
+    this.nameTextStyle,
     this.nameTruncate = const GAxisNameTruncate(),
-    this.axisLine = const GAxisLine(),
+    this.axisLine = const GAxisLine(lineStyle: GLineStyle(color: '#333')),
     this.axisTick = const GAxisTick(),
     this.minorTick = const GAxisMinorTick(),
     this.splitLine = const GAxisSplitLine(),
@@ -53,10 +54,12 @@ class GAxis extends GraphifyModel {
 
 
   /// The index of grid which the x axis belongs to. Defaults to be in the first grid.
-  final int gridIndex;
+  final int? gridIndex;
+
 
   /// [alignTicks] turned on to automatically align ticks when multiple numeric x axes. Only available for axes of type 'value' and 'log'.
-  final bool alignTicks;
+  final bool? alignTicks;
+
 
   /// The position of x axis.
   ///
@@ -65,11 +68,13 @@ class GAxis extends GraphifyModel {
   ///   'bottom'
   /// The first x axis in grid defaults to be on the bottom of the grid, and the second x axis is on the other side against the first x axis.
   /// Notice: Set axisLine.onZero to false to activate this option.
-  final String position;
+  final String? position;
+
 
   /// Offset of x axis relative to default position. Useful when multiple x axis has same position value.
   /// Notice: Set xAxis.axisLine.onZero to false to activate this option.
-  final int offset;
+  final int? offset;
+
 
   /// Type of axis.
   ///
@@ -83,8 +88,10 @@ class GAxis extends GraphifyModel {
   /// effects in certain circumstances. Their use should be avoided.
   final String type;
 
+
   /// Name of axis.
-  final String name;
+  final String? name;
+
 
   /// Location of axis name.
   ///
@@ -94,27 +101,34 @@ class GAxis extends GraphifyModel {
   /// '[end]'
   final String nameLocation;
 
+
   /// Text style of axis [name].
-  final GTextStyle nameTextStyle;
+  final GTextStyle? nameTextStyle;
+
 
   /// Truncation of the axis name.
   final GAxisNameTruncate nameTruncate;
 
+
   /// Gap between axis name and axis line.
   final String nameGap;
+
 
   /// Rotation of axis name.
   final String nameRotate;
 
+
   /// Set this to true to invert the axis.
   final bool inverse;
+
 
   /// The boundary gap on both sides of a coordinate axis.
   ///
   /// The setting and behavior of category axes and non-category axes are different.
   /// The [boundaryGap] of category axis can be set to either true or false. Default value is set to be true, in which case [axisTick] is served only as a
   /// separation line, and labels and data appear only in the center part of two axis ticks, which is called band.
-  final bool boundaryGap;
+  final bool? boundaryGap;
+
 
   /// Category data, available in type: 'category' axis.
   ///
@@ -124,13 +138,15 @@ class GAxis extends GraphifyModel {
   /// Only the values appearing in series.data can be collected. For example, if series.data is empty, nothing will be collected.
   final List<GAxisData> data;
 
+
   /// The minimum value of axis.
   ///
   /// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
   /// It will be automatically computed to make sure axis tick is equally distributed when not set.
   /// In category axis, it can also be set as the ordinal number. For example, if a catergory axis has data: ['categoryA', 'categoryB', 'categoryC'], and the
   /// ordinal 2 represents 'categoryC'. Moreover, it can be set as negative number, like -3.
-  final String min;
+  final String? min;
+
 
   /// The maximum value of axis.
   ///
@@ -138,7 +154,8 @@ class GAxis extends GraphifyModel {
   /// It will be automatically computed to make sure axis tick is equally distributed when not set.
   /// In category axis, it can also be set as the ordinal number. For example, if a catergory axis has data: ['categoryA', 'categoryB', 'categoryC'], and the
   /// ordinal 2 represents 'categoryC'. Moreover, it can be set as negative number, like -3.
-  final String max;
+  final String? max;
+
 
   /// It is available only in numerical axis, i.e., type: 'value'.
   /// It specifies whether not to contain zero position of axis compulsively.
@@ -146,11 +163,13 @@ class GAxis extends GraphifyModel {
   /// This configuration item is unavailable when the [min] and [max] are set.
   final bool scale;
 
+
   /// Number of segments that the axis is split into.
   ///
   /// Note that this number serves only as a recommendation, and the true segments may be adjusted based on readability.
   /// This is unavailable for category axis.
   final int splitNumber;
+
 
   /// Minimum gap between split lines.
   ///
@@ -159,7 +178,8 @@ class GAxis extends GraphifyModel {
   ///     minInterval: 1
   /// }
   /// It is available only for axis of type 'value' or 'time'.
-  final int minInterval;
+  final int? minInterval;
+
 
   /// Maximum gap between split lines.
   ///
@@ -169,45 +189,57 @@ class GAxis extends GraphifyModel {
   ///     maxInterval: 3600 * 1000 * 24
   /// }
   /// It is available only for axis of type 'value' or 'time'.
-  final int maxInterval;
+  final int? maxInterval;
+
 
   /// Compulsively set segmentation interval for axis.
   ///
   /// As splitNumber is a recommendation value, the calculated tick may not be the same as expected. In this case, interval should be used along with min and
   /// max to compulsively set tickings. But in most cases, we do not suggest using this, our automatic calculation is enough for most situations.
   /// This is unavailable for category axis. Timestamp should be passed for type: 'time' axis. Logged value should be passed for type: 'log' axis.
-  final int interval;
+  final int? interval;
+
 
   /// Base of logarithm, which is valid only for numeric axes with type: 'log'.
   final int logBase;
 
+
   /// Set this to true, to prevent interaction with the axis.
   final bool silent;
+
 
   /// Set this to true to enable triggering events.
   final bool triggerEvent;
 
+
   /// Settings related to axis line.
   final GAxisLine axisLine;
 
+
   /// Settings related to axis tick.
   final GAxisTick axisTick;
+
 
   /// Settings related minor ticks.
   /// Note: [minorTick] is not available in the category type axis.
   final GAxisMinorTick minorTick;
 
+
   /// Split line of axis in [grid] area.
   final GAxisSplitLine splitLine;
+
 
   /// Minor split lines of axis in the [grid] area。It will align to the [minorTick]
   final GAxisMinorSplitLine minorSplitLine;
 
+
   /// Animation settings of the axis.
   final GAnimation? animation;
 
+
   /// [zLevel] value of all graphical elements in x|y axis.
   final GZLevel zLevel;
+
 
   /// [axisPointer] settings on the axis.
   ///
@@ -304,7 +336,7 @@ class GAxis extends GraphifyModel {
       'type': type,
       'name': name,
       'nameLocation': nameLocation,
-      'nameTextStyle': nameTextStyle.toJson(),
+      'nameTextStyle': nameTextStyle?.toJson(),
       'nameTruncate': nameTruncate.toJson(),
       'nameGap': nameGap,
       'nameRotate': nameRotate,
