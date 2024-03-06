@@ -10,8 +10,8 @@ class Helper {
   }
 
 
-  static Timer periodic(void Function(Timer) callback) {
-    return Timer.periodic(const Duration(seconds: 2), callback);
+  static Timer periodic(void Function(Timer) callback, [int duration = 2]) {
+    return Timer.periodic(Duration(seconds: duration), callback);
   }
 
 

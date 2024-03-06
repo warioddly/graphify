@@ -8,7 +8,11 @@ class GAxisSplitLine extends GraphifyModel {
   const GAxisSplitLine({
     super.show = true,
     this.interval = 0,
-    this.lineStyle = const GLineStyle(),
+    this.lineStyle = const GLineStyle(
+      color: '#ccc',
+      width: 1,
+      type: 'solid',
+    ),
   });
 
 

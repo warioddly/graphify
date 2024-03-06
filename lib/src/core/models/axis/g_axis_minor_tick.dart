@@ -6,10 +6,10 @@ import 'package:graphify/src/core/models/styles/g_line_style.dart';
 class GAxisMinorTick extends GraphifyModel {
 
   const GAxisMinorTick({
-    super.show = true,
+    super.show = false,
     this.splitNumber = 5,
     this.length = 3,
-    this.lineStyle = const GLineStyle(),
+    this.lineStyle = const GLineStyle(color: '#eee'),
   });
 
   /// Number of interval splited by minor ticks.

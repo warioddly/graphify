@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
 import 'package:graphify/src/core/enums/enums.dart';
+import 'package:graphify/src/core/models/charts/interface.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:graphify/src/core/models/g_model.dart';
 
@@ -51,6 +52,13 @@ class GraphifyController implements controller_interface.GraphifyController {
       return Future.value();
     }
     return _eval('window.${GraphifyMethods.disposeChart.name}("$identifier")');
+  }
+
+
+  @override
+  Future<void> updateSeries(List<GChartModel> series) {
+    // TODO: implement updateSeries
+    throw UnimplementedError();
   }
 
 
