@@ -132,13 +132,13 @@ class _HomeScreenState extends State<HomeScreen> {
             //     stack: 'total',
             //     data: [1, 2, 5, 1, 3, 4, 1],
             // ),
-            //
+
             GGaugeChart(
                 name: 'Union Ads 3',
                 data: [55],
                 zLevel: GZLevel(z: 12),
             ),
-            //
+
             // GGraphChart(
             //     name: 'Union Ads 5',
             //     data: [5, 3, 5, 6, 7, 8],

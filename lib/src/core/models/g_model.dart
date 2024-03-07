@@ -11,6 +11,8 @@ import 'package:graphify/src/core/models/other/g_polar.dart';
 import 'package:graphify/src/core/models/styles/g_text_style.dart';
 import 'package:graphify/src/core/models/g_grid.dart';
 
+import 'g_label.dart';
+
 
 class GraphifyModel extends model_interface.GraphifyModel {
 
@@ -38,6 +40,7 @@ class GraphifyModel extends model_interface.GraphifyModel {
     this.grid = const GGrid(),
     this.series = const [],
     this.polar = const GPolar(),
+    this.label = const GLabel(),
   });
 
 
@@ -121,6 +124,14 @@ class GraphifyModel extends model_interface.GraphifyModel {
   /// offset can be used to avoid overlap when you need to put more than two y axis.
   final GAxis yAxis;
 
+
+  /// Legend component.
+  ///
+  /// Legend component shows symbol, color and name of different series.
+  /// You can click legends to toggle displaying series in the chart.
+  /// If there have to be too many legend items, vertically scrollable legend or horizontally scrollable legend are options to paginate them
+  final GLabel label;
+
   final GGrid grid;
   final GDecal? decal;
   final GAxisPointer axisPointer;
@@ -157,7 +168,7 @@ class GraphifyModel extends model_interface.GraphifyModel {
       'polar': polar.toJson(),
       'grid': grid.toJson(),
       'tooltip': {},
-      'legend': {},
+      'legend': label.toJson(),
       ...?animation?.toJson(),
     };
   }
