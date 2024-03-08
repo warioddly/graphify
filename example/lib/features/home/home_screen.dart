@@ -76,13 +76,17 @@ class _HomeScreenState extends State<HomeScreen> {
               color: '#fff',
               fontSize: 33,
             ),
-            bottom: '10',
-            left: '10',
+            position: GPosition(
+              bottom: '10',
+              left: '10',
+            ),
           ),
           grid: GGrid(
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
+            position: GPosition(
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+            ),
             containLabel: true
           ),
           xAxis: GAxis(

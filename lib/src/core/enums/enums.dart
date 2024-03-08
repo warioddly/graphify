@@ -15,3 +15,9 @@ enum StackStrategy {
   positive,
   negative,
 }
+
+
+enum GTarget {
+  self,
+  blank,
+}

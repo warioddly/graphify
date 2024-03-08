@@ -1,4 +1,5 @@
 import 'package:graphify/src/core/models/interface.dart';
+import 'package:graphify/src/core/models/other/g_position.dart';
 import 'package:graphify/src/core/models/other/g_z_level.dart';
 import 'package:graphify/src/core/models/styles/g_line_style.dart';
 
@@ -9,10 +10,6 @@ class GLabel extends GraphifyModel {
     super.id,
     super.show = true,
     this.zLevel = const GZLevel(z: 2),
-    this.left = 'auto',
-    this.top = 'auto',
-    this.right = 'auto',
-    this.bottom = 'auto',
     this.width = 'auto',
     this.height = 'auto',
     this.orient = 'horizontal',
@@ -22,6 +19,7 @@ class GLabel extends GraphifyModel {
     this.itemWidth = 25,
     this.itemHeight = 14,
     this.lineStyle = const GLineStyle(),
+    this.position = const GPosition(),
     this.type = 'plain',
   });
 
@@ -38,31 +36,8 @@ class GLabel extends GraphifyModel {
   final GZLevel? zLevel;
 
 
-  /// Distance between legend component and the left side of the container.
-  ///
-  /// [left] can be a pixel value like 20; it can also be a percentage value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
-  /// If the left value is set to be 'left', 'center', or 'right', then the component will be aligned automatically based on position.
-  final dynamic left;
-
-  /// Distance between legend component and the top side of the container.
-  ///
-  /// [top] can be a pixel value like 20; it can also be a percentage value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
-  /// If the top value is set to be 'top', 'middle', or 'bottom', then the component will be aligned automatically based on position.
-  final dynamic top;
-
-
-  /// Distance between legend component and the right side of the container.
-  ///
-  /// [right] can be a pixel value like 20; it can also be a percentage value relative to container width like '20%'.
-  /// Adaptive by default.
-  final dynamic right;
-
-
-  /// Distance between legend component and the bottom side of the container.
-  ///
-  /// bottom can be a pixel value like 20; it can also be a percentage value relative to container width like '20%'.
-  /// Adaptive by default.
-  final dynamic bottom;
+  /// Distance between legend component and the container.
+  final GPosition position;
 
 
   /// The width of the legend component.
@@ -143,10 +118,6 @@ class GLabel extends GraphifyModel {
     return {
       'id': id,
       'show': show,
-      'left': left,
-      'top': top,
-      'right': right,
-      'bottom': bottom,
       'width': width,
       'height': height,
       'orient': orient,
@@ -158,6 +129,7 @@ class GLabel extends GraphifyModel {
       'lineStyle': lineStyle.toJson(),
       'type': type,
       ...?zLevel?.toJson(),
+      ...position.toJson(),
     };
   }
 
