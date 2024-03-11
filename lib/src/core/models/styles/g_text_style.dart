@@ -19,6 +19,7 @@ class GTextStyle extends GraphifyModel {
     this.ellipsis = '...',
     this.shadowStyle = const GShadowStyle(),
     this.borderStyle = const GBorderStyle(),
+    this.backgroundColor
   });
 
   /// Text color
@@ -78,6 +79,13 @@ class GTextStyle extends GraphifyModel {
   final GBorderStyle borderStyle;
 
 
+  /// Background color of the text fragment.
+  ///
+  /// Can be color string, like '#123234', 'red', 'rgba(0,23,11,0.3)'.
+  /// Or image can be used, for example:
+  final String? backgroundColor;
+
+
   GTextStyle copyWith({
     bool? show,
     String? color,
@@ -96,6 +104,7 @@ class GTextStyle extends GraphifyModel {
     GBorderStyle? borderStyle,
     GTextOverflow? overflow,
     String? ellipsis,
+    String? backgroundColor,
   }) {
     return GTextStyle(
       show: show ?? this.show,
@@ -111,6 +120,7 @@ class GTextStyle extends GraphifyModel {
       shadowStyle: shadowStyle ?? this.shadowStyle,
       overflow: overflow ?? this.overflow,
       ellipsis: ellipsis ?? this.ellipsis,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
     );
   }
 
@@ -136,6 +146,7 @@ class GTextStyle extends GraphifyModel {
       'textShadowOffsetY': shadowStyle.offsetY,
       'overflow': overflow.getName,
       'ellipsis': ellipsis,
+      'backgroundColor': backgroundColor,
     };
   }
 

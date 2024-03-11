@@ -11,7 +11,7 @@ import 'package:graphify/src/core/models/g_title.dart';
 import 'package:graphify/src/core/models/other/g_polar.dart';
 import 'package:graphify/src/core/models/styles/g_text_style.dart';
 import 'package:graphify/src/core/models/g_grid.dart';
-import 'package:graphify/src/core/models/g_label.dart';
+import 'package:graphify/src/core/models/g_legend.dart';
 
 
 class GraphifyModel extends model_interface.GraphifyModel {
@@ -19,30 +19,28 @@ class GraphifyModel extends model_interface.GraphifyModel {
   const GraphifyModel({
     super.show = true,
     super.id,
-    this.title = const GTitle(
-
-    ),
-    this.blendMode = GBlendMode.sourceOver,
-    this.hoverLayerThreshold = 300,
     this.useUTC = false,
+    this.darkMode = false,
+    this.series = const [],
+    this.hoverLayerThreshold = 300,
     this.backgroundColor = 'transparent',
     this.color = const ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'],
-    this.darkMode = false,
+    this.blendMode = GBlendMode.sourceOver,
+    this.title = const GTitle(),
     this.textStyle = const GTextStyle(),
     this.stateAnimation = const GStateAnimation(),
-    this.animation,
+    this.grid = const GGrid(),
     this.aria = const GAria(),
-    this.decal = const GDecal(),
     this.xAxis = const GAxis(),
     this.yAxis = const GAxis(),
-    this.axisPointer = const GAxisPointer(),
+    this.decal = const GDecal(),
     this.singleAxis = const GAxis(),
     this.radiusAxis = const GAxis(),
     this.angleAxis = const GAxis(),
-    this.grid = const GGrid(),
-    this.series = const [],
+    this.axisPointer = const GAxisPointer(),
     this.polar = const GPolar(),
-    this.label = const GLabel(),
+    this.legend = const GLegend(),
+    this.animation,
   });
 
 
@@ -143,7 +141,7 @@ class GraphifyModel extends model_interface.GraphifyModel {
   /// Legend component shows symbol, color and name of different series.
   /// You can click legends to toggle displaying series in the chart.
   /// If there have to be too many legend items, vertically scrollable legend or horizontally scrollable legend are options to paginate them
-  final GLabel label;
+  final GLegend legend;
 
   final GGrid grid;
   final GDecal? decal;
@@ -181,7 +179,7 @@ class GraphifyModel extends model_interface.GraphifyModel {
       'polar': polar.toJson(),
       'grid': grid.toJson(),
       'tooltip': {},
-      'legend': label.toJson(),
+      'legend': legend.toJson(),
       ...?animation?.toJson(),
     };
   }
