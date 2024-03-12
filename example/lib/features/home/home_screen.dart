@@ -76,13 +76,17 @@ class _HomeScreenState extends State<HomeScreen> {
               color: '#fff',
               fontSize: 33,
             ),
-            bottom: '10',
-            left: '10',
+            position: GPosition(
+              bottom: '10',
+              left: '10',
+            ),
           ),
           grid: GGrid(
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
+            position: GPosition(
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+            ),
             containLabel: true
           ),
           xAxis: GAxis(
@@ -132,13 +136,13 @@ class _HomeScreenState extends State<HomeScreen> {
             //     stack: 'total',
             //     data: [1, 2, 5, 1, 3, 4, 1],
             // ),
-            //
+
             GGaugeChart(
                 name: 'Union Ads 3',
                 data: [55],
                 zLevel: GZLevel(z: 12),
             ),
-            //
+
             // GGraphChart(
             //     name: 'Union Ads 5',
             //     data: [5, 3, 5, 6, 7, 8],
