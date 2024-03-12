@@ -28,7 +28,7 @@ class GLegend extends GraphifyModel {
     this.orient = GLegendOrient.horizontal,
     this.align = GLegendAlign.auto,
     this.type = GLegendType.plain,
-    this.itemStyle = const GItemStyle(),
+    this.itemStyle,
     this.textStyle = const GTextStyle(
       fontSize: 12,
       fontWeight: GFontWeight.normal,
@@ -37,7 +37,7 @@ class GLegend extends GraphifyModel {
     this.lineStyle = const GLineStyle(),
     this.position = const GPosition(left: 'center'),
     this.backgroundColor = 'transparent',
-    this.symbolRotate = 'inherit',
+    this.symbolRotate,
     this.inactiveColor = '#ccc',
     this.inactiveBorderColor = '#ccc',
     this.inactiveBorderWidth = 'auto',
@@ -154,11 +154,11 @@ class GLegend extends GraphifyModel {
   /// Legend item style.
   ///
   /// If its children have values as 'inherit', the values are inherited from corresponding series options.
-  final GItemStyle itemStyle;
+  final GItemStyle? itemStyle;
 
 
   /// Rotation of the symbol, which can be number | 'inherit'. If it's 'inherit', symbolRotate of the series will be used.
-  final String symbolRotate;
+  final String? symbolRotate;
 
 
   /// Formatter is used to format label of legend.
@@ -373,7 +373,7 @@ class GLegend extends GraphifyModel {
       'itemHeight': itemHeight,
       'lineStyle': lineStyle.toJson(),
       'type': type.name,
-      // 'itemStyle': itemStyle.toJson(),
+      'itemStyle': itemStyle?.toJson(),
       'textStyle': textStyle.toJson(),
       'backgroundColor': backgroundColor,
       'symbolRotate': symbolRotate,

@@ -138,7 +138,7 @@ class GTextStyle extends GraphifyModel {
       'height': height,
       'textBorderColor': borderStyle.color,
       'textBorderWidth': borderStyle.width,
-      'textBorderType': borderStyle.type,
+      'textBorderType': borderStyle.type.name,
       'textBorderDashOffset': borderStyle.dashOffset,
       'textShadowColor': shadowStyle.color,
       'textShadowBlur': shadowStyle.blur,

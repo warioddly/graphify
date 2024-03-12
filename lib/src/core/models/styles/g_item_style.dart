@@ -1,31 +1,96 @@
-
+import 'package:graphify/src/core/enums/g_chart_enums.dart';
 import 'package:graphify/src/core/models/interface.dart';
+import 'package:graphify/src/core/models/styles/g_border_style.dart';
+import 'package:graphify/src/core/models/decals/g_decals.dart';
 import 'package:graphify/src/core/models/styles/g_shadow_style.dart';
+
 
 class GItemStyle extends GraphifyModel {
 
   const GItemStyle({
-    this.color = '#aaa',
-    this.width = 1,
-    this.type = 'solid',
-    this.dashOffset = 0,
-    this.cap = 'butt',
-    this.join = 'bevel',
-    this.miterLimit = 10,
-    this.opacity = 1,
+    this.color,
+    this.borderStyle,
     this.shadowStyle,
+    this.decal,
+    this.opacity,
   });
 
-  /// Opacity of the component.
+  /// Сolor.
   ///
-  /// Supports value from 0 to 1, and the component will not be drawn when set to 0.
-  final double opacity;
+  /// Supports setting as solid color using rgb(255,255,255), rgba(255,255,255,1), #fff, etc.
+  /// Also supports setting as gradient color and pattern fill
+  final String? color;
+
+  /// Border style of item.
+  final GItemBorderStyle? borderStyle;
+
+  /// Shadow style of item.
+  final GShadowStyle? shadowStyle;
+
+  /// The style of the decal pattern.
+  ///
+  /// It works only if aria.enabled and aria.decal.show are both set to be true.
+  /// If it is set to be '[null]', no decal will be used.
+  final GDecals? decal;
+
+  /// Opacity of item.
+  final int? opacity;
 
 
-  /// To set the miter limit ratio. Only works when join is set as miter.
+  GItemStyle copyWith({
+    String? color,
+    GItemBorderStyle? borderStyle,
+    GShadowStyle? shadowStyle,
+    GDecals? decal,
+    int? opacity,
+  }) {
+    return GItemStyle(
+      color: color ?? this.color,
+      borderStyle: borderStyle ?? this.borderStyle,
+      shadowStyle: shadowStyle ?? this.shadowStyle,
+      decal: decal ?? this.decal,
+      opacity: opacity ?? this.opacity,
+    );
+  }
+
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'color': color,
+      'decal': decal?.toJson(),
+      'opacity': opacity,
+      ...?shadowStyle?.toJson(),
+      ...?borderStyle?.toJson(),
+    };
+  }
+
+}
+
+
+class GItemBorderStyle extends GBorderStyle {
+
+
+  const GItemBorderStyle({
+    super.show = true,
+    super.color = '#000',
+    super.width = 1,
+    super.type = GBorderType.solid,
+    super.dashOffset = 0,
+    super.radius = 0,
+    this.cap = 'butt',
+    this.join = 'bevel',
+    this.mitterLimit = 10,
+  });
+
+
+  /// To specify how to draw the end points of the line. Possible values are:
   ///
-  /// Default value is 10. Negative 0 and Infinity values are ignored.
-  final int miterLimit;
+  /// '[butt]': The ends of lines are squared off at the endpoints.
+  /// '[round]': The ends of lines are rounded.
+  /// '[square]': The ends of lines are squared off by adding a box with an equal width and half the height of the line's thickness.
+  /// Default value is '[butt]'. Refer to MDN lineCap for more details.
+  final String cap;
 
 
   /// To determine the shape used to join two line segments where they meet.
@@ -34,86 +99,53 @@ class GItemStyle extends GraphifyModel {
   /// '[bevel]': Fills an additional triangular area between the common endpoint of connected segments, and the separate outside rectangular corners of each segment.
   /// '[round]': Rounds off the corners of a shape by filling an additional sector of disc centered at the common endpoint of connected segments.
   /// The radius for these rounded corners is equal to the line width.
-  /// '[miter]': Connected segments are joined by extending their outside edges to connect at a single point, with the effect of filling an
-  /// additional lozenge-shaped area. This setting is affected by the miterLimit property.
-  /// Default value is '[bevel]'.
+  /// '[miter]': Connected segments are joined by extending their outside edges to connect at a single point, with the effect of filling an additional lozenge-shaped area.
+  /// This setting is affected by the borderMiterLimit property.
+  /// Default value is '[bevel]'. Refer to MDN lineJoin for more details.
   final String join;
 
 
-  /// To specify how to draw the end points of the line.
+  /// To set the miter limit ratio. Only works when borderJoin is set as miter.
   ///
-  /// Possible values are:
-  /// '[butt]': The ends of lines are squared off at the endpoints.
-  /// '[round]': The ends of lines are rounded.
-  /// '[square]': The ends of lines are squared off by adding a box with an equal width and half the height of the line's thickness.
-  /// Default value is 'butt'.
-  final String cap;
+  /// Default value is 10. Negative、0、Infinity and NaN values are ignored.
+  final int mitterLimit;
 
 
-  /// To set the line dash offset.
-  /// With [type], we can make the line style more flexible.
-  final int dashOffset;
 
-
-  /// Line type.
-  ///
-  /// Possible values are:
-  /// '[solid]'
-  /// '[dashed]'
-  /// '[dotted]'
-  final String type;
-
-  /// Line width.
-  final int width;
-
-  /// Line color.
-  ///
-  /// Supports setting as solid color using rgb(255,255,255), rgba(255,255,255,1), #fff, etc.
-  /// Also supports setting as gradient color and pattern fill, see [option.color] for details
-  final String color;
-
-
-  /// Shadow style of the line.
-  final GShadowStyle? shadowStyle;
-
-
-  GItemStyle copyWith({
+  @override
+  GItemBorderStyle copyWith({
+    bool? show,
     String? color,
     int? width,
-    String? type,
+    GBorderType? type,
     int? dashOffset,
+    int? radius,
     String? cap,
     String? join,
-    int? miterLimit,
-    double? opacity,
-    GShadowStyle? shadowStyle,
+    int? mitterLimit,
   }) {
-    return GItemStyle(
+    return GItemBorderStyle(
+      show: show ?? this.show,
       color: color ?? this.color,
       width: width ?? this.width,
       type: type ?? this.type,
       dashOffset: dashOffset ?? this.dashOffset,
+      radius: radius ?? this.radius,
       cap: cap ?? this.cap,
       join: join ?? this.join,
-      miterLimit: miterLimit ?? this.miterLimit,
-      opacity: opacity ?? this.opacity,
-      shadowStyle: shadowStyle ?? this.shadowStyle,
+      mitterLimit: mitterLimit ?? this.mitterLimit,
     );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      'color': color,
-      'width': width,
-      'type': type,
-      'dashOffset': dashOffset,
-      'cap': cap,
-      'join': join,
-      'miterLimit': miterLimit,
-      'opacity': opacity,
-      ...?shadowStyle?.toJson(),
+      ...super.toJson(),
+      'borderCap': cap,
+      'borderJoin': join,
+      'borderMiterLimit': mitterLimit,
     };
   }
+
 
 }

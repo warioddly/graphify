@@ -39,7 +39,7 @@ class GraphifyModel extends model_interface.GraphifyModel {
     this.angleAxis = const GAxis(),
     this.axisPointer = const GAxisPointer(),
     this.polar = const GPolar(),
-    this.legend = const GLegend(),
+    this.legend,
     this.animation,
   });
 
@@ -141,7 +141,7 @@ class GraphifyModel extends model_interface.GraphifyModel {
   /// Legend component shows symbol, color and name of different series.
   /// You can click legends to toggle displaying series in the chart.
   /// If there have to be too many legend items, vertically scrollable legend or horizontally scrollable legend are options to paginate them
-  final GLegend legend;
+  final GLegend? legend;
 
   final GGrid grid;
   final GDecal? decal;
@@ -179,7 +179,7 @@ class GraphifyModel extends model_interface.GraphifyModel {
       'polar': polar.toJson(),
       'grid': grid.toJson(),
       'tooltip': {},
-      'legend': legend.toJson(),
+      'legend': legend?.toJson() ?? {},
       ...?animation?.toJson(),
     };
   }
