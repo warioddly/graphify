@@ -1,4 +1,5 @@
 
+import 'package:graphify/src/core/enums/g_chart_enums.dart';
 import 'package:graphify/src/core/models/interface.dart';
 
 class GBorderStyle extends GraphifyModel {
@@ -7,7 +8,7 @@ class GBorderStyle extends GraphifyModel {
     super.show = false,
     this.color = '#000',
     this.width = 1,
-    this.type = 'solid',
+    this.type = GBorderType.solid,
     this.dashOffset = 0,
     this.radius = 0,
   });
@@ -20,10 +21,10 @@ class GBorderStyle extends GraphifyModel {
 
   /// Stroke line type of the text.
   /// Possible values are:
-  ///  'solid'
-  ///  'dashed'
-  ///  'dotted'
-  final String type;
+  ///  '[GBorderType.solid]'
+  ///  '[GBorderType.dashed]'
+  ///  '[GBorderType.dotted]'
+  final GBorderType type;
 
   /// To set the line dash offset. With [type] , we can make the line style more flexible.
   final int dashOffset;
@@ -38,7 +39,7 @@ class GBorderStyle extends GraphifyModel {
     bool? show,
     String? color,
     int? width,
-    String? type,
+    GBorderType? type,
     int? dashOffset,
     int? radius,
   }) {
@@ -58,7 +59,7 @@ class GBorderStyle extends GraphifyModel {
       'show': show,
       'borderColor': color,
       'borderWidth': width,
-      'borderType': type,
+      'borderType': type.name,
       'borderDashOffset': dashOffset,
       'borderRadius': radius,
     };
