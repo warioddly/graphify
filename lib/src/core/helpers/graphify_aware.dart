@@ -5,9 +5,10 @@ class GraphifyAware extends StatelessWidget {
 
   /// Constructor
   const GraphifyAware({
-    required this.child, Key? key,
+    required this.child,
     this.debug = false,
-  }) : super(key: key);
+    super.key,
+  });
   /// Child widget
   final Widget child;
 
