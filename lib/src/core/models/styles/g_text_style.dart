@@ -1,3 +1,4 @@
+import 'package:graphify/src/core/enums/g_text_enums.dart';
 import 'package:graphify/src/core/models/interface.dart';
 import 'package:graphify/src/core/models/styles/g_border_style.dart';
 import 'package:graphify/src/core/models/styles/g_shadow_style.dart';
@@ -8,13 +9,13 @@ class GTextStyle extends GraphifyModel {
     super.show = true,
     this.color = '#aaa',
     this.fontStyle = 'normal',
-    this.fontWeight = 'bolder',
+    this.fontWeight = GFontWeight.normal,
     this.fontFamily = 'sans-serif',
     this.fontSize = 12,
     this.lineHeight = 12,
     this.width = 0,
     this.height = 0,
-    this.overflow = 'none',
+    this.overflow = GTextOverflow.none,
     this.ellipsis = '...',
     this.shadowStyle = const GShadowStyle(),
     this.borderStyle = const GBorderStyle(),
@@ -26,19 +27,20 @@ class GTextStyle extends GraphifyModel {
   /// Font style.
   ///
   /// Options are:
-  ///   'normal'
-  ///   'italic'
-  ///   'oblique'
+  ///   '[normal]'
+  ///   '[italic]'
+  ///   '[oblique]'
   final String fontStyle;
 
   /// Font thick weight.
   ///
   /// Options are:
-  ///   'normal'
-  ///   'bold'
-  ///   'bolder'
-  ///   'lighter'
-  final String fontWeight;
+  ///   '[GFontWeight.normal]'
+  ///   '[GFontWeight.bold]'
+  ///   '[GFontWeight.bolder]'
+  ///   '[GFontWeight.lighter]'
+  ///   [GFontWeight.w100] | [GFontWeight.w200] | [GFontWeight.w300] | [GFontWeight.w400]...
+  final GFontWeight fontWeight;
 
 
   /// Font family.
@@ -60,10 +62,10 @@ class GTextStyle extends GraphifyModel {
   /// Determine how to display the text when it's overflow.
   ///
   /// Available when [width] is set.
-  /// 'truncate' Truncate the text and trailing with ellipsis.
-  /// 'break' Break by word
-  /// 'breakAll' Break by character.
-  final String overflow;
+  /// '[GTextOverflow.truncate]' Truncate the text and trailing with ellipsis.
+  /// '[GTextOverflow.breaking]' Break by word
+  /// '[GTextOverflow.breakAll]' Break by character.
+  final GTextOverflow overflow;
 
   /// Ellipsis to be displayed when overflow is set to [truncate].
   /// 'truncate' Truncate the overflow lines.
@@ -80,7 +82,7 @@ class GTextStyle extends GraphifyModel {
     bool? show,
     String? color,
     String? fontStyle,
-    String? fontWeight,
+    GFontWeight? fontWeight,
     String? fontFamily,
     int? fontSize,
     int? lineHeight,
@@ -92,7 +94,7 @@ class GTextStyle extends GraphifyModel {
     int? textBorderDashOffset,
     GShadowStyle? shadowStyle,
     GBorderStyle? borderStyle,
-    String? overflow,
+    GTextOverflow? overflow,
     String? ellipsis,
   }) {
     return GTextStyle(
@@ -118,7 +120,7 @@ class GTextStyle extends GraphifyModel {
       'show': show,
       'color': color,
       'fontStyle': fontStyle,
-      'fontWeight': fontWeight,
+      'fontWeight': fontWeight.getName,
       'fontFamily': fontFamily,
       'fontSize': fontSize,
       'lineHeight': lineHeight,
@@ -132,7 +134,7 @@ class GTextStyle extends GraphifyModel {
       'textShadowBlur': shadowStyle.blur,
       'textShadowOffsetX': shadowStyle.offsetX,
       'textShadowOffsetY': shadowStyle.offsetY,
-      'overflow': overflow,
+      'overflow': overflow.getName,
       'ellipsis': ellipsis,
     };
   }
