@@ -1,13 +1,21 @@
 import 'package:graphify/src/shared/models/interface.dart';
 import 'package:graphify/src/shared/models/styles/g_line_style.dart';
 
+
+enum GEmphasisBlurScope {
+  coordinateSystem,
+  cartesian2d,
+  polar,
+}
+
+
 class GEmphasis extends GraphifyModel {
 
   const GEmphasis({
     this.scale = 1.1,
     this.disabled,
     this.focus = 'none',
-    this.blurScope = 'coordinateSystem',
+    this.blurScope = GEmphasisBlurScope.coordinateSystem,
     this.lineStyle,
   });
 
@@ -40,7 +48,7 @@ class GEmphasis extends GraphifyModel {
   /// '[coordinateSystem]'
   /// '[series]'
   /// '[global]'
-  final String blurScope;
+  final GEmphasisBlurScope blurScope;
 
 
   /// The style of the item emphasis.
@@ -49,12 +57,6 @@ class GEmphasis extends GraphifyModel {
   final GLineStyle? lineStyle;
 
 
-
-  GEmphasis copyWith() {
-    return const GEmphasis(
-
-    );
-  }
 
   @override
   Map<String, dynamic> toJson() {

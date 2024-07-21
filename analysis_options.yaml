@@ -50,7 +50,6 @@ linter:
     unrelated_type_equality_checks: true
     always_put_control_body_on_new_line: true
     always_put_required_named_parameters_first: true
-    always_require_non_null_named_parameters: true
     omit_local_variable_types: true
     avoid_single_cascade_in_expression_statements: true
     empty_catches: true

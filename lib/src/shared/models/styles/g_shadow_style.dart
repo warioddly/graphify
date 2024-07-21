@@ -1,11 +1,13 @@
 
+import 'package:graphify/src/core/utils/colors.dart';
+import 'package:graphify/src/core/utils/helpers.dart';
 import 'package:graphify/src/shared/models/interface.dart';
 
 class GShadowStyle extends GraphifyModel {
 
   const GShadowStyle({
     super.show = false,
-    this.color = 'transparent',
+    this.color = GColors.transparent,
     this.blur = 0,
     this.offsetX = 0,
     this.offsetY = 0,
@@ -50,13 +52,13 @@ class GShadowStyle extends GraphifyModel {
   }
 
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([String? prefix]) {
+    prefix = getPrefix(prefix, 'shadow');
     return {
-      'show': show,
-      'shadowColor': color,
-      'shadowBlur': blur,
-      'shadowOffsetX': offsetX,
-      'shadowOffsetY': offsetY,
+      '${prefix}Color': color,
+      '${prefix}Blur': blur,
+      '${prefix}OffsetX': offsetX,
+      '${prefix}OffsetY': offsetY,
     };
   }
 

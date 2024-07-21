@@ -1,10 +1,11 @@
+import 'package:graphify/src/shared/enums/g_chart_enums.dart';
 import 'package:graphify/src/shared/models/interface.dart';
 
 class GStateAnimation extends GraphifyModel {
 
   const GStateAnimation({
     this.duration = 300,
-    this.easing = 'cubicOut',
+    this.easing = GEasing.cubicOut,
   });
 
 
@@ -12,11 +13,12 @@ class GStateAnimation extends GraphifyModel {
   final int duration;
 
   /// Easing of animation.
-  final String easing;
+  final GEasing easing;
+
 
   GStateAnimation copyWith({
     int? duration,
-    String? easing,
+    GEasing? easing,
   }) {
     return GStateAnimation(
       duration: duration ?? this.duration,
@@ -28,7 +30,7 @@ class GStateAnimation extends GraphifyModel {
   Map<String, dynamic> toJson() {
     return {
       'duration': duration,
-      'easing': easing,
+      'easing': easing.name,
     };
   }
 

@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           stack: 'total',
           emphasis: const GEmphasis(
             focus: 'self',
-            blurScope: 'coordinateSystem',
+            blurScope: GEmphasisBlurScope.coordinateSystem,
           ),
         ),
 
@@ -127,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 stack: 'total',
                 emphasis: GEmphasis(
                   focus: 'self',
-                  blurScope: 'coordinateSystem',
+                  blurScope: GEmphasisBlurScope.coordinateSystem,
                 ),
             ),
 

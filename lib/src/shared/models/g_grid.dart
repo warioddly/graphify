@@ -1,3 +1,4 @@
+import 'package:graphify/src/core/utils/colors.dart';
 import 'package:graphify/src/shared/models/interface.dart';
 import 'package:graphify/src/shared/models/other/g_z_level.dart';
 import 'package:graphify/src/shared/models/styles/g_border_style.dart';
@@ -13,7 +14,7 @@ class GGrid extends GraphifyModel {
     this.width = 'auto',
     this.height = 'auto',
     this.containLabel = false,
-    this.backgroundColor = 'transparent',
+    this.backgroundColor = GColors.transparent,
     this.zLevel = const GZLevel(z: 2),
     this.position = const GPosition(
       left: '10%',

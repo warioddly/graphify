@@ -1,3 +1,4 @@
+import 'package:graphify/src/core/utils/colors.dart';
 import 'package:graphify/src/shared/enums/g_text_enums.dart';
 import 'package:graphify/src/shared/models/interface.dart';
 import 'package:graphify/src/shared/models/styles/g_border_style.dart';
@@ -7,19 +8,21 @@ class GTextStyle extends GraphifyModel {
 
   const GTextStyle({
     super.show = true,
-    this.color = '#aaa',
+    this.color = GColors.secondary,
     this.fontStyle = 'normal',
     this.fontWeight = GFontWeight.normal,
     this.fontFamily = 'sans-serif',
     this.fontSize = 12,
-    this.lineHeight = 12,
-    this.width = 0,
-    this.height = 0,
+    this.lineHeight,
+    this.width,
+    this.height,
     this.overflow = GTextOverflow.none,
     this.ellipsis = '...',
-    this.shadowStyle = const GShadowStyle(),
+    this.shadowStyle,
     this.borderStyle = const GBorderStyle(),
-    this.backgroundColor
+    this.backgroundColor,
+    this.align = GTextAlign.auto,
+    this.verticalAlign = GTextAlignVertical.auto,
   });
 
   /// Text color
@@ -52,13 +55,13 @@ class GTextStyle extends GraphifyModel {
   final int fontSize;
 
   /// Line height of the text fragment.
-  final int lineHeight;
+  final int? lineHeight;
 
   /// Width of text block.
-  final int width;
+  final int? width;
 
   /// Height of text block.
-  final int height;
+  final int? height;
 
   /// Determine how to display the text when it's overflow.
   ///
@@ -73,17 +76,30 @@ class GTextStyle extends GraphifyModel {
   final String ellipsis;
 
   /// Shadow style of text.
-  final GShadowStyle shadowStyle;
+  final GShadowStyle? shadowStyle;
 
   /// Border style of text.
-  final GBorderStyle borderStyle;
-
+  final GBorderStyle? borderStyle;
 
   /// Background color of the text fragment.
   ///
   /// Can be color string, like '#123234', 'red', 'rgba(0,23,11,0.3)'.
   /// Or image can be used, for example:
   final String? backgroundColor;
+
+  /// Horizontal alignment of text, automatic by default.
+  /// Options are:
+  /// 'left'
+  /// 'center'
+  /// 'right'
+  final GTextAlign align;
+
+  /// Vertical alignment of text, automatic by default.
+  /// Options are:
+  /// 'top'
+  /// 'middle'
+  /// 'bottom'
+  final GTextAlignVertical verticalAlign;
 
 
   GTextStyle copyWith({
@@ -105,6 +121,8 @@ class GTextStyle extends GraphifyModel {
     GTextOverflow? overflow,
     String? ellipsis,
     String? backgroundColor,
+    GTextAlign? align,
+    GTextAlignVertical? verticalAlign,
   }) {
     return GTextStyle(
       show: show ?? this.show,
@@ -121,6 +139,8 @@ class GTextStyle extends GraphifyModel {
       overflow: overflow ?? this.overflow,
       ellipsis: ellipsis ?? this.ellipsis,
       backgroundColor: backgroundColor ?? this.backgroundColor,
+      align: align ?? this.align,
+      verticalAlign: verticalAlign ?? this.verticalAlign,
     );
   }
 
@@ -136,17 +156,13 @@ class GTextStyle extends GraphifyModel {
       'lineHeight': lineHeight,
       'width': width,
       'height': height,
-      'textBorderColor': borderStyle.color,
-      'textBorderWidth': borderStyle.width,
-      'textBorderType': borderStyle.type.name,
-      'textBorderDashOffset': borderStyle.dashOffset,
-      'textShadowColor': shadowStyle.color,
-      'textShadowBlur': shadowStyle.blur,
-      'textShadowOffsetX': shadowStyle.offsetX,
-      'textShadowOffsetY': shadowStyle.offsetY,
       'overflow': overflow.getName,
       'ellipsis': ellipsis,
       'backgroundColor': backgroundColor,
+      'align': align.name,
+      'verticalAlign': verticalAlign.name,
+      ...?borderStyle?.toJson('text'),
+      ...?shadowStyle?.toJson('text'),
     };
   }
 

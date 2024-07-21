@@ -138,7 +138,7 @@ class GItemBorderStyle extends GBorderStyle {
   }
 
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([String? prefix]) {
     return {
       ...super.toJson(),
       'borderCap': cap,

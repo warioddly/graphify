@@ -1,4 +1,4 @@
-import 'package:graphify/src/core/constants/constants.dart';
+import 'package:graphify/src/core/utils/colors.dart';
 import 'package:graphify/src/shared/enums/g_chart_enums.dart';
 import 'package:graphify/src/shared/models/animations/g_animation.dart';
 import 'package:graphify/src/shared/models/animations/g_state_animation.dart';
@@ -24,8 +24,8 @@ class GraphifyModel extends model_interface.GraphifyModel {
     this.darkMode = false,
     this.series = const [],
     this.hoverLayerThreshold = 300,
-    this.backgroundColor = transparentColor,
-    this.color = colors,
+    this.backgroundColor = GColors.transparent,
+    this.color = GColors.colors,
     this.blendMode = GBlendMode.sourceOver,
     this.title = const GTitle(),
     this.textStyle = const GTextStyle(),

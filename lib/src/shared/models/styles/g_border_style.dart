@@ -1,4 +1,5 @@
 
+import 'package:graphify/src/core/utils/helpers.dart';
 import 'package:graphify/src/shared/enums/g_chart_enums.dart';
 import 'package:graphify/src/shared/models/interface.dart';
 
@@ -54,14 +55,14 @@ class GBorderStyle extends GraphifyModel {
   }
 
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([String? prefix]) {
+    prefix = getPrefix(prefix, 'border');
     return {
-      'show': show,
-      'borderColor': color,
-      'borderWidth': width,
-      'borderType': type.name,
-      'borderDashOffset': dashOffset,
-      'borderRadius': radius,
+      '${prefix}Color': color,
+      '${prefix}Width': width,
+      '${prefix}Type': type.name,
+      '${prefix}DashOffset': dashOffset,
+      '${prefix}Radius': radius,
     };
   }
 

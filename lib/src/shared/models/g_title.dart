@@ -1,3 +1,4 @@
+import 'package:graphify/src/core/utils/colors.dart';
 import 'package:graphify/src/shared/enums/enums.dart';
 import 'package:graphify/src/shared/enums/g_text_enums.dart';
 import 'package:graphify/src/shared/models/interface.dart';
@@ -23,17 +24,13 @@ class GTitle extends GraphifyModel {
     this.triggerEvent = false,
     this.padding = 5,
     this.itemGap = 10,
-    this.backgroundColor = 'transparent',
+    this.backgroundColor = GColors.transparent,
     this.textStyle = const GTextStyle(
-      color: '#333',
+      color: GColors.primary,
       fontSize: 18,
-      fontWeight: GFontWeight.normal,
+      fontWeight: GFontWeight.bolder,
     ),
-    this.subTextStyle = const GTextStyle(
-      color: '#aaa',
-      fontSize: 12,
-      fontWeight: GFontWeight.normal,
-    ),
+    this.subTextStyle = const GTextStyle(),
     this.shadowStyle,
     this.borderStyle,
     this.position = const GPosition(),

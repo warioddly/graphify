@@ -2,7 +2,7 @@ import 'dart:html';
 import 'dart:ui_web';
 import 'package:graphify/src/resources/dependencies.js.dart';
 import 'package:graphify/src/resources/index.html.dart';
-import 'package:graphify/src/core/constants/constants.dart';
+import 'package:graphify/src/core/utils/constants.dart';
 import 'package:graphify/src/core/utils/utils.dart';
 import 'package:graphify/src/view/interface.dart' as view_interface;
 import 'package:flutter/cupertino.dart';
