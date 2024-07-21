@@ -1,7 +1,7 @@
 
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
-import 'package:graphify/src/core/models/charts/interface.dart';
-import 'package:graphify/src/core/models/g_model.dart';
+import 'package:graphify/src/shared/models/charts/interface.dart';
+import 'package:graphify/src/shared/models/g_model.dart';
 
 
 class GraphifyController implements controller_interface.GraphifyController {

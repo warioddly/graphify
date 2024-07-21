@@ -1,7 +1,7 @@
 
 
 import 'package:graphify/src/controller/interface.dart';
-import 'package:graphify/src/core/models/interface.dart';
+import 'package:graphify/src/shared/models/interface.dart';
 import 'package:graphify/src/view/interface.dart' as view;
 import 'package:flutter/cupertino.dart';
 
