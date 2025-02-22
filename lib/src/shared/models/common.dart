@@ -37,8 +37,10 @@ export 'axis/g_axis_minor_tick.dart';
 export 'axis/g_axis_name_truncate.dart';
 
 export 'charts/interface.dart';
-export 'charts/graph/graph_chart.dart';
-export 'charts/gauge/gauge_chart.dart';
-export 'charts/line/line_chart.dart';
-export 'charts/bar/bar_chart.dart';
-export 'charts/pie/pie_chart.dart';
+export 'charts/graph_chart.dart';
+export 'charts/gauge_chart.dart';
+export 'charts/line_chart.dart';
+export 'charts/bar_chart.dart';
+export 'charts/pie_chart.dart';
+export 'charts/candle_stick_chart.dart';
+export 'charts/radar_chart.dart';

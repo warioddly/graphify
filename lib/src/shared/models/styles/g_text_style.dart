@@ -18,7 +18,7 @@ class GTextStyle extends GraphifyModel {
     this.height,
     this.overflow = GTextOverflow.none,
     this.ellipsis = '...',
-    this.shadowStyle,
+    this.shadowStyle = const GShadowStyle(),
     this.borderStyle = const GBorderStyle(),
     this.backgroundColor,
     this.align = GTextAlign.auto,
@@ -71,8 +71,8 @@ class GTextStyle extends GraphifyModel {
   /// '[GTextOverflow.breakAll]' Break by character.
   final GTextOverflow overflow;
 
-  /// Ellipsis to be displayed when overflow is set to [truncate].
-  /// 'truncate' Truncate the overflow lines.
+  /// Ellipsis to be displayed when overflow is set to [GTextOverflow.truncate].
+  /// [GTextOverflow.truncate] Truncate the overflow lines.
   final String ellipsis;
 
   /// Shadow style of text.

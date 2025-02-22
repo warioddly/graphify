@@ -48,7 +48,6 @@ class GCandleChart extends GChartModel {
   String get type => 'candlestick';
 
 
-
   GCandleChart copyWith({
     String? name,
     String? colorBy,

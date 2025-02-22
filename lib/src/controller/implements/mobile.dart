@@ -1,4 +1,5 @@
 
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -46,10 +47,10 @@ class GraphifyController implements controller_interface.GraphifyController {
 
 
   @override
-  Future<void> dispose() {
+  FutureOr<void> dispose() {
     if (identifier.isEmpty) {
       debugPrint("[+] identifier is empty");
-      return Future.value();
+      return null;
     }
     return _eval('window.${GraphifyMethods.disposeChart.name}("$identifier")');
   }

@@ -1,5 +1,6 @@
 
 
+import 'package:graphify/src/shared/enums/g_chart_enums.dart';
 import 'package:graphify/src/shared/models/interface.dart';
 
 class GAnimation extends GraphifyModel {
@@ -8,10 +9,10 @@ class GAnimation extends GraphifyModel {
     this.animation = true,
     this.threshold = 2000,
     this.duration = 1000,
-    this.easing = 'cubicOut',
+    this.easing = GEasing.cubicOut,
     this.delay = 0,
     this.durationUpdate = 300,
-    this.easingUpdate = 'cubicOut',
+    this.easingUpdate = GEasing.cubicOut,
     this.delayUpdate = 0,
   });
 
@@ -20,11 +21,28 @@ class GAnimation extends GraphifyModel {
 
   /// Threshold of data amount to enable animation.
   final int threshold;
+
+  /// Duration of the first animation, which supports callback function for different data to have different animation effect:
   final int duration;
-  final String easing;
+
+  /// Easing method used for the first animation. Varied easing effects can be found at easing effect example.
+  /// https://echarts.apache.org/examples/en/editor.html?c=line-easing
+  final GEasing easing;
+
+  /// Delay before updating the first animation, which supports callback function
+  /// for different data to have different animation effect.
   final int delay;
+
+  /// Time for animation to complete
   final int durationUpdate;
-  final String easingUpdate;
+
+  /// Easing method used for animation.
+  final GEasing easingUpdate;
+
+  /// Delay before updating animation, which supports callback function for
+  /// different data to have different animation effects.
+  ///
+  /// https://echarts.apache.org/examples/en/editor.html?c=bar-animation-delay
   final int delayUpdate;
 
 
@@ -32,10 +50,10 @@ class GAnimation extends GraphifyModel {
     bool? animation,
     int? threshold,
     int? duration,
-    String? easing,
+    GEasing? easing,
     int? delay,
     int? durationUpdate,
-    String? easingUpdate,
+    GEasing? easingUpdate,
     int? delayUpdate,
   }) {
     return GAnimation(
@@ -56,10 +74,10 @@ class GAnimation extends GraphifyModel {
       'animation': animation,
       'animationThreshold': threshold,
       'animationDuration': duration,
-      'animationEasing': easing,
+      'animationEasing': easing.name,
       'animationDelay': delay,
       'animationDurationUpdate': durationUpdate,
-      'animationEasingUpdate': easingUpdate,
+      'animationEasingUpdate': easingUpdate.name,
       'animationDelayUpdate': delayUpdate,
     };
   }

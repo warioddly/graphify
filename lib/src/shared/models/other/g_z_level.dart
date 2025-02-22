@@ -5,7 +5,7 @@ class GZLevel extends GraphifyModel {
 
   const GZLevel({
     this.zLevel = 0,
-    this.z = 0,
+    this.z = 2,
   });
 
   /// [zLevel] value of all graphical elements in .

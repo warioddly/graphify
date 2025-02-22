@@ -44,6 +44,7 @@ abstract class GChartModel extends GraphifyModel {
     this.animation,
     this.emphasis = const GEmphasis(),
     this.lineStyle,
+    this.areaStyle,
   });
 
 
@@ -95,6 +96,8 @@ abstract class GChartModel extends GraphifyModel {
   /// The style of the line.
   final GLineStyle? lineStyle;
 
+  final Map<String, dynamic>? areaStyle;
+
 
 
   @override
@@ -131,6 +134,7 @@ abstract class GChartModel extends GraphifyModel {
       'datasetIndex': datasetIndex,
       'dataGroupId': dataGroupId,
       'data': data,
+      'areaStyle': areaStyle,
       'emphasis': emphasis.toJson(),
       ...zLevel.toJson(),
       ...?animation?.toJson(),

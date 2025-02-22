@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphify_example/core/responsibility.dart';
 import 'package:graphify_example/features/widgets/appbar.dart';
-import 'package:graphify_example/features/widgets/github_floating_button.dart';
 import 'package:graphify_example/features/widgets/sidebar.dart';
 
 
@@ -67,7 +66,6 @@ class ScaffoldWrapper extends StatelessWidget {
 
         ],
       ),
-      floatingActionButton: GithubFloatingActionButton(),
     );
   }
 

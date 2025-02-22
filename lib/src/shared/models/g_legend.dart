@@ -11,13 +11,12 @@ import 'package:graphify/src/shared/models/styles/g_text_style.dart';
 import 'package:graphify/src/shared/models/interface.dart';
 
 
-
 class GLegend extends GraphifyModel {
 
   const GLegend({
     super.id,
     super.show = true,
-    this.zLevel = const GZLevel(z: 2),
+    this.zLevel = const GZLevel(),
     this.width = 'auto',
     this.height = 'auto',
     this.padding = 5,

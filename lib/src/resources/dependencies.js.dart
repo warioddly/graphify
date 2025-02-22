@@ -43,7 +43,6 @@ final String chartScripts = """
       if (typeof option === 'object') return option;
       if (option instanceof String && option.length === 0 || option == null) return {};
       return JSON.parse(option);
-      // return JSON.parse(option.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"\$2": ').replace(/'([^']+?)'/g, '"\$1"'));
     }
     
     

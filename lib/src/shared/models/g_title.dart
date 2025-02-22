@@ -1,5 +1,4 @@
 import 'package:graphify/src/core/utils/colors.dart';
-import 'package:graphify/src/shared/enums/enums.dart';
 import 'package:graphify/src/shared/enums/g_text_enums.dart';
 import 'package:graphify/src/shared/models/interface.dart';
 import 'package:graphify/src/shared/models/other/g_position.dart';
@@ -7,6 +6,14 @@ import 'package:graphify/src/shared/models/other/g_z_level.dart';
 import 'package:graphify/src/shared/models/styles/g_border_style.dart';
 import 'package:graphify/src/shared/models/styles/g_shadow_style.dart';
 import 'package:graphify/src/shared/models/styles/g_text_style.dart';
+
+/// Open the hyper link of main title in specified tab.
+enum GTarget {
+  /// Opening it in current tab
+  self,
+  /// Opening it in a new tab
+  blank,
+}
 
 class GTitle extends GraphifyModel {
 
@@ -31,10 +38,10 @@ class GTitle extends GraphifyModel {
       fontWeight: GFontWeight.bolder,
     ),
     this.subTextStyle = const GTextStyle(),
-    this.shadowStyle,
-    this.borderStyle,
+    this.shadowStyle = const GShadowStyle(),
+    this.borderStyle = const GBorderStyle(),
     this.position = const GPosition(),
-    this.zLevel = const GZLevel(z: 2),
+    this.zLevel = const GZLevel(),
   });
 
   /// The main title text, supporting for \n for newlines.
@@ -127,11 +134,11 @@ class GTitle extends GraphifyModel {
 
 
   /// Border style of title.
-  final GBorderStyle? borderStyle;
+  final GBorderStyle borderStyle;
 
 
   /// Shadow style of title.
-  final GShadowStyle? shadowStyle;
+  final GShadowStyle shadowStyle;
 
 
   /// The text style of title.
@@ -217,8 +224,8 @@ class GTitle extends GraphifyModel {
       'textStyle': textStyle?.toJson(),
       'subTextStyle': subTextStyle?.toJson(),
       ...zLevel.toJson(),
-      ...?shadowStyle?.toJson(),
-      ...?borderStyle?.toJson(),
+      ...shadowStyle.toJson(),
+      ...borderStyle.toJson(),
       ...position.toJson(),
     };
   }

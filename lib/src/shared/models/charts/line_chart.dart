@@ -7,7 +7,6 @@ import 'package:graphify/src/shared/models/other/g_z_level.dart';
 
 class GLineChart extends GChartModel {
 
-
   const GLineChart({
     super.name,
     super.colorBy = 'series',
@@ -16,7 +15,7 @@ class GLineChart extends GChartModel {
     super.yAxisIndex = 0,
     super.polarIndex = 0,
     super.symbol = 'emptyCircle',
-    super.symbolSize = const Size(4, 4),
+    super.symbolSize = const Size(1, 1),
     super.symbolRotate = 0,
     super.symbolOffset = const Size(0, 0),
     super.symbolKeepAspect = false,
@@ -43,6 +42,7 @@ class GLineChart extends GChartModel {
     super.animation = const GAnimation(),
     super.emphasis = const GEmphasis(),
     super.lineStyle,
+    super.areaStyle,
 });
 
   @override

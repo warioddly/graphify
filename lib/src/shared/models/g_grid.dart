@@ -15,7 +15,7 @@ class GGrid extends GraphifyModel {
     this.height = 'auto',
     this.containLabel = false,
     this.backgroundColor = GColors.transparent,
-    this.zLevel = const GZLevel(z: 2),
+    this.zLevel = const GZLevel(),
     this.position = const GPosition(
       left: '10%',
       right: '10%',
