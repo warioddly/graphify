@@ -1,0 +1,44 @@
+name: Deploy 
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  dependencies:
+    name: Build 
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      USERNAME: warioddly
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.29.0"
+          channel: 'stable'
+          cache: true
+    
+      - name: Run Flutter build
+        run: |
+          # Enable web config in flutter
+          flutter config --enable-web
+
+          # Go to example dir
+          cd example
+          
+          # Get project dependencies
+          flutter pub get
+          
+          # Build project
+          flutter build web --release --wasm --base-href="/graphify/"
+
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ env.GITHUB_TOKEN }}
+          publish_dir: ./example/build/web
+          force_orphan: true
+          user_name: 'github-ci[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Publish to gh-pages'
