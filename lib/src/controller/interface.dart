@@ -12,6 +12,4 @@ abstract class GraphifyController {
 
   FutureOr<void> dispose();
 
-  // Future<void> updateData(String options);
-
 }

@@ -7,7 +7,7 @@ import 'package:graphify/src/core/utils/utils.dart';
 import 'package:graphify/src/view/interface.dart' as view_interface;
 import 'package:flutter/cupertino.dart';
 import 'package:graphify/src/controller/implements/web.dart';
-import 'package:graphify/src/shared/models/g_model.dart';
+import 'package:graphify/src/models/g_model.dart';
 
 
 

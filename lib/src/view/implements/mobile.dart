@@ -4,7 +4,7 @@ import 'package:graphify/src/view/interface.dart' as view_interface;
 import 'package:graphify/src/controller/implements/mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:graphify/src/shared/models/g_model.dart';
+import 'package:graphify/src/models/g_model.dart';
 
 class GraphifyView extends StatefulWidget implements view_interface.GraphifyView {
 

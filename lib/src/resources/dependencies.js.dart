@@ -2,7 +2,7 @@
 import 'package:graphify/src/resources/lib/echarts.gl.min.dart';
 import 'package:graphify/src/resources/lib/echarts.min.dart';
 import 'package:graphify/src/resources/lib/jquery.min.dart';
-import 'package:graphify/src/shared/enums/enums.dart';
+import 'package:graphify/src/models/enums/enums.dart';
 
 
 final dependencies =

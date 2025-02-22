@@ -1,6 +1,6 @@
 import 'package:graphify/src/controller/interface.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:graphify/src/shared/models/interface.dart';
+import 'package:graphify/src/models/interface.dart';
 
 abstract class GraphifyView {
 

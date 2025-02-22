@@ -1,4 +1,4 @@
-import 'package:graphify/src/shared/enums/enums.dart';
+import 'package:graphify/src/models/enums/enums.dart';
 
 String scriptsJs(String id) => """
 

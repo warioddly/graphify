@@ -4,10 +4,10 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
-import 'package:graphify/src/shared/enums/enums.dart';
-import 'package:graphify/src/shared/models/charts/interface.dart';
+import 'package:graphify/src/models/enums/enums.dart';
+import 'package:graphify/src/models/charts/interface.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:graphify/src/shared/models/g_model.dart';
+import 'package:graphify/src/models/g_model.dart';
 
 
 class GraphifyController implements controller_interface.GraphifyController {
@@ -57,9 +57,16 @@ class GraphifyController implements controller_interface.GraphifyController {
 
 
   @override
-  Future<void> updateSeries(List<GChartModel> series) {
-    // TODO: implement updateSeries
-    throw UnimplementedError();
+  FutureOr<void> updateSeries(List<GChartModel> series) {
+    if (identifier.isEmpty) {
+      debugPrint("[+] identifier is empty");
+      return null;
+    }
+
+    return _eval('window.${GraphifyMethods.updateChart.name}("$identifier", ${jsonEncode({
+      "series": series.map((e) => e.toJson()).toList(),
+    })})');
+    
   }
 
 
