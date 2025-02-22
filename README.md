@@ -18,18 +18,7 @@ A Flutter package that serves as a bridge to [Apache ECharts](https://echarts.ap
 
 
 ## Installation
-
-Add the dependency to your `pubspec.yaml` with:
-```bash
-dart pub add graphify
-```
-
-Then run:
-```bash
-flutter pub get
-```
-
-
+How quickly you can install the package you can find [here](https://pub.dev/packages/graphify/install).
 
 ## Quick Start
 ### Importing the Package
