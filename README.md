@@ -13,7 +13,7 @@
 
 | ![graph_webkit_dep](https://github.com/user-attachments/assets/2ce1808d-a542-4295-9e3a-4918bcf6053e)   | ![bar_3d_chart](https://github.com/user-attachments/assets/6d50d560-ee8e-4f39-99c4-dc271ba2556c) |
 |:--------------------------------------------------------------------:|:--------------------------------------------------------------------:|
-| ![candle_stick_brush](https://github.com/user-attachments/assets/668c6fef-4068-48d8-9a49-fe00c47ef946) | ![all](https://github.com/user-attachments/assets/0507b10f-f7c8-4302-acca-2cff5424d9a8) |
+| ![candle_stick_brush](https://github.com/user-attachments/assets/668c6fef-4068-48d8-9a49-fe00c47ef946) | ![all](https://github.com/user-attachments/assets/f5890466-0d33-47a2-8603-44b152188814) |
 
 > [See demo](https://warioddly.github.io/graphify/) <br />
 > [Echarts Examples](https://echarts.apache.org/examples/en/index.html) <br />
