@@ -1,7 +1,9 @@
 # GRAPHIFY
 > #### A data visualization charts library, based on Apache ECharts, able to build advanced charts like WebGL 3D, GIS map, etc.
+
 > #### [See demo](https://warioddly.github.io/graphify/).
 > #### [See Echarts Examples](https://echarts.apache.org/examples/en/index.html)
+> #### [Pub.dev](https://pub.dev/packages/graphify/versions)
 
 | ![graph_webkit_dep](https://github.com/user-attachments/assets/2ce1808d-a542-4295-9e3a-4918bcf6053e)    | ![bar_3d_chart](https://github.com/user-attachments/assets/6d50d560-ee8e-4f39-99c4-dc271ba2556c) |
 |:--------------------------------------------------------------------:|:--------------------------------------------------------------------:|
