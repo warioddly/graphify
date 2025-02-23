@@ -4,23 +4,28 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
 import 'package:graphify/src/utils/js_methods.dart';
+import 'package:graphify/src/utils/utils.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class GraphifyController implements controller_interface.GraphifyController {
+  GraphifyController() {
+    uid = Utils.uid();
+  }
+
   late final WebViewController _connector;
 
   @override
-  String identifier = "";
+  late String uid;
 
   @override
   Future<void> update(Map<String, dynamic>? options) async {
-    if (identifier.isEmpty) {
+    if (uid.isEmpty) {
       debugPrint("[+] identifier is empty");
       return;
     }
 
     await _eval(
-        'window.${JsMethods.updateChart}("$identifier", ${jsonEncode(options ?? {})})');
+        'window.${JsMethods.updateChart}("$uid", ${jsonEncode(options ?? {})})');
   }
 
   set connector(WebViewController connector) {
@@ -36,10 +41,10 @@ class GraphifyController implements controller_interface.GraphifyController {
 
   @override
   FutureOr<void> dispose() {
-    if (identifier.isEmpty) {
+    if (uid.isEmpty) {
       debugPrint("[+] identifier is empty");
       return null;
     }
-    return _eval('window.${JsMethods.disposeChart}("$identifier")');
+    return _eval('window.${JsMethods.disposeChart}("$uid")');
   }
 }

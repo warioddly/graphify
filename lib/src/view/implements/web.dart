@@ -5,16 +5,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:graphify/src/controller/implements/web.dart';
 import 'package:graphify/src/resources/dependencies.js.dart';
 import 'package:graphify/src/resources/index.html.dart';
-import 'package:graphify/src/utils/constants.dart';
-import 'package:graphify/src/utils/utils.dart';
-import 'package:graphify/src/view/interface.dart' as view_interface;
+import 'package:graphify/src/view/interface.dart' as g_view;
 
-class GraphifyView extends StatefulWidget
-    implements view_interface.GraphifyView {
+const _chartDependencyId = 'e-chart-dependency';
+
+class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
   const GraphifyView({
     super.key,
     this.controller,
     this.initialOptions,
+    this.onConsoleMessage,
   });
 
   @override
@@ -24,18 +24,22 @@ class GraphifyView extends StatefulWidget
   final Map<String, dynamic>? initialOptions;
 
   @override
+  final g_view.OnConsoleMessage? onConsoleMessage;
+
+  @override
   State<StatefulWidget> createState() => _GraphifyViewWeb();
 }
 
-class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> {
-  late final _controller = widget.controller ?? GraphifyController();
+class _GraphifyViewWeb extends g_view.GraphifyViewState<GraphifyView> {
   late IFrameElement iframe;
-  var identifier = '';
+  late final _controller = widget.controller ?? GraphifyController();
 
   @override
   void initView() {
-    registerView(identifier = Utils.uid());
-    _controller.identifier = identifier;
+    platformViewRegistry.registerViewFactory(
+      _controller.uid,
+      createIFrameElement,
+    );
 
     initChartDependencies();
 
@@ -44,54 +48,43 @@ class _GraphifyViewWeb extends view_interface.GraphifyViewState<GraphifyView> {
 
   @override
   Widget buildView() {
-    viewInitialized = true;
     return view = HtmlElementView(
       key: UniqueKey(),
-      viewType: identifier,
+      viewType: _controller.uid,
     );
   }
 
-  IFrameElement createIFrameElement() {
+  IFrameElement createIFrameElement(_) {
     iframe = IFrameElement()
-      ..id = 'id_$identifier'
-      ..name = 'name_$identifier'
+      ..id = 'id_${_controller.uid}'
+      ..name = 'name_${_controller.uid}'
       ..classes = ["graphify"]
       ..style.border = 'none';
 
     return iframe;
   }
 
-  void registerView(String identifier) {
-    if (identifier.isEmpty) {
-      throw FlutterError("identifier is empty");
-    }
-
-    platformViewRegistry.registerViewFactory(
-        identifier, (int viewId) => createIFrameElement());
-  }
-
   void initViewContent() {
-    if (viewInitialized) {
-      iframe.srcdoc = indexHtml(
-        id: identifier,
+    iframe
+      ..srcdoc = indexHtml(
+        id: _controller.uid,
         enableDependency: false,
-      );
-
-      iframe.onLoad.listen((event) {
+      )
+      ..onLoad.listen((event) {
         _controller.update(widget.initialOptions);
+      })
+      ..onError.listen((event) {
+        widget.onConsoleMessage?.call(event.toString());
       });
-    } else {
-      throw FlutterError('View is not initialized');
-    }
   }
 
   void initChartDependencies() {
     final dependencyScript =
-        window.document.querySelector("#$eChartDependencyId");
+        window.document.querySelector("#$_chartDependencyId");
 
     if (dependencyScript == null) {
       final scriptElement = ScriptElement()
-        ..id = eChartDependencyId
+        ..id = _chartDependencyId
         ..innerHtml = dependencies;
 
       final dom = window.document;

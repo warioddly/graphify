@@ -17,6 +17,7 @@ String indexHtml({ required String id, bool enableDependency = true}) {
           height: -webkit-fill-available;
           box-sizing: content-box;
           margin: 0;
+          overflow: hidden;
         }
         #chart {
           height: -webkit-fill-available;

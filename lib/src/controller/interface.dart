@@ -2,7 +2,7 @@ import 'dart:async';
 
 abstract class GraphifyController {
 
-  String identifier = "";
+  String get uid;
 
   FutureOr<void> update(Map<String, dynamic>? options);
 

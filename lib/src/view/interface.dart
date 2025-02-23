@@ -1,31 +1,27 @@
-import 'package:graphify/src/controller/interface.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:graphify/src/controller/interface.dart';
+
+typedef OnConsoleMessage = void Function(String message);
 
 abstract class GraphifyView {
-
-  GraphifyView({
+  const GraphifyView({
     this.controller,
     this.initialOptions,
+    this.onConsoleMessage,
   });
 
   final GraphifyController? controller;
 
   final Map<String, dynamic>? initialOptions;
 
+  final OnConsoleMessage? onConsoleMessage;
+
 }
 
-
 abstract class GraphifyViewState<T extends StatefulWidget> extends State<T> {
-
-
   late Widget view;
 
-
-  bool viewInitialized = false;
-
-
   Size get size => MediaQuery.of(context).size;
-
 
   @override
   void initState() {
@@ -34,22 +30,11 @@ abstract class GraphifyViewState<T extends StatefulWidget> extends State<T> {
     buildView();
   }
 
-
   @override
   Widget build(BuildContext context) => view;
 
-
   Widget buildView();
 
-
   void initView();
-
-
-  void updateState(VoidCallback fn) {
-    if (mounted) {
-      setState(fn);
-    }
-  }
-
 
 }

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:graphify/src/controller/implements/mobile.dart';
 import 'package:graphify/src/resources/index.html.dart';
-import 'package:graphify/src/utils/utils.dart';
-import 'package:graphify/src/view/interface.dart' as view_interface;
+import 'package:graphify/src/view/interface.dart' as g_view;
 import 'package:webview_flutter/webview_flutter.dart';
 
-class GraphifyView extends StatefulWidget
-    implements view_interface.GraphifyView {
+class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
+  
   const GraphifyView({
     super.key,
     this.controller,
     this.initialOptions,
+    this.onConsoleMessage,
   });
 
   @override
@@ -18,44 +18,49 @@ class GraphifyView extends StatefulWidget
 
   @override
   final Map<String, dynamic>? initialOptions;
+  
+  @override
+  final g_view.OnConsoleMessage? onConsoleMessage;
 
   @override
   State<StatefulWidget> createState() => _GraphifyViewMobile();
 }
 
-class _GraphifyViewMobile
-    extends view_interface.GraphifyViewState<GraphifyView> {
+class _GraphifyViewMobile extends g_view.GraphifyViewState<GraphifyView> {
+  
   late WebViewController webViewController;
-  late var controller = widget.controller ?? GraphifyController();
+  late final _controller = widget.controller ?? GraphifyController();
 
   @override
   void initView() {
-    controller.identifier = Utils.uid();
-
     webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
-      ..loadHtmlString(
-          indexHtml(id: controller.identifier, enableDependency: true))
+      ..loadHtmlString(indexHtml(id: _controller.uid, enableDependency: true))
       ..setOnConsoleMessage((message) {
-        debugPrint("[+] onConsoleMessage ${message.message}");
-      });
+        debugPrint("Console: ${message.message}");
+        widget.onConsoleMessage?.call(message.message);
+      })
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageFinished: (url) {
+            _controller.update(widget.initialOptions);
+          },
+        ),
+      );
 
-    controller.connector = webViewController;
+    _controller.connector = webViewController;
 
-    Future.delayed(
-        Duration.zero, () => controller.update(widget.initialOptions));
   }
 
   @override
   Widget buildView() {
-    viewInitialized = true;
     return view = WebViewWidget(controller: webViewController);
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 }

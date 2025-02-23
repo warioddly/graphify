@@ -35,6 +35,9 @@ class _BasicLineChartState extends State<BasicLineChart> {
   Widget build(BuildContext context) {
     return GraphifyView(
       controller: controller,
+      onConsoleMessage: (message) {
+        print("awdawd message$message");
+      },
       initialOptions: const {
         "xAxis": {
           "type": "category",

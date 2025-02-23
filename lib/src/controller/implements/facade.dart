@@ -3,7 +3,7 @@ import 'package:graphify/src/controller/interface.dart' as controller_interface;
 class GraphifyController implements controller_interface.GraphifyController {
 
   @override
-  String identifier = "";
+  String uid = "";
 
   @override
   Future<void> update(Map<String, dynamic>? options) {

@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:graphify/src/controller/interface.dart';
-import 'package:graphify/src/view/interface.dart' as view;
+import 'package:graphify/src/view/interface.dart' as g_view;
 
-class GraphifyView extends StatelessWidget implements view.GraphifyView {
+class GraphifyView extends StatelessWidget implements g_view.GraphifyView {
   const GraphifyView({
     super.key,
     this.controller,
     this.initialOptions,
+    this.onConsoleMessage,
   });
 
   @override
@@ -14,6 +15,9 @@ class GraphifyView extends StatelessWidget implements view.GraphifyView {
 
   @override
   final Map<String, dynamic>? initialOptions;
+
+  @override
+  final g_view.OnConsoleMessage? onConsoleMessage;
 
   @override
   Widget build(BuildContext context) {
