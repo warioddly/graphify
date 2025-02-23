@@ -1,15 +1,32 @@
+![graphify_banner](https://github.com/user-attachments/assets/ff14b1f9-c1f6-4684-ad3e-8ce0b822b7d2)
+
+<a href="https://pub.dartlang.org/packages/graphify"><img alt="Pub Package" src="https://img.shields.io/pub/v/graphify.svg"></a>
+<a href="https://pub.dev/packages/graphify"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/warioddly/graphify"></a>
+<a href="https://githubc.com/warioddly/graphify/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/warioddly/graphify" alt="GitHub closed issues"></a>
+<a href="https://githubc.com/warioddly/graphify/issues"><img src="https://img.shields.io/github/issues/warioddly/graphify" alt="GitHub open issues"></a>
+<a href="https://github.com/warioddly/graphify/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/warioddly/graphify"></a>
+<a href="https://github.com/warioddly/graphify/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributing"></a>
+
 # GRAPHIFY
-> #### A data visualization charts library, based on Apache ECharts, able to build advanced charts like WebGL 3D, GIS map, etc.
+> ### A data visualization charts library, based on Apache ECharts, able to build advanced charts like WebGL 3D, GIS map, etc.
+> A Flutter package that serves as a bridge to [Apache ECharts](https://echarts.apache.org/) for creating interactive charts and data visualizations in your Flutter applications.
 
-> #### [See demo](https://warioddly.github.io/graphify/).
-> #### [See Echarts Examples](https://echarts.apache.org/examples/en/index.html)
-> #### [Pub.dev](https://pub.dev/packages/graphify/versions)
-
-| ![graph_webkit_dep](https://github.com/user-attachments/assets/2ce1808d-a542-4295-9e3a-4918bcf6053e)    | ![bar_3d_chart](https://github.com/user-attachments/assets/6d50d560-ee8e-4f39-99c4-dc271ba2556c) |
+| ![graph_webkit_dep](https://github.com/user-attachments/assets/2ce1808d-a542-4295-9e3a-4918bcf6053e)   | ![bar_3d_chart](https://github.com/user-attachments/assets/6d50d560-ee8e-4f39-99c4-dc271ba2556c) |
 |:--------------------------------------------------------------------:|:--------------------------------------------------------------------:|
-| ![candle_stick_brush](https://github.com/user-attachments/assets/668c6fef-4068-48d8-9a49-fe00c47ef946) | ![all](https://github.com/user-attachments/assets/2403f837-8870-4eba-a75c-30d41e7e543f) |
+| ![candle_stick_brush](https://github.com/user-attachments/assets/668c6fef-4068-48d8-9a49-fe00c47ef946) | ![all](https://github.com/user-attachments/assets/0507b10f-f7c8-4302-acca-2cff5424d9a8) |
 
-A Flutter package that serves as a bridge to [Apache ECharts](https://echarts.apache.org/) for creating interactive charts and data visualizations in your Flutter applications.
+> [See demo](https://warioddly.github.io/graphify/) <br />
+> [Echarts Examples](https://echarts.apache.org/examples/en/index.html) <br />
+> [Pub.dev](https://pub.dev/packages/graphify/versions) <br />
+
+## Content
+> [Features](/README.md#features) <br />
+> [Installation](/README.md#installation) <br />
+> [Quick Start](/README.md#quick-start) <br />
+> [Basic Example](/README.md#basic-example) <br />
+> [Parameters and Settings](/README.md#parameters-and-settings) <br />
+> [License](/README.md#license) <br />
+> [Contributing](/README.md#contributing) <br />
 
 
 ## Features
