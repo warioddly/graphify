@@ -17,7 +17,7 @@
 
 > [See demo](https://warioddly.github.io/graphify/) <br />
 > [Echarts Examples](https://echarts.apache.org/examples/en/index.html) <br />
-> [Pub.dev](https://pub.dev/packages/graphify/versions) <br />
+> [Pub.dev](https://pub.dev/packages/graphify) <br />
 
 ## Content
 > [Features](/README.md#features) <br />
