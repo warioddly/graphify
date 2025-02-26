@@ -2,7 +2,8 @@ name: Deploy
 
 on:
   push:
-    branches: [ "main" ]
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
 
 jobs:
   dependencies:
@@ -18,7 +19,7 @@ jobs:
           flutter-version: "3.29.0"
           channel: 'stable'
           cache: true
-    
+
       - name: Run Flutter build
         run: |
           # Enable web config in flutter
