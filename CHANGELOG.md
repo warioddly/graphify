@@ -1,8 +1,13 @@
+## 1.0.9
+
+* Add linear, radial gradient support for charts
+
+## 1.0.8
+
+* Optimize and refactor the code
+
 ## 0.0.2
 
 * Add support update chart 
 * Adding example of how to use graphify
 
-## 1.0.8
-
-* Optimize and refactor the code
