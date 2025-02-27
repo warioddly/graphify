@@ -5,7 +5,6 @@ import 'package:graphify/src/view/interface.dart' as g_view;
 import 'package:webview_flutter/webview_flutter.dart';
 
 class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
-  
   const GraphifyView({
     super.key,
     this.controller,
@@ -18,7 +17,7 @@ class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
 
   @override
   final Map<String, dynamic>? initialOptions;
-  
+
   @override
   final g_view.OnConsoleMessage? onConsoleMessage;
 
@@ -27,30 +26,20 @@ class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
 }
 
 class _GraphifyViewMobile extends g_view.GraphifyViewState<GraphifyView> {
-  
   late WebViewController webViewController;
   late final _controller = widget.controller ?? GraphifyController();
 
   @override
   void initView() {
-    webViewController = WebViewController()
+    _controller.connector = webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(const Color(0x00000000))
       ..loadHtmlString(indexHtml(id: _controller.uid, enableDependency: true))
-      ..setOnConsoleMessage((message) {
-        debugPrint("Console: ${message.message}");
-        widget.onConsoleMessage?.call(message.message);
-      })
-      ..setNavigationDelegate(
-        NavigationDelegate(
-          onPageFinished: (url) {
-            _controller.update(widget.initialOptions);
-          },
-        ),
-      );
-
-    _controller.connector = webViewController;
-
+      ..setOnConsoleMessage(
+        (message) => widget.onConsoleMessage?.call(message.message),
+      )
+      ..setNavigationDelegate(NavigationDelegate(
+        onPageFinished: (_) => _controller.update(widget.initialOptions),
+      ));
   }
 
   @override
@@ -60,7 +49,9 @@ class _GraphifyViewMobile extends g_view.GraphifyViewState<GraphifyView> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    if (widget.controller == null) {
+      _controller.dispose();
+    }
     super.dispose();
   }
 }

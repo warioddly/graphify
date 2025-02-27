@@ -3,17 +3,16 @@ import 'package:graphify/src/controller/interface.dart' as controller_interface;
 class GraphifyController implements controller_interface.GraphifyController {
 
   @override
-  String uid = "";
+  final String uid = "";
 
   @override
-  Future<void> update(Map<String, dynamic>? options) {
-    throw UnimplementedError();
+  void update(Map<String, dynamic>? options) {
+    throw UnimplementedError("update() is not implemented");
   }
 
   @override
-  Future<void> dispose() {
-    throw UnimplementedError();
+  void dispose() {
+    throw UnimplementedError("dispose() is not implemented");
   }
-
 
 }

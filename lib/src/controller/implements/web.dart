@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'dart:js';
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
-import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
 import 'package:graphify/src/utils/js_methods.dart';
 import 'package:graphify/src/utils/utils.dart';
+import 'package:web/web.dart';
 
 class GraphifyController implements controller_interface.GraphifyController {
   GraphifyController() {
@@ -12,25 +13,19 @@ class GraphifyController implements controller_interface.GraphifyController {
   }
 
   @override
-  late String uid;
+  late final String uid;
 
   @override
-  Future<void> update(Map<String, dynamic>? options) async {
-    if (uid.isEmpty) {
-      debugPrint("[+] identifier is empty");
-      return;
-    }
-
-    context.callMethod(JsMethods.updateChart, [uid, jsonEncode(options ?? {})]);
+  void update(Map<String, dynamic>? options) {
+    window.callMethod(
+      JsMethods.updateChart.toJS,
+      uid.toJS,
+      jsonEncode(options ?? {}).toJS,
+    );
   }
 
   @override
-  Future<void> dispose() async {
-    if (uid.isEmpty) {
-      debugPrint("[+] identifier is empty");
-      return;
-    }
-
-    context.callMethod(JsMethods.disposeChart, [uid]);
+  void dispose() {
+    window.callMethod(JsMethods.disposeChart.toJS, uid.toJS);
   }
 }
