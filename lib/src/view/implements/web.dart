@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:js_interop';
 import 'dart:ui_web';
 
 import 'package:flutter/cupertino.dart';
@@ -6,8 +6,9 @@ import 'package:graphify/src/controller/implements/web.dart';
 import 'package:graphify/src/resources/dependencies.js.dart';
 import 'package:graphify/src/resources/index.html.dart';
 import 'package:graphify/src/view/interface.dart' as g_view;
+import 'package:web/web.dart';
 
-const _chartDependencyId = 'e-chart-dependency';
+const _chartDependencyId = 'graphify-chart-dependency';
 
 class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
   const GraphifyView({
@@ -31,64 +32,54 @@ class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
 }
 
 class _GraphifyViewWeb extends g_view.GraphifyViewState<GraphifyView> {
-  late IFrameElement iframe;
+
   late final _controller = widget.controller ?? GraphifyController();
+
+  String get _uid => _controller.uid;
 
   @override
   void initView() {
-    platformViewRegistry.registerViewFactory(
-      _controller.uid,
-      createIFrameElement,
-    );
-
     initChartDependencies();
-
-    Future.delayed(Duration.zero, initViewContent);
+    platformViewRegistry.registerViewFactory(
+      _uid,
+      createHTMLIFrameElement,
+    );
   }
 
   @override
   Widget buildView() {
-    return view = HtmlElementView(
-      key: UniqueKey(),
-      viewType: _controller.uid,
-    );
+    return view = HtmlElementView(viewType: _uid);
   }
 
-  IFrameElement createIFrameElement(_) {
-    iframe = IFrameElement()
-      ..id = 'id_${_controller.uid}'
-      ..name = 'name_${_controller.uid}'
-      ..classes = ["graphify"]
-      ..style.border = 'none';
+  HTMLIFrameElement createHTMLIFrameElement(_) {
+    final iframe = HTMLIFrameElement()
+      ..id = 'graphify_$_uid'
+      ..style.width  = '100%'
+      ..style.height = '100%'
+      ..style.border = 'none'
+      ..srcdoc = indexHtml(
+        id: _uid,
+        enableDependency: false,
+      ).toJS
+      ..onLoad.listen((_) => _controller.update(widget.initialOptions))
+      ..onError.listen((event) {
+        widget.onConsoleMessage?.call(event.toString());
+      });
 
     return iframe;
   }
 
-  void initViewContent() {
-    iframe
-      ..srcdoc = indexHtml(
-        id: _controller.uid,
-        enableDependency: false,
-      )
-      ..onLoad.listen((event) {
-        _controller.update(widget.initialOptions);
-      })
-      ..onError.listen((event) {
-        widget.onConsoleMessage?.call(event.toString());
-      });
-  }
-
   void initChartDependencies() {
-    final dependencyScript =
-        window.document.querySelector("#$_chartDependencyId");
+    final document = window.document;
+    final dependencyScripts = document.querySelector("#$_chartDependencyId");
 
-    if (dependencyScript == null) {
-      final scriptElement = ScriptElement()
+    if (dependencyScripts == null) {
+      final scriptElement = HTMLScriptElement()
         ..id = _chartDependencyId
-        ..innerHtml = dependencies;
+        ..innerHTML = dependencies.toJS;
 
       final dom = window.document;
-      final body = dom.documentElement?.children.last;
+      final body = dom.documentElement?.children.item(1);
 
       body?.append(scriptElement);
     }
@@ -96,7 +87,9 @@ class _GraphifyViewWeb extends g_view.GraphifyViewState<GraphifyView> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    if (widget.controller == null) {
+      _controller.dispose();
+    }
     super.dispose();
   }
 }
