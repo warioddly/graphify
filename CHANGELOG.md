@@ -1,3 +1,9 @@
+
+## 1.1.0
+
+* Fix bug with background color
+* Optimize render
+
 ## 1.0.9
 
 * Add linear, radial gradient support for charts
