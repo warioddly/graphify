@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphify/src/controller/implements/mobile.dart';
+import 'package:graphify/src/resources/dependencies.js.dart';
 import 'package:graphify/src/resources/index.html.dart';
 import 'package:graphify/src/view/interface.dart' as g_view;
 import 'package:webview_flutter/webview_flutter.dart';
@@ -10,6 +11,7 @@ class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
     this.controller,
     this.initialOptions,
     this.onConsoleMessage,
+    this.onCreated,
   });
 
   @override
@@ -20,6 +22,9 @@ class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
 
   @override
   final g_view.OnConsoleMessage? onConsoleMessage;
+
+  @override
+  final VoidCallback? onCreated;
 
   @override
   State<StatefulWidget> createState() => _GraphifyViewMobile();
@@ -33,12 +38,21 @@ class _GraphifyViewMobile extends g_view.GraphifyViewState<GraphifyView> {
   void initView() {
     _controller.connector = webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadHtmlString(indexHtml(id: _controller.uid, enableDependency: true))
+      ..setBackgroundColor(Colors.transparent)
+      ..loadHtmlString(
+        indexHtml(
+          id: _controller.uid,
+          dependencies: "<script>$dependencies</script>",
+        ),
+      )
       ..setOnConsoleMessage(
         (message) => widget.onConsoleMessage?.call(message.message),
       )
       ..setNavigationDelegate(NavigationDelegate(
-        onPageFinished: (_) => _controller.update(widget.initialOptions),
+        onPageFinished: (_) async {
+          widget.onCreated?.call();
+          await _controller.update(widget.initialOptions);
+        },
       ));
   }
 

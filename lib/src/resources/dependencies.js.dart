@@ -41,4 +41,3 @@ const String chartScripts = """
     
 """;
 
-const htmlDependencies = "<script>$dependencies</script>";

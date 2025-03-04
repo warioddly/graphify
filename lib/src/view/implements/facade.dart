@@ -8,6 +8,7 @@ class GraphifyView extends StatelessWidget implements g_view.GraphifyView {
     this.controller,
     this.initialOptions,
     this.onConsoleMessage,
+    this.onCreated,
   });
 
   @override
@@ -18,6 +19,9 @@ class GraphifyView extends StatelessWidget implements g_view.GraphifyView {
 
   @override
   final g_view.OnConsoleMessage? onConsoleMessage;
+
+  @override
+  final VoidCallback? onCreated;
 
   @override
   Widget build(BuildContext context) {

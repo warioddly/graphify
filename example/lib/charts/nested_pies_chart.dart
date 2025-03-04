@@ -9,6 +9,7 @@ class NestedPiesChart extends StatelessWidget {
     return GraphifyView(
       controller: GraphifyController(),
       initialOptions: const {
+        "backgroundColor": 'transparent',
         "tooltip": {"trigger": "item", "formatter": "{a} <br/>{b}: {c} ({d}%)"},
         "legend": {
           "data": [
