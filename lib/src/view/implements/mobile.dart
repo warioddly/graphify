@@ -10,6 +10,7 @@ class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
     this.controller,
     this.initialOptions,
     this.onConsoleMessage,
+    this.onCreated,
   });
 
   @override
@@ -22,6 +23,9 @@ class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
   final g_view.OnConsoleMessage? onConsoleMessage;
 
   @override
+  final VoidCallback? onCreated;
+
+  @override
   State<StatefulWidget> createState() => _GraphifyViewMobile();
 }
 
@@ -31,15 +35,25 @@ class _GraphifyViewMobile extends g_view.GraphifyViewState<GraphifyView> {
 
   @override
   void initView() {
-    _controller.connector = webViewController = WebViewController()
+    _controller.connector = webViewController = WebViewController();
+
+    webViewController
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadHtmlString(indexHtml(id: _controller.uid, enableDependency: true))
+      ..setBackgroundColor(Colors.transparent)
+      ..loadHtmlString(indexHtml(
+        id: _controller.uid,
+        backgroundColor: widget.initialOptions?['backgroundColor'],
+      ))
       ..setOnConsoleMessage(
-        (message) => widget.onConsoleMessage?.call(message.message),
+          (message) => widget.onConsoleMessage?.call(message.message),
       )
       ..setNavigationDelegate(NavigationDelegate(
-        onPageFinished: (_) => _controller.update(widget.initialOptions),
+        onPageFinished: (_) async {
+          widget.onCreated?.call();
+          await _controller.update(widget.initialOptions);
+        },
       ));
+
   }
 
   @override

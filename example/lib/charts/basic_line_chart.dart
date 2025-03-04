@@ -36,9 +36,10 @@ class _BasicLineChartState extends State<BasicLineChart> {
     return GraphifyView(
       controller: controller,
       onConsoleMessage: (message) {
-        print("awdawd message$message");
+        print("[ERROR] $message");
       },
       initialOptions: const {
+        "backgroundColor": 'transparent',
         "xAxis": {
           "type": "category",
           "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]

@@ -8,6 +8,7 @@ abstract class GraphifyView {
     this.controller,
     this.initialOptions,
     this.onConsoleMessage,
+    this.onCreated,
   });
 
   final GraphifyController? controller;
@@ -16,12 +17,12 @@ abstract class GraphifyView {
 
   final OnConsoleMessage? onConsoleMessage;
 
+  final VoidCallback? onCreated;
+
 }
 
 abstract class GraphifyViewState<T extends StatefulWidget> extends State<T> {
   late Widget view;
-
-  Size get size => MediaQuery.of(context).size;
 
   @override
   void initState() {

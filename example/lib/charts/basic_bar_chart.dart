@@ -14,6 +14,7 @@ class BasicBarChart extends StatefulWidget {
 class _BasicBarChartState extends State<BasicBarChart> {
 
   final controller = GraphifyController();
+  var _chartCreated = false;
   Timer? timer;
 
   @override
@@ -33,23 +34,51 @@ class _BasicBarChartState extends State<BasicBarChart> {
 
   @override
   Widget build(BuildContext context) {
-    return GraphifyView(
-      controller: controller,
-      initialOptions: const {
-        "xAxis": {
-          "type": "category",
-          "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-        },
-        "yAxis": {
-          "type": "value"
-        },
-        "series": [
-          {
-            "data": [120, 200, 150, 80, 70, 110, 130],
-            "type": "bar"
-          }
-        ]
-      },
+    return Stack(
+      children: [
+
+        GraphifyView(
+            controller: controller,
+            onCreated: () async {
+              await Future.delayed(const Duration(milliseconds: 400));
+              setState(() {
+                _chartCreated = true;
+              });
+            },
+            initialOptions: const {
+              'backgroundColor': 'transparent',
+              "xAxis": {
+                "type": "category",
+                "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+              },
+              "yAxis": {
+                "type": "value"
+              },
+              "series": [
+                {
+                  "data": [120, 200, 150, 80, 70, 110, 130],
+                  "type": "bar"
+                }
+              ],
+            },
+          ),
+
+        if (!_chartCreated)
+          Positioned.fill(
+            child: Container(
+              color: Colors.white,
+              child: const Center(
+                child: SizedBox.square(
+                  dimension: 100,
+                  child: CircularProgressIndicator.adaptive(
+                      backgroundColor: Colors.green,
+                  ),
+                )
+              )
+            ),
+          ),
+
+      ],
     );
   }
 

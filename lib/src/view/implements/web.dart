@@ -16,6 +16,7 @@ class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
     this.controller,
     this.initialOptions,
     this.onConsoleMessage,
+    this.onCreated,
   });
 
   @override
@@ -26,6 +27,9 @@ class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
 
   @override
   final g_view.OnConsoleMessage? onConsoleMessage;
+
+  @override
+  final VoidCallback? onCreated;
 
   @override
   State<StatefulWidget> createState() => _GraphifyViewWeb();
@@ -48,6 +52,7 @@ class _GraphifyViewWeb extends g_view.GraphifyViewState<GraphifyView> {
 
   @override
   Widget buildView() {
+    widget.onCreated?.call();
     return view = HtmlElementView(viewType: _uid);
   }
 
@@ -58,8 +63,9 @@ class _GraphifyViewWeb extends g_view.GraphifyViewState<GraphifyView> {
       ..style.height = '100%'
       ..style.border = 'none'
       ..srcdoc = indexHtml(
-        id: _uid,
-        enableDependency: false,
+          id: _uid,
+          enableDependency: false,
+          backgroundColor: widget.initialOptions?['backgroundColor'],
       ).toJS
       ..onLoad.listen((_) => _controller.update(widget.initialOptions))
       ..onError.listen((event) {
