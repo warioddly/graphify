@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphify/src/controller/implements/mobile.dart';
+import 'package:graphify/src/resources/dependencies.js.dart';
 import 'package:graphify/src/resources/index.html.dart';
 import 'package:graphify/src/view/interface.dart' as g_view;
 import 'package:webview_flutter/webview_flutter.dart';
@@ -35,17 +36,17 @@ class _GraphifyViewMobile extends g_view.GraphifyViewState<GraphifyView> {
 
   @override
   void initView() {
-    _controller.connector = webViewController = WebViewController();
-
-    webViewController
+    _controller.connector = webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(Colors.transparent)
-      ..loadHtmlString(indexHtml(
-        id: _controller.uid,
-        backgroundColor: widget.initialOptions?['backgroundColor'],
-      ))
+      ..loadHtmlString(
+        indexHtml(
+          id: _controller.uid,
+          dependencies: "<script>$dependencies</script>",
+        ),
+      )
       ..setOnConsoleMessage(
-          (message) => widget.onConsoleMessage?.call(message.message),
+        (message) => widget.onConsoleMessage?.call(message.message),
       )
       ..setNavigationDelegate(NavigationDelegate(
         onPageFinished: (_) async {
@@ -53,7 +54,6 @@ class _GraphifyViewMobile extends g_view.GraphifyViewState<GraphifyView> {
           await _controller.update(widget.initialOptions);
         },
       ));
-
   }
 
   @override

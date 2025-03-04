@@ -62,11 +62,7 @@ class _GraphifyViewWeb extends g_view.GraphifyViewState<GraphifyView> {
       ..style.width  = '100%'
       ..style.height = '100%'
       ..style.border = 'none'
-      ..srcdoc = indexHtml(
-          id: _uid,
-          enableDependency: false,
-          backgroundColor: widget.initialOptions?['backgroundColor'],
-      ).toJS
+      ..srcdoc = indexHtml(id: _uid).toJS
       ..onLoad.listen((_) => _controller.update(widget.initialOptions))
       ..onError.listen((event) {
         widget.onConsoleMessage?.call(event.toString());
