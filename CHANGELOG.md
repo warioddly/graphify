@@ -1,3 +1,6 @@
+## 1.1.1
+
+* Fix bug in old versions Flutter "Try changing the name to the name of an existing improvement, or identify an improvement, or a field named "r"."
 
 ## 1.1.0
 
