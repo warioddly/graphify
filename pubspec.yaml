@@ -4,7 +4,7 @@ repository: "https://github.com/warioddly/graphify"
 documentation: "https://echarts.apache.org/en/option.html#title"
 issue_tracker: "https://github.com/warioddly/graphify/issues"
 
-version: 1.1.0
+version: 1.1.1
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
