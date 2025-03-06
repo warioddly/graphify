@@ -4,17 +4,24 @@ import 'dart:js_interop_unsafe';
 
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
 import 'package:graphify/src/utils/js_methods.dart';
-import 'package:graphify/src/utils/utils.dart';
+import 'package:graphify/src/utils/uid.dart';
 import 'package:web/web.dart';
 
 class GraphifyController implements controller_interface.GraphifyController {
+
+  /// When create a new instance of [GraphifyController],
+  /// it generates a new [uid] for the chart.
   GraphifyController() {
-    uid = Utils.uid();
+    uid = UID.generate();
   }
 
+
+  /// The [WebViewController] that is used to interact with the chart.
   @override
   late final String uid;
 
+
+  /// Updates the chart with the given [options].
   @override
   void update(Map<String, dynamic>? options) {
     window.callMethod(
@@ -24,6 +31,8 @@ class GraphifyController implements controller_interface.GraphifyController {
     );
   }
 
+
+  /// Disposes the chart.
   @override
   void dispose() {
     window.callMethod(JsMethods.disposeChart.toJS, uid.toJS);

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:graphify/src/controller/interface.dart';
 
+/// Signature for when a console message is received.
 typedef OnConsoleMessage = void Function(String message);
 
 abstract class GraphifyView {

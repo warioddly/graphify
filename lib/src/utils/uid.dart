@@ -1,10 +1,12 @@
 import 'dart:math';
 
-class Utils {
-  static String uid() {
+/// This class is used to generate a unique identifier for each chart.
+class UID {
+
+  static String generate() {
     var random = Random();
 
-    var chars = 'abcdefghijklmnopqrstuvwxyz';
+    var chars = r'abcdefghijklmnopqrstuvwxyz123456789!@#$%^&*()_+';
     var uid = '';
 
     for (var i = 0; i < 10; i++) {

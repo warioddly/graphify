@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:graphify/src/utils/color_util.dart';
+import 'package:graphify/src/utils/color_extension.dart';
 
 abstract class GraphifyGradient {
   const GraphifyGradient({
@@ -45,7 +45,7 @@ class GraphifyGradientColorStop {
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'offset': offset,
-      'color': ColorUtils.colorToRgba(color),
+      'color': color.toRGBA,
     };
   }
 }

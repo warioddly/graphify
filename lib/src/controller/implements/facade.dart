@@ -1,5 +1,6 @@
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
 
+/// Facade for the Graphify controller.
 class GraphifyController implements controller_interface.GraphifyController {
 
   @override
