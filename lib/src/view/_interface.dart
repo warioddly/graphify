@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:graphify/src/controller/interface.dart';
+import 'package:graphify/src/view/console_message.dart';
 
-typedef OnConsoleMessage = void Function(String message);
 
-abstract class GraphifyView {
+abstract class GraphifyView extends StatefulWidget {
   const GraphifyView({
+    super.key,
     this.controller,
     this.initialOptions,
     this.onConsoleMessage,
@@ -19,11 +21,15 @@ abstract class GraphifyView {
 
   final VoidCallback? onCreated;
 
+  @override
+  State<StatefulWidget> createState();
+
 }
 
-abstract class GraphifyViewState<T extends StatefulWidget> extends State<T> {
+abstract class GraphifyViewState<T extends GraphifyView> extends State<T> {
   late Widget view;
 
+  @nonVirtual
   @override
   void initState() {
     super.initState();
@@ -31,6 +37,7 @@ abstract class GraphifyViewState<T extends StatefulWidget> extends State<T> {
     buildView();
   }
 
+  @nonVirtual
   @override
   Widget build(BuildContext context) => view;
 

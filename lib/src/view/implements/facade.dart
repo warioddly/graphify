@@ -1,30 +1,29 @@
 import 'package:flutter/cupertino.dart';
-import 'package:graphify/src/controller/interface.dart';
-import 'package:graphify/src/view/interface.dart' as g_view;
+import 'package:graphify/src/view/_interface.dart' as g_view;
 
-class GraphifyView extends StatelessWidget implements g_view.GraphifyView {
+class GraphifyView extends g_view.GraphifyView {
   const GraphifyView({
     super.key,
-    this.controller,
-    this.initialOptions,
-    this.onConsoleMessage,
-    this.onCreated,
+    super.controller,
+    super.initialOptions,
+    super.onConsoleMessage,
+    super.onCreated,
   });
 
   @override
-  final GraphifyController? controller;
+  State<StatefulWidget> createState() => _GraphifyViewState();
+
+}
+
+class _GraphifyViewState extends g_view.GraphifyViewState<GraphifyView> {
 
   @override
-  final Map<String, dynamic>? initialOptions;
+  void initView() {
+    throw UnimplementedError("initView() is not implemented");
+  }
 
   @override
-  final g_view.OnConsoleMessage? onConsoleMessage;
-
-  @override
-  final VoidCallback? onCreated;
-
-  @override
-  Widget build(BuildContext context) {
-    throw UnimplementedError();
+  Widget buildView() {
+    throw UnimplementedError("buildView() is not implemented");
   }
 }

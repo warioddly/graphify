@@ -2,58 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:graphify/src/controller/implements/mobile.dart';
 import 'package:graphify/src/resources/dependencies.js.dart';
 import 'package:graphify/src/resources/index.html.dart';
-import 'package:graphify/src/view/interface.dart' as g_view;
+import 'package:graphify/src/view/_interface.dart' as g_view;
 import 'package:webview_flutter/webview_flutter.dart';
 
-class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
+class GraphifyView extends g_view.GraphifyView {
   const GraphifyView({
     super.key,
-    this.controller,
-    this.initialOptions,
-    this.onConsoleMessage,
-    this.onCreated,
+    super.controller,
+    super.initialOptions,
+    super.onConsoleMessage,
+    super.onCreated,
   });
 
   @override
-  final GraphifyController? controller;
-
-  @override
-  final Map<String, dynamic>? initialOptions;
-
-  @override
-  final g_view.OnConsoleMessage? onConsoleMessage;
-
-  @override
-  final VoidCallback? onCreated;
-
-  @override
-  State<StatefulWidget> createState() => _GraphifyViewMobile();
+  State<StatefulWidget> createState() => _GraphifyViewState();
 }
 
-class _GraphifyViewMobile extends g_view.GraphifyViewState<GraphifyView> {
-  late WebViewController webViewController;
-  late final _controller = widget.controller ?? GraphifyController();
+class _GraphifyViewState extends g_view.GraphifyViewState<GraphifyView> {
+
+  late final webViewController = WebViewController();
+  late final controller =
+      (widget.controller ?? GraphifyController()) as GraphifyController;
 
   @override
   void initView() {
-    _controller.connector = webViewController = WebViewController()
+    controller.connector = webViewController
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(Colors.transparent)
+      ..setBackgroundColor(const Color(0x00000000))
+      ..setOnConsoleMessage(widget.onConsoleMessage ?? (_) {})
       ..loadHtmlString(
         indexHtml(
-          id: _controller.uid,
+          id: controller.uid,
           dependencies: "<script>$dependencies</script>",
         ),
       )
-      ..setOnConsoleMessage(
-        (message) => widget.onConsoleMessage?.call(message.message),
-      )
-      ..setNavigationDelegate(NavigationDelegate(
-        onPageFinished: (_) async {
-          widget.onCreated?.call();
-          await _controller.update(widget.initialOptions);
-        },
-      ));
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageFinished: (_) {
+            widget.onCreated?.call();
+            controller.update(widget.initialOptions);
+          },
+        ),
+      );
   }
 
   @override
@@ -64,8 +54,11 @@ class _GraphifyViewMobile extends g_view.GraphifyViewState<GraphifyView> {
   @override
   void dispose() {
     if (widget.controller == null) {
-      _controller.dispose();
+      controller.dispose();
     }
+    webViewController
+      ..clearLocalStorage()
+      ..clearCache();
     super.dispose();
   }
 }

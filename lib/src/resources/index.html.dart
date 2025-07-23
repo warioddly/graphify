@@ -1,6 +1,6 @@
 // ignore_for_file: leading_newlines_in_multiline_strings
 
-import 'package:graphify/src/utils/js_methods.dart';
+import 'package:graphify/src/controller/js_methods.dart';
 
 String indexHtml({ required String id, String? dependencies}) {
   return '''<!DOCTYPE html>

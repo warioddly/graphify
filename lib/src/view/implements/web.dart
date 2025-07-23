@@ -5,47 +5,35 @@ import 'package:flutter/cupertino.dart';
 import 'package:graphify/src/controller/implements/web.dart';
 import 'package:graphify/src/resources/dependencies.js.dart';
 import 'package:graphify/src/resources/index.html.dart';
-import 'package:graphify/src/view/interface.dart' as g_view;
+import 'package:graphify/src/view/_interface.dart' as g_view;
 import 'package:web/web.dart';
 
 const _chartDependencyId = 'graphify-chart-dependency';
 
-class GraphifyView extends StatefulWidget implements g_view.GraphifyView {
+class GraphifyView extends g_view.GraphifyView {
   const GraphifyView({
     super.key,
-    this.controller,
-    this.initialOptions,
-    this.onConsoleMessage,
-    this.onCreated,
+    super.controller,
+    super.initialOptions,
+    super.onConsoleMessage,
+    super.onCreated,
   });
 
   @override
-  final GraphifyController? controller;
-
-  @override
-  final Map<String, dynamic>? initialOptions;
-
-  @override
-  final g_view.OnConsoleMessage? onConsoleMessage;
-
-  @override
-  final VoidCallback? onCreated;
-
-  @override
-  State<StatefulWidget> createState() => _GraphifyViewWeb();
+  State<StatefulWidget> createState() => _GraphifyViewState();
 }
 
-class _GraphifyViewWeb extends g_view.GraphifyViewState<GraphifyView> {
+class _GraphifyViewState extends g_view.GraphifyViewState<GraphifyView> {
 
-  late final _controller = widget.controller ?? GraphifyController();
+  late final controller = widget.controller ?? GraphifyController();
 
-  String get _uid => _controller.uid;
+  String get uid => controller.uid;
 
   @override
   void initView() {
     initChartDependencies();
     platformViewRegistry.registerViewFactory(
-      _uid,
+      uid,
       createHTMLIFrameElement,
     );
   }
@@ -53,20 +41,18 @@ class _GraphifyViewWeb extends g_view.GraphifyViewState<GraphifyView> {
   @override
   Widget buildView() {
     widget.onCreated?.call();
-    return view = HtmlElementView(viewType: _uid);
+    return view = HtmlElementView(viewType: uid);
   }
 
   HTMLIFrameElement createHTMLIFrameElement(_) {
     final iframe = HTMLIFrameElement()
-      ..id = 'graphify_$_uid'
+      ..id = 'graphify_$uid'
       ..style.width  = '100%'
       ..style.height = '100%'
       ..style.border = 'none'
-      ..srcdoc = indexHtml(id: _uid).toJS
-      ..onLoad.listen((_) => _controller.update(widget.initialOptions))
-      ..onError.listen((event) {
-        widget.onConsoleMessage?.call(event.toString());
-      });
+      ..srcdoc = indexHtml(id: uid).toJS
+      ..onLoad.listen((_) => controller.update(widget.initialOptions))
+      ..onError.listen(widget.onConsoleMessage);
 
     return iframe;
   }
@@ -90,7 +76,7 @@ class _GraphifyViewWeb extends g_view.GraphifyViewState<GraphifyView> {
   @override
   void dispose() {
     if (widget.controller == null) {
-      _controller.dispose();
+      controller.dispose();
     }
     super.dispose();
   }

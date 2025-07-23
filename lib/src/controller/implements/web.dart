@@ -3,7 +3,7 @@ import 'dart:js_interop';
 import 'dart:js_interop_unsafe';
 
 import 'package:graphify/src/controller/interface.dart' as controller_interface;
-import 'package:graphify/src/utils/js_methods.dart';
+import 'package:graphify/src/controller/js_methods.dart';
 import 'package:web/web.dart';
 
 class GraphifyController extends controller_interface.GraphifyController {

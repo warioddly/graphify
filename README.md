@@ -2,8 +2,8 @@
 
 <a href="https://pub.dartlang.org/packages/graphify"><img alt="Pub Package" src="https://img.shields.io/pub/v/graphify.svg"></a>
 <a href="https://pub.dev/packages/graphify"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/warioddly/graphify"></a>
-<a href="https://githubc.com/warioddly/graphify/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/warioddly/graphify" alt="GitHub closed issues"></a>
-<a href="https://githubc.com/warioddly/graphify/issues"><img src="https://img.shields.io/github/issues/warioddly/graphify" alt="GitHub open issues"></a>
+<a href="https://github.com/warioddly/graphify/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/warioddly/graphify" alt="GitHub closed issues"></a>
+<a href="https://github.com/warioddly/graphify/issues"><img src="https://img.shields.io/github/issues/warioddly/graphify" alt="GitHub open issues"></a>
 <a href="https://github.com/warioddly/graphify/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/warioddly/graphify"></a>
 <a href="https://github.com/warioddly/graphify/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributing"></a>
 
