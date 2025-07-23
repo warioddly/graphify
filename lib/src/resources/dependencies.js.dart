@@ -1,7 +1,7 @@
 import 'package:graphify/src/resources/lib/echarts.gl.min.dart';
 import 'package:graphify/src/resources/lib/echarts.min.dart';
 import 'package:graphify/src/resources/lib/jquery.min.dart';
-import 'package:graphify/src/utils/js_methods.dart';
+import 'package:graphify/src/controller/js_methods.dart';
 
 const dependencies = "$jQuery "
     "$echartsMin "

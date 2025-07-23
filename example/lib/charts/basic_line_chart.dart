@@ -35,7 +35,7 @@ class _BasicLineChartState extends State<BasicLineChart> {
   Widget build(BuildContext context) {
     return GraphifyView(
       controller: controller,
-      onConsoleMessage: (message) {
+      onConsoleMessage: <String>(message) {
         print("[ERROR] $message");
       },
       initialOptions: const {
