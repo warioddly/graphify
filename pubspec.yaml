@@ -35,7 +35,6 @@ flutter:
 platforms:
   android:
   ios:
-  linux:
   macos:
   web:
   windows:
