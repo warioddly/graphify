@@ -1,8 +1,8 @@
 // ignore_for_file: leading_newlines_in_multiline_strings
 
-import 'package:graphify/src/utils/js_methods.dart';
+import 'package:graphify/src/controller/js_methods.dart';
 
-String indexHtml({ required String id, String? dependencies}) {
+String indexHtml({required String id, String? dependencies}) {
   return '''<!DOCTYPE html>
     <html>
     <head>
@@ -30,6 +30,7 @@ String indexHtml({ required String id, String? dependencies}) {
           const chart = context.echarts.init(dom, 'dark', { renderer: 'canvas', useDirtyRect: false });
           context.${JsMethods.initChart}('$id', chart, {});
           context.${JsMethods.updateChart}('$id', {});
+          context.${JsMethods.initClickListener}(chart, '$id');
           window.addEventListener('resize', chart.resize);
       </script>
     </body>

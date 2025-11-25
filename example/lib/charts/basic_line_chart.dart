@@ -12,7 +12,6 @@ class BasicLineChart extends StatefulWidget {
 }
 
 class _BasicLineChartState extends State<BasicLineChart> {
-
   final controller = GraphifyController();
   Timer? timer;
 
@@ -28,7 +27,6 @@ class _BasicLineChartState extends State<BasicLineChart> {
         ]
       });
     });
-
   }
 
   @override
@@ -44,9 +42,7 @@ class _BasicLineChartState extends State<BasicLineChart> {
           "type": "category",
           "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         },
-        "yAxis": {
-          "type": "value"
-        },
+        "yAxis": {"type": "value"},
         "series": [
           {
             "data": [150, 230, 224, 218, 135, 147, 260],
@@ -63,5 +59,4 @@ class _BasicLineChartState extends State<BasicLineChart> {
     controller.dispose();
     super.dispose();
   }
-
 }

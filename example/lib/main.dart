@@ -5,6 +5,7 @@ import 'package:graphify_example/charts/basic_area_chart.dart';
 import 'package:graphify_example/charts/basic_bar_chart.dart';
 import 'package:graphify_example/charts/basic_line_chart.dart';
 import 'package:graphify_example/charts/candle_stick_brush.dart';
+import 'package:graphify_example/charts/chart_click.dart';
 import 'package:graphify_example/charts/customized_radar_chart.dart';
 import 'package:graphify_example/charts/graph_webkit_dep.dart';
 import 'package:graphify_example/charts/heatmap_discrete_mapping_of_color.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   static const charts = {
+    "Chart Click Test": ChartClick(),
     "Basic Line Chart": BasicLineChart(),
     'Basic Area Chart': BasicAreaChart(),
     'Stacked Area Chart': StackedAreaChart(),
@@ -90,13 +92,15 @@ class MyApp extends StatelessWidget {
                         ListTile(
                           title: const Text("Open Source Code"),
                           onTap: () {
-                            launchUrlString("https://github.com/warioddly/graphify");
+                            launchUrlString(
+                                "https://github.com/warioddly/graphify");
                           },
                         ),
                         ListTile(
                           title: const Text("Pub.dev"),
                           onTap: () {
-                            launchUrlString("https://pub.dev/packages/graphify");
+                            launchUrlString(
+                                "https://pub.dev/packages/graphify");
                           },
                         ),
                       ],

@@ -6,4 +6,6 @@ final class JsMethods {
   static const disposeChart = 'disposeChart';
 
   static const normalizeJson = 'normalizeJson';
+
+  static const initClickListener = 'initClickListener';
 }
